@@ -1,66 +1,39 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+/* =======================================
+ * リタワーク TOPページ
+ * URL: src/app/page.tsx
+ * Created: 2025-08-26
+ * Last updated: 2025-08-26
+ * ======================================= */
 
+import type { Metadata } from 'next';
+import { isRealProduction } from '@/lib/env';
+import ContainerTopHero from '@/components/Top/ContainerHero';
+import ContainerTopSearch from '@/components/Top/ContainerSearch';
+import ContainerTopMessage from '@/components/Top/ContainerMessage';
+import ContainerTopPickUp from '@/components/Top/ContainerPickUp';
+import ContainerTopConditions from '@/components/Top/ContainerConditions';
+import ContainerTopTips from '@/components/Top/ContainerTips';
+import ContainerSpotlightCard from '@/components/Top/ContainerSpotlightCard';
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title:
+      '熊本の医療・介護・福祉の求人検索ならリタワーク｜条件から探せる仕事情報',
+    description: isRealProduction
+      ? '熊本の医療・介護・福祉業界の求人を掲載する求人ポータルサイト。エリア・職種・雇用形態など条件から、自分に合った仕事を簡単に探せます。'
+      : undefined,
+  };
+};
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <ContainerTopHero />
+      <ContainerTopSearch />
+      <ContainerTopPickUp />
+      <ContainerSpotlightCard />
+      <ContainerTopConditions />
+      <ContainerTopTips />
+      <ContainerTopMessage />
+    </>
   );
 }
