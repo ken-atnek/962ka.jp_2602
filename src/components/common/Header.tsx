@@ -1,38 +1,21 @@
 /* =======================================
- *リタワーク HEADER
+ * クロジカ HEADER
  * URL: src/components/common/Header.tsx
- * Created: 2025-07-11
- * Last updated: 2025-07-11
+ * Created: 2026-02-03
+ * Last updated: 2026-02-03
  * ======================================= */
 'use client';
-import styles from '@/styles/components/common/Header.module.scss';
+import styles from './Header.module.scss';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+// import Image from 'next/image';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
-
-  useEffect(() => {
-    // DOM描画後に確実にoffsetTopを取得する
-    requestAnimationFrame(() => {
-      headerOffsetRef.current = headerRef.current?.offsetTop ?? 0;
-
-      const handleScroll = () => {
-        const y = window.scrollY;
-        setIsFixed(y >= headerOffsetRef.current + 400);
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
-
-      // クリーンアップ
-      return () => window.removeEventListener('scroll', handleScroll);
-    });
-  }, []);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -49,25 +32,6 @@ const Header = () => {
       document.removeEventListener('click', handleOutsideClick, true);
   }, [isOpen]);
 
-  // Fixed header state and ref
-  const [isFixed, setIsFixed] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
-  // Store the original Y-offset of the header
-  const headerOffsetRef = useRef(0);
-
-  useEffect(() => {
-    // Set the original offsetTop of the header on mount
-    headerOffsetRef.current = headerRef.current?.offsetTop ?? 0;
-    const handleScroll = () => {
-      const y = window.scrollY;
-      setIsFixed(y >= headerOffsetRef.current);
-    };
-    window.addEventListener('scroll', handleScroll);
-    // Run once to set state if already scrolled
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // ページ判定
   const pathname = usePathname();
   const isTop = pathname === '/';
@@ -76,10 +40,8 @@ const Header = () => {
     <header
       className={clsx(
         styles.containerHeader,
-        isFixed && styles['is-fixed'],
         isTop ? styles['isTop'] : styles['isSub']
       )}
-      ref={headerRef}
       id="Header"
     >
       <button
@@ -96,21 +58,31 @@ const Header = () => {
         <span></span>
       </button>
       <article>
-        <Link href="/" className={styles.itemLogo}>
-          <h1>
-            <svg aria-label="リタワーク">
-              <use href="#svg_logoMark" />
-            </svg>
-            <span>熊本医療＆介護の転職サイト</span>
-          </h1>
-        </Link>
-        <nav>
-          <Link href="/jobs/">求人検索</Link>
-          <Link href="/library/">お気に入り・閲覧検索</Link>
+        <h1>
+          <Link href="/" aria-label="株式会社九州運輸 トップページへ">
+            {/* <Image
+              src={isTop ? '/images/logo-wh.webp' : '/images/logo-bk.webp'}
+              alt="株式会社九州運輸"
+              width={360}
+              height={40}
+              loading="lazy"
+            /> */}
+          </Link>
+        </h1>
+
+        <nav className={styles.mainMenu}>
+          <Link href="/works/">事業内容</Link>
+          <Link href="/vehicles/">保有車両</Link>
+          <Link href="/company/">会社概要</Link>
         </nav>
-        {/* <Link href="" className={styles.linkMyPage}>
-          <span> マイページ</span>
-        </Link> */}
+        <nav className={styles.subMenu}>
+          <Link href="/recruit/" className={styles.linkRecruit}>
+            採用情報
+          </Link>
+          <Link href="/contact/" className={styles.linkContact}>
+            ご依頼・お問い合せ
+          </Link>
+        </nav>
       </article>
     </header>
   );

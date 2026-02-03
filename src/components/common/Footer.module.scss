@@ -1,14 +1,13 @@
 /* =================================
- * 	クロジカ TOPページ
+ * 	クロジカ FOOTER
  * ------------------------------ */
-@use "variable" as *;
-@use "svg" as *;
-@use "mixin" as *;
+@use "../../styles/variable" as *;
+@use "../../styles/svg" as *;
+@use "../../styles/mixin" as *;
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
-
-/* =================================
- * HERO
- * ------------------------------ */
+.containerFooter {
+    position: relative;
+}

@@ -1,39 +1,21 @@
 /* =======================================
- * リタワーク TOPページ
+ * クロジカ TOPページ
  * URL: src/app/page.tsx
- * Created: 2025-08-26
- * Last updated: 2025-08-26
+ * Created: 2026-02-03
+ * Last updated: 2026-02-03
  * ======================================= */
 
 import type { Metadata } from 'next';
 import { isRealProduction } from '@/lib/env';
-import ContainerTopHero from '@/components/Top/ContainerHero';
-import ContainerTopSearch from '@/components/Top/ContainerSearch';
-import ContainerTopMessage from '@/components/Top/ContainerMessage';
-import ContainerTopPickUp from '@/components/Top/ContainerPickUp';
-import ContainerTopConditions from '@/components/Top/ContainerConditions';
-import ContainerTopTips from '@/components/Top/ContainerTips';
-import ContainerSpotlightCard from '@/components/Top/ContainerSpotlightCard';
 
 export const generateMetadata = (): Metadata => {
   return {
-    title:
-      '熊本の医療・介護・福祉の求人検索ならリタワーク｜条件から探せる仕事情報',
+    title: '税理士法人クロジカ',
     description: isRealProduction
-      ? '熊本の医療・介護・福祉業界の求人を掲載する求人ポータルサイト。エリア・職種・雇用形態など条件から、自分に合った仕事を簡単に探せます。'
+      ? 'クロジカの「クロジ力」|熊本の会計事務所|クロジカではお客様のパートナーとして、税務はもちろん、「黒字化」を第一歩とした様々な施策を提案いたします。'
       : undefined,
   };
 };
 export default function Home() {
-  return (
-    <>
-      <ContainerTopHero />
-      <ContainerTopSearch />
-      <ContainerTopPickUp />
-      <ContainerSpotlightCard />
-      <ContainerTopConditions />
-      <ContainerTopTips />
-      <ContainerTopMessage />
-    </>
-  );
+  return <></>;
 }

@@ -1,8 +1,8 @@
 /* =======================================
- * リタワーク Layout
+ * クロジカ Layout
  * URL:src/app/layout.tsx
- * Created: 2025-08-26
- * Last updated: 2025-08-26
+ * Created: 2026-02-03
+ * Last updated: 2026-02-03
  * ======================================= */
 
 import type { Metadata } from 'next';
@@ -32,7 +32,7 @@ const archivoBlack = Archivo_Black({
 
 // 本番のみ metadataBase を設定
 const metadataBase = isRealProduction
-  ? new URL(process.env.NEXT_PUBLIC_METADATA_BASE || 'https://rita-work.jp/')
+  ? new URL(process.env.NEXT_PUBLIC_METADATA_BASE || 'https://962ka.jp/')
   : undefined;
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
           url: '/ogp.jpg',
           width: 1200,
           height: 630,
-          alt: 'リタワークのOGP画像',
+          alt: 'クロジカのOGP画像',
         },
       ],
     },
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
         type: 'image/svg+xml',
       },
       {
-        url: '/favicon/favicon-light.svg',
+        url: '/favicon/favicon-dark.svg',
         media: '(prefers-color-scheme: dark)',
         type: 'image/svg+xml',
       },

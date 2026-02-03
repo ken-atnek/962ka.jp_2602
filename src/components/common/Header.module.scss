@@ -1,0 +1,137 @@
+/* =================================
+ * 	クロジカ HEADER
+ * ------------------------------ */
+@use "../../styles/variable" as *;
+@use "../../styles/svg" as *;
+@use "../../styles/mixin" as *;
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
+// このファイル全体のルールを無効にする
+.containerHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @include flex-center;
+    z-index: 5;
+    transition: 0.3s ease-out;
+    padding-top: 1.3rem;
+    padding-inline: 2vw;
+    @include sp {
+        padding: 6vw 0 0 4vw;
+    }
+    article {
+        display: flex;
+        justify-content: space-between;
+        gap: 0 2em;
+        h1 {
+            img {
+                max-width: 36rem;
+            }
+            align-self: center;
+        }
+        nav {
+            position: relative;
+            font-size: inherit;
+            display: flex;
+            a {
+                font-size: FZ(16);
+
+                // color: $font-white;
+                letter-spacing: 0.1em;
+                @include flex-center;
+            }
+        }
+        .mainMenu {
+            gap: 0 2em;
+            margin-left: auto;
+        }
+        .subMenu {
+            a {
+                height: 7.8rem;
+            }
+            .linkRecruit {
+                // background-color: $main-green;
+                padding-inline: 1.6em;
+            }
+            .linkContact {
+                // background-color: $dark-green;
+                padding-inline: 1em;
+            }
+        }
+    }
+
+    // トップページ
+    // &.isTop {
+    // }
+    // 下層ページ
+    &.isSub {
+        background-color: #fff;
+        padding-bottom: 13px;
+        box-shadow: 0 0 4px rgba(#000, 0.25);
+        nav {
+            a {
+                color: #111;
+            }
+        }
+        .subMenu {
+            a {
+                color: #fff;
+            }
+        }
+    }
+}
+.hamburgerButton {
+    position: fixed;
+    top: 4vw;
+    right: 0;
+    width: 11vw;
+    aspect-ratio: 1;
+    border-top: solid 1px #d8d7c9;
+    border-left: solid 1px #d8d7c9;
+    border-bottom: solid 1px #d8d7c9;
+    z-index: 100;
+    display: none;
+    background-color: #fff;
+    border-top-left-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+    @include sp {
+        display: block;
+    }
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 55%;
+        height: 2px;
+        background-color: #d8d7c9;
+        transition: 0.3s ease-out;
+        &:nth-of-type(1) {
+            translate: -50% calc(-50% - 6px);
+        }
+        &:nth-of-type(2) {
+            translate: -50% -50%;
+        }
+        &:nth-of-type(3) {
+            translate: -50% calc(-50% + 6px);
+        }
+    }
+    &.is-open {
+        span {
+            transition: 0.3s ease-out;
+            &:nth-of-type(1) {
+                translate: -50% -50%;
+                rotate: 45deg;
+            }
+            &:nth-of-type(2) {
+                translate: 150% -50%;
+                opacity: 0;
+            }
+            &:nth-of-type(3) {
+                translate: -50% -50%;
+                rotate: -45deg;
+            }
+        }
+    }
+}
