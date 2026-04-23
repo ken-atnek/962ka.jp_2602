@@ -1,28 +1,43 @@
 /* =======================================
- * クロジカ HEADER
+ *クロジカ HEADER
  * URL: src/components/common/Header.tsx
- * Created: 2026-02-03
- * Last updated: 2026-02-03
+ * Created: 2026-04-23
+ * Last updated: 2026-04-23
  * ======================================= */
 'use client';
-import styles from './Header.module.scss';
 import { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { navMenu } from '@/data/navMenuData';
+import styles from './Header.module.scss';
 import clsx from 'clsx';
-// import Image from 'next/image';
-const Header = () => {
+import { useAnchorNav } from '@/hooks/useAnchorNav';
+
+const HeaderInner = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { onNavClick } = useAnchorNav();
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    closeMenu();
+    onNavClick(e, href);
+  };
+
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
+      const target = event.target as Node;
       if (
         isOpen &&
         navRef.current &&
-        !navRef.current.contains(event.target as Node)
+        buttonRef.current &&
+        !navRef.current.contains(target) &&
+        !buttonRef.current.contains(target)
       ) {
         closeMenu();
       }
@@ -32,20 +47,37 @@ const Header = () => {
       document.removeEventListener('click', handleOutsideClick, true);
   }, [isOpen]);
 
-  // ページ判定
-  const pathname = usePathname();
-  const isTop = pathname === '/';
-
   return (
-    <header
-      className={clsx(
-        styles.containerHeader,
-        isTop ? styles['isTop'] : styles['isSub']
-      )}
-      id="Header"
-    >
+    <header className={styles.containerHeader}>
+      <article
+        className={clsx(
+          styles.blockMenu,
+          isOpen && styles.isOpen,
+          !isOpen && styles.closing
+        )}
+        ref={navRef}
+      >
+        <h1 aria-labelledby="logoTitle">
+          <svg>
+            <title id="logoTitle">税理士法人クロジカ</title>
+            <use href="#svgLogoMarkText" />
+          </svg>
+        </h1>
+        <nav>
+          {navMenu.map((item) => (
+            <Link
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              key={`${item.href}-${item.label}`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </article>
       <button
         type="button"
+        ref={buttonRef}
         className={`${styles.hamburgerButton} ${
           isOpen ? styles['is-open'] : ''
         }`}
@@ -53,39 +85,20 @@ const Header = () => {
         aria-expanded={isOpen}
         aria-label="メニューを開閉"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p>menu</p>
       </button>
-      <article>
-        <h1>
-          <Link href="/" aria-label="株式会社九州運輸 トップページへ">
-            {/* <Image
-              src={isTop ? '/images/logo-wh.webp' : '/images/logo-bk.webp'}
-              alt="株式会社九州運輸"
-              width={360}
-              height={40}
-              loading="lazy"
-            /> */}
-          </Link>
-        </h1>
-
-        <nav className={styles.mainMenu}>
-          <Link href="/works/">事業内容</Link>
-          <Link href="/vehicles/">保有車両</Link>
-          <Link href="/company/">会社概要</Link>
-        </nav>
-        <nav className={styles.subMenu}>
-          <Link href="/recruit/" className={styles.linkRecruit}>
-            採用情報
-          </Link>
-          <Link href="/contact/" className={styles.linkContact}>
-            ご依頼・お問い合せ
-          </Link>
-        </nav>
-      </article>
     </header>
   );
+};
+
+const Header = () => {
+  const pathname = usePathname();
+  return <HeaderInner key={pathname} />;
 };
 
 export default Header;

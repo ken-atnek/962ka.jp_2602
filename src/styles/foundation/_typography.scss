@@ -1,0 +1,36 @@
+/* =================================
+ * フォント設定
+ * ------------------------------ */
+@font-face {
+    font-family: "HelveticaNeue";
+    src: url("/fonts/HelveticaNeue-Thin.woff2") format("woff2");
+    font-weight: 100;
+    font-display: swap;
+}
+@font-face {
+    font-family: "HelveticaNeue";
+    src: url("/fonts/HelveticaNeue-Roman.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: "HelveticaNeue";
+    src: url("/fonts/HelveticaNeue-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-display: swap;
+}
+@font-face {
+    font-family: "HelveticaNeue";
+    src: url("/fonts/HelveticaNeue-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+}
+@mixin sans {
+    font-family: var(--font-jp), "Noto Sans JP", sans-serif;
+}
+// @mixin poppins {
+//     font-family: var(--font-poppins), Poppins, sans-serif;
+// }
+@mixin helvetica-neue {
+    font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+}

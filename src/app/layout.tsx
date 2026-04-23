@@ -2,7 +2,7 @@
  * クロジカ Layout
  * URL:src/app/layout.tsx
  * Created: 2026-02-03
- * Last updated: 2026-02-03
+ * Last updated: 2026-04-23
  * ======================================= */
 
 import type { Metadata } from 'next';

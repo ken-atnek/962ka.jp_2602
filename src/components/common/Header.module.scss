@@ -1,63 +1,42 @@
 /* =================================
  * 	クロジカ HEADER
  * ------------------------------ */
-@use "../../styles/variable" as *;
-@use "../../styles/svg" as *;
-@use "../../styles/mixin" as *;
+@use "../../styles/foundation" as *;
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
 .containerHeader {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    @include flex-center;
     z-index: 5;
     transition: 0.3s ease-out;
-    padding-top: 1.3rem;
-    padding-inline: 2vw;
+    padding-top: 5.3rem;
+    padding-inline: min(5vw, 7rem);
     @include sp {
         padding: 6vw 0 0 4vw;
     }
     article {
         display: flex;
-        justify-content: space-between;
-        gap: 0 2em;
+        flex-direction: column;
         h1 {
-            img {
-                max-width: 36rem;
+            svg {
+                width: 53px;
+                aspect-ratio: 53/50;
+                fill: $pure-black;
             }
-            align-self: center;
         }
         nav {
             position: relative;
             font-size: inherit;
             display: flex;
-            a {
-                font-size: FZ(16);
+            flex-direction: column;
+            margin-top: 3rem;
 
-                // color: $font-white;
-                letter-spacing: 0.1em;
-                @include flex-center;
-            }
-        }
-        .mainMenu {
-            gap: 0 2em;
-            margin-left: auto;
-        }
-        .subMenu {
             a {
-                height: 7.8rem;
-            }
-            .linkRecruit {
-                // background-color: $main-green;
-                padding-inline: 1.6em;
-            }
-            .linkContact {
-                // background-color: $dark-green;
-                padding-inline: 1em;
+                font-size: fz(18);
+                @include helvetica-neue;
+                font-weight: 400;
+                line-height: 2em;
             }
         }
     }
@@ -84,53 +63,64 @@
 }
 .hamburgerButton {
     position: fixed;
-    top: 4vw;
-    right: 0;
-    width: 11vw;
-    aspect-ratio: 1;
-    border-top: solid 1px #d8d7c9;
-    border-left: solid 1px #d8d7c9;
-    border-bottom: solid 1px #d8d7c9;
-    z-index: 100;
-    display: none;
-    background-color: #fff;
-    border-top-left-radius: 1vw;
-    border-bottom-left-radius: 1vw;
-    @include sp {
-        display: block;
-    }
-    span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 55%;
-        height: 2px;
-        background-color: #d8d7c9;
-        transition: 0.3s ease-out;
-        &:nth-of-type(1) {
-            translate: -50% calc(-50% - 6px);
-        }
-        &:nth-of-type(2) {
-            translate: -50% -50%;
-        }
-        &:nth-of-type(3) {
-            translate: -50% calc(-50% + 6px);
-        }
-    }
-    &.is-open {
+    top: 2rem;
+    right: min(2.48vw, 3.4rem);
+    width: 20rem;
+    height: 4rem;
+    border: 1px solid #fff;
+    // background-color: rgba($pure-white, 0.1);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    & > div {
+        position: relative;
+        width: 3.6rem;
         span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 55%;
+            height: 1px;
+            background-color: $pure-black;
             transition: 0.3s ease-out;
+            width: 100%;
             &:nth-of-type(1) {
-                translate: -50% -50%;
-                rotate: 45deg;
+                translate: -50% calc(-50% - 6px);
+                clip-path: inset(0 0 0 30%);
             }
             &:nth-of-type(2) {
-                translate: 150% -50%;
-                opacity: 0;
+                translate: -50% -50%;
             }
             &:nth-of-type(3) {
-                translate: -50% -50%;
-                rotate: -45deg;
+                translate: -50% calc(-50% + 6px);
+                clip-path: inset(0 30% 0 30%);
+            }
+        }
+    }
+    p {
+        @include helvetica-neue;
+        font-size: fz(14);
+        text-transform: uppercase;
+    }
+    &.is-open {
+        & > div {
+            span {
+                transition: 0.3s ease-out;
+                &:nth-of-type(1) {
+                    translate: -50% -50%;
+                    rotate: 45deg;
+                }
+                &:nth-of-type(2) {
+                    translate: 150% -50%;
+                    opacity: 0;
+                }
+                &:nth-of-type(3) {
+                    translate: -50% -50%;
+                    rotate: -45deg;
+                }
             }
         }
     }

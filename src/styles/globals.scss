@@ -1,10 +1,17 @@
-@use "reset_v2.5" as *;
-@use "variable" as *;
-
-// @import "swiper/css";
-// @import "swiper/css/navigation";
+@use "./foundation/reset_v2.5" as *;
+@use "./foundation/settings" as *;
+@use "./foundation/typography" as *;
+@use "./foundation/colors" as *;
+@use "./foundation/breakpoints" as *;
+@use "./foundation/interaction" as *;
+@use "./foundation/svg" as *;
+@use "./foundation/ui" as *;
+html {
+    scroll-behavior: smooth;
+}
 body {
-    @include SunSerif;
+    @include sans;
+
     // font-feature-settings: "palt";
     font-size: clamp(1.2rem, calc($base-vw * 1vw) + calc($slice * 1px), 1.6rem);
     margin: 0;
@@ -15,8 +22,8 @@ body {
     min-height: 100vh;
     justify-content: space-between;
     width: 100%;
-    color: $main-black;
-    background-color: $base-white;
+    color: $pure-black;
+    background-color: $main-white;
     @include tbw {
         overflow-x: clip;
     }
@@ -33,7 +40,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #fffbf4;
+    background-color: $main-white;
 }
 section,
 article,
@@ -62,12 +69,9 @@ br {
         }
     }
 }
-input {
-    margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-    border-radius: 0;
-    outline: none;
-    appearance: none;
+@include pc {
+    a[href^="tel:"] {
+        pointer-events: none;
+        cursor: default;
+    }
 }
