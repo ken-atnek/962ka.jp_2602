@@ -183,3 +183,26 @@ export default async function Page({
 - [ ] `images: { unoptimized: true }`
 - [ ] Mixed Content（http → https）対策を入れる
 - [ ] URLは `https` 前提で扱う
+
+---
+
+# デザイン参照（実装時）
+
+- TOPページ実装・調整時は、`docs/screenshots/TOP.jpg` を参照して差分確認すること
+- 追加スクリーンショットが増えた場合は、`docs/screenshots/` 配下を優先参照すること
+
+---
+
+# 参照順（同期用）
+
+`CLAUDE.md` と同じ順番で以下を参照すること。
+
+1. `docs/ROOTS_SPEC.md`
+2. `docs/PAGE_STRUCTURE.md`
+3. `docs/rules/tsx-comment-rules.md`（`tsx` 編集時）
+4. `docs/rules/project-setup.md`
+5. `docs/rules/coding-style.md`
+6. `docs/rules/nextjs-export.md`
+7. `docs/rules/fetch-pattern.md`
+8. `docs/rules/ui-interactions.md`
+9. `docs/rules/checklist.md`
