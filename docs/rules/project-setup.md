@@ -148,3 +148,31 @@ const nextConfig: NextConfig = {
 
 export default nextConfig;
 ```
+
+### static export 時の App Router 補足
+
+- `src/app/robots.ts` と `src/app/sitemap.ts` を使う時は `export const dynamic = 'force-static';` を付ける
+- `useSearchParams()` を使う client component は、静的ビルド対象ページ側で `Suspense` 境界に入れる
+
+### デモ / 本番ビルドのSEO切り替え
+
+- `build:demo` と `build:prod` を分ける案件では、`NEXT_PUBLIC_IS_REAL_PROD` を必ず付ける
+- `NEXT_PUBLIC_METADATA_BASE` も build script 側で環境ごとに切り替える
+- `src/lib/env.ts` に `isRealProduction` を切り出して、`layout.tsx` / `robots.ts` / `sitemap.ts` から共通利用する
+
+#### 例
+
+```json
+{
+  "scripts": {
+    "build:demo": "cross-env NEXT_PUBLIC_IS_REAL_PROD=false NEXT_PUBLIC_METADATA_BASE=https://demo.example.jp/ next build",
+    "build:prod": "cross-env NEXT_PUBLIC_IS_REAL_PROD=true NEXT_PUBLIC_METADATA_BASE=https://example.jp/ next build"
+  }
+}
+```
+
+#### 方針
+
+- 本番時だけ `metadataBase` / `openGraph` / `twitter` を有効にする
+- デモ時は `robots: noindex, nofollow` にする
+- デモ時の `robots.ts` は `disallow: '/'`、`sitemap.ts` は空配列にする

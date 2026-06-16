@@ -199,10 +199,16 @@ export default async function Page({
 
 1. `docs/ROOTS_SPEC.md`
 2. `docs/PAGE_STRUCTURE.md`
-3. `docs/rules/tsx-comment-rules.md`（`tsx` 編集時）
-4. `docs/rules/project-setup.md`
-5. `docs/rules/coding-style.md`
-6. `docs/rules/nextjs-export.md`
-7. `docs/rules/fetch-pattern.md`
-8. `docs/rules/ui-interactions.md`
-9. `docs/rules/checklist.md`
+3. `docs/ROOTS_IMAGE_LIST_SPEC.md`
+4. `docs/rules/tsx-comment-rules.md`（`tsx` 編集時）
+5. `docs/rules/scss-comment-rules.md`（`scss` 編集時）
+6. `docs/rules/project-setup.md`
+7. `docs/rules/coding-style.md`
+8. `docs/rules/nextjs-export.md`
+9. `docs/rules/fetch-pattern.md`
+10. `docs/rules/ui-interactions.md`
+11. `docs/rules/checklist.md`
+12. `docs/seo/SEO_SETUP.md`
+13. `docs/seo/SEO_AUDIT_REQUEST_TEMPLATE.md`
+14. `docs/seo/SEO_FIX_TRACKER_TEMPLATE.md`
+15. `docs/seo/ROOTS_QUERY_SEO_SPEC.md`

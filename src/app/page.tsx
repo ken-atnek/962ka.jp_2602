@@ -14,6 +14,11 @@ export const generateMetadata = (): Metadata => {
     description: isRealProduction
       ? 'クロジカの「クロジ力」|熊本の会計事務所|クロジカではお客様のパートナーとして、税務はもちろん、「黒字化」を第一歩とした様々な施策を提案いたします。'
       : undefined,
+    ...(isRealProduction && {
+      alternates: {
+        canonical: '/',
+      },
+    }),
   };
 };
 export default function Home() {
