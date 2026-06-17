@@ -1,33 +1,23 @@
 /* =======================================
  *クロジカ HEADER
- * URL: src/components/common/Header.tsx
+ * URL: /src/components/common/Header.tsx
+ * Referenced in: /src/app/layout.tsx
  * Created: 2026-04-23
- * Last updated: 2026-04-23
+ * Last updated: 2026-06-17
  * ======================================= */
 'use client';
 import { useEffect, useState, useRef } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import { navMenu } from '@/data/navMenuData';
 import styles from './Header.module.scss';
 import clsx from 'clsx';
-import { useAnchorNav } from '@/hooks/useAnchorNav';
+import ScrollLink from '@/components/common/ScrollLink';
 
-const HeaderInner = () => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const { onNavClick } = useAnchorNav();
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
-
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    closeMenu();
-    onNavClick(e, href);
-  };
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -65,13 +55,13 @@ const HeaderInner = () => {
         </h1>
         <nav>
           {navMenu.map((item) => (
-            <Link
+            <ScrollLink
               href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
+              onClick={closeMenu}
               key={`${item.href}-${item.label}`}
             >
               {item.label}
-            </Link>
+            </ScrollLink>
           ))}
         </nav>
       </article>
@@ -89,16 +79,12 @@ const HeaderInner = () => {
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
         </div>
         <p>menu</p>
       </button>
     </header>
   );
-};
-
-const Header = () => {
-  const pathname = usePathname();
-  return <HeaderInner key={pathname} />;
 };
 
 export default Header;

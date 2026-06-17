@@ -1,0 +1,32 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ TOP Heroセクション スタイル
+ * URL: /src/components/top/TopHero.module.scss
+ * Referenced in: /src/components/top/TopHero.tsx
+ * Created: 2026-06-17
+ * Last updated: 2026-06-17
+ * ======================================= */
+
+.containerTopHero {
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 2vw;
+    article {
+        max-width: 1075px;
+        display: flex;
+        flex-direction: column;
+        .boxTitle {
+            @include box-title;
+        }
+        .boxMedia {
+            width: 100%;
+            video {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+    }
+}

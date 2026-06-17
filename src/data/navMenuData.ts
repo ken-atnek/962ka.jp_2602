@@ -1,8 +1,9 @@
 /* =======================================
  * メニュー項目
- * URL: src/data/navMenuData.ts
+ * URL: /src/data/navMenuData.ts
+ * Referenced in: /src/components/common/Header.tsx
  * Created:2026-04-23
- * Last updated:2026-04-23
+ * Last updated: 2026-06-17
  * ======================================= */
 
 export type NavMenuItem = {
@@ -12,10 +13,10 @@ export type NavMenuItem = {
 
 export const navMenu: NavMenuItem[] = [
   { href: '/', label: 'TOP' },
-  { href: '/about/', label: 'ABOUT' },
-  { href: '/works/', label: 'SERVICE' },
-  { href: '/#ContainerAbout', label: 'GREETINGS' },
-  { href: '/#ContainerContact', label: 'CREDO' },
-  { href: '/contact/', label: 'CONTACT' },
-  { href: '/#ContainerContact', label: 'JOB Openings' },
+  { href: '/', label: 'ABOUT' },
+  { href: '/', label: 'SERVICE' },
+  { href: '/', label: 'GREETINGS' },
+  { href: '/', label: 'CREDO' },
+  { href: '/', label: 'CONTACT' },
+  { href: '/', label: 'JOB Openings' },
 ];

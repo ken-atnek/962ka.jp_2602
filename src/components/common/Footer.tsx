@@ -2,18 +2,15 @@
  * クロジカ FOOTER
  * URL: src/components/common/Footer.tsx
  * Created: 2026-02-03
- * Last updated: 2026-02-03
+ * Last updated: 2026-06-17
  * ======================================= */
 'use client';
 import styles from './Footer.module.scss';
-import Link from 'next/link';
 import { navMenu } from '@/data/navMenuData';
-import { useAnchorNav } from '@/hooks/useAnchorNav';
 import ExternalLink from '@/components/common/ExternalLink';
+import ScrollLink from '@/components/common/ScrollLink';
 
 const Footer = () => {
-  const { onNavClick } = useAnchorNav();
-
   return (
     <footer className={styles.containerFooter}>
       <div className={styles.itemLogo} aria-labelledby="logoTitle">
@@ -25,13 +22,12 @@ const Footer = () => {
       <div className={styles.copyright}>©2026 KUROJIKA CO., LTD.</div>
       <nav>
         {navMenu.map((item) => (
-          <Link
+          <ScrollLink
             href={item.href}
-            onClick={(e) => onNavClick(e, item.href)}
             key={`${item.href}-${item.label}`}
           >
             {item.label}
-          </Link>
+          </ScrollLink>
         ))}
       </nav>
       <div className={styles.boxLink}>

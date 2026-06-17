@@ -1,0 +1,56 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ TOP Credoセクション スタイル
+ * URL: /src/components/top/TopCredo.module.scss
+ * Referenced in: /src/components/top/TopCredo.tsx
+ * Created: 2026-06-17
+ * Last updated: 2026-06-17
+ * ======================================= */
+
+.containerTopCredo {
+    @include section-base-layout;
+    padding-top: 245px;
+    padding-bottom: 273px;
+    background-color: $main-black;
+    article {
+        gap: 14rem 0;
+        .boxTitle {
+            color: $main-white;
+            p {
+                color: $main-white;
+            }
+        }
+        .boxImage {
+            align-self: center;
+            width: 100%;
+            max-width: 87rem;
+            position: relative;
+            font-size: inherit;
+            .pageLink {
+                @include page-link;
+                position: absolute;
+                inset: 0;
+                margin: auto;
+            }
+            .boxMedia {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 870 / 489;
+                overflow: hidden;
+                background-color: $main-black;
+                video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .mask {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+        }
+    }
+}

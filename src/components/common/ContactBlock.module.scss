@@ -1,0 +1,55 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ ContactBlock スタイル
+ * URL: /src/components/common/ContactBlock.module.scss
+ * Referenced in: /src/components/common/ContactBlock.tsx
+ * Created: 2026-06-17
+ * Last updated: 2026-06-17
+ * ======================================= */
+.containerContact {
+    @include section-base-layout;
+    padding-top: 116px;
+    padding-bottom: 8rem;
+    article {
+        gap: 7rem 0;
+        .boxTitle {
+            color: $main-black;
+        }
+        nav {
+            width: 100%;
+            display: grid;
+            font-size: inherit;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 1.6em;
+            a {
+                @include flex-center;
+                height: 23rem;
+                background-color: $main-black;
+                color: $main-white;
+                font-size: inherit;
+                span {
+                    position: relative;
+                    width: 100%;
+                    text-align: center;
+                    line-height: 1em;
+                    font-size: fz(48);
+                    @include helvetica-neue;
+                    font-weight: 700;
+                }
+                &.linkForm {
+                    span {
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            translate: 0 -50%;
+                            right: 8%;
+                            width: 16%;
+                            @include svg-form-arrow("fff");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

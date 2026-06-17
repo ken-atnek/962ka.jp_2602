@@ -1,23 +1,30 @@
-/* =================================
- * 	クロジカ HEADER
- * ------------------------------ */
 @use "../../styles/foundation" as *;
+/* =======================================
+ * クロジカ Header スタイル
+ * URL: /src/components/common/Header.module.scss
+ * Referenced in: /src/components/common/Header.tsx
+ * Created: 2026-04-23
+ * Last updated: 2026-06-17
+ * ======================================= */
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-pattern */
-// このファイル全体のルールを無効にする
 .containerHeader {
     width: 100%;
     z-index: 5;
     transition: 0.3s ease-out;
     padding-top: 5.3rem;
     padding-inline: min(5vw, 7rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @include sp {
         padding: 6vw 0 0 4vw;
     }
     article {
         display: flex;
         flex-direction: column;
+        max-width: $article-max-width;
         h1 {
             svg {
                 width: 53px;
@@ -31,32 +38,11 @@
             display: flex;
             flex-direction: column;
             margin-top: 3rem;
-
             a {
                 font-size: fz(18);
                 @include helvetica-neue;
                 font-weight: 400;
                 line-height: 2em;
-            }
-        }
-    }
-
-    // トップページ
-    // &.isTop {
-    // }
-    // 下層ページ
-    &.isSub {
-        background-color: #fff;
-        padding-bottom: 13px;
-        box-shadow: 0 0 4px rgba(#000, 0.25);
-        nav {
-            a {
-                color: #111;
-            }
-        }
-        .subMenu {
-            a {
-                color: #fff;
             }
         }
     }
@@ -67,10 +53,9 @@
     right: min(2.48vw, 3.4rem);
     width: 20rem;
     height: 4rem;
-    border: 1px solid #fff;
-    // background-color: rgba($pure-white, 0.1);
+    background-color: rgba($pure-white, 0.5);
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.1);
+    // background: rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
     padding-left: 1.5rem;
@@ -92,9 +77,13 @@
                 clip-path: inset(0 0 0 30%);
             }
             &:nth-of-type(2) {
-                translate: -50% -50%;
+                clip-path: inset(0 0 0 30%);
+                translate: -50% calc(-50% - 2px);
             }
             &:nth-of-type(3) {
+                translate: -50% calc(-50% + 2px);
+            }
+            &:nth-of-type(4) {
                 translate: -50% calc(-50% + 6px);
                 clip-path: inset(0 30% 0 30%);
             }
@@ -112,6 +101,8 @@
                 &:nth-of-type(1) {
                     translate: -50% -50%;
                     rotate: 45deg;
+                    clip-path: inset(0);
+                    width: 55%;
                 }
                 &:nth-of-type(2) {
                     translate: 150% -50%;
@@ -120,6 +111,11 @@
                 &:nth-of-type(3) {
                     translate: -50% -50%;
                     rotate: -45deg;
+                    width: 55%;
+                }
+                &:nth-of-type(4) {
+                    translate: 150% -50%;
+                    opacity: 0;
                 }
             }
         }

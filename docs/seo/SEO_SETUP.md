@@ -96,8 +96,11 @@ export const isRealProduction = process.env.NEXT_PUBLIC_IS_REAL_PROD === 'true';
 ### 注意点
 
 - `NEXT_PUBLIC_METADATA_BASE` は `build:demo` / `build:prod` で切り替える
+- `NEXT_PUBLIC_METADATA_BASE` は末尾 `/` の有無に依存しないように扱う
+- `robots.ts` と `sitemap.ts` のURL生成は文字列連結ではなく `new URL()` を使う
 - デモ時に `metadataBase` を常時出すと、意図しないURLで canonical / OGP が生成されやすい
 - `robots.ts` と `sitemap.ts` は `force-static` を付けた上で、本番判定を合わせる
+- GA4 などの計測タグは本番時だけ読み込む
 - この切り替えは他案件でも再利用する前提で残す
 
 ---

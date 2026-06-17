@@ -1,0 +1,107 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ TOP Greetingsセクション スタイル
+ * URL: /src/components/top/TopGreetings.module.scss
+ * Referenced in: /src/components/top/TopGreetings.tsx
+ * Created: 2026-06-17
+ * Last updated: 2026-06-17
+ * ======================================= */
+
+.containerTopGreetings {
+    display: flex;
+    flex-direction: column;
+    padding-top: 126px;
+    padding-inline: 0;
+    gap: 97px 0;
+    .innerSection {
+        padding-inline: 2vw;
+        font-size: inherit;
+        display: flex;
+        justify-content: center;
+        article {
+            gap: 14rem 0;
+            max-width: unset;
+            display: flex;
+            flex-direction: column;
+            max-width: $article-max-width;
+            .boxTitle {
+                @include box-title;
+            }
+        }
+    }
+
+    .boxDetails {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        // &::before {
+        //     content: "";
+        //     position: absolute;
+        //     left: 50%;
+        //     translate: -50%;
+        //     bottom: 63px;
+        //     width: max(5rem, 60vw);
+        //     height: 120px;
+        //     background-color: $main-black;
+        //     z-index: 1;
+        // }
+
+        .itemPerson {
+            position: absolute;
+            left: 50%;
+            translate: -50%;
+            bottom: 0;
+            width: 27vw;
+            max-width: 362px;
+            background: url(/images/top/greeting-01.webp) no-repeat center
+                bottom / contain;
+            aspect-ratio: 640/1341;
+            z-index: 2;
+            // transition: 0.3s ease-out;
+            @include pc {
+                &:hover {
+                    background-image: url(/images/top/greeting-01-hover.webp);
+                }
+            }
+        }
+        .wrapLogoLeft,
+        .wrapLogoRight {
+            position: relative;
+            width: 683px;
+            margin-bottom: 63px;
+            z-index: 0;
+            font-size: inherit;
+            svg {
+                aspect-ratio: 683/598;
+                fill: $main-black;
+            }
+        }
+        .wrapLogoLeft {
+            .itemName {
+                position: absolute;
+                top: 47%;
+                translate: 0 -50%;
+                right: 40%;
+                font-size: inherit;
+                display: flex;
+                flex-direction: column;
+                span {
+                    color: $vivid-green;
+                    font-size: fz(32);
+                    @include helvetica-neue;
+                    letter-spacing: 0.1em;
+                }
+            }
+        }
+        .wrapLogoRight {
+            .pageLink {
+                @include page-link;
+                position: absolute;
+                top: 50%;
+                translate: 0 -50%;
+                left: 40%;
+            }
+        }
+    }
+}

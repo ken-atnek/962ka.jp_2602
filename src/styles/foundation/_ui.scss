@@ -1,6 +1,8 @@
 @use "./svg" as *;
 @use "./colors" as *;
 @use "./breakpoints" as *;
+@use "./typography" as *;
+@use "./settings" as *;
 
 /* =========================================
 ドロップシャドウ
@@ -14,21 +16,89 @@
     align-items: center;
     justify-content: center;
 }
-@mixin border-gradient {
-    background-image: repeating-linear-gradient(
-        to right,
-        transparent 0,
-        transparent 159px,
-        #efefef 159px,
-        #efefef 160px
-    );
-    @include sp {
-        background-image: repeating-linear-gradient(
-            to right,
-            transparent 0,
-            transparent 25vw,
-            #efefef 25vw,
-            #efefefca calc(25vw + 1px)
-        );
+/* =========================================
+セクションレイアウト
+----------------------------------------- */
+@mixin section-base-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 2vw;
+    article {
+        display: flex;
+        flex-direction: column;
+        max-width: $article-max-width;
+        .boxTitle {
+            @include box-title;
+        }
+    }
+}
+/* =========================================
+タイトルブロック
+----------------------------------------- */
+@mixin box-title {
+    position: relative;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0 7rem;
+    h2 {
+        @include helvetica-neue;
+        font-size: fz(100);
+        font-weight: 700;
+    }
+    p {
+        color: $main-black;
+        font-size: fz(14);
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        line-height: 1.7em;
+    }
+    .titleAnimated {
+        span {
+            display: inline-block;
+            opacity: 0;
+            transform: translate3d(0, 0.55em, 0) rotate(6deg);
+            transition:
+                opacity 0.52s ease,
+                transform 0.72s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        &.isVisible {
+            span {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) rotate(0);
+            }
+        }
+    }
+}
+/* =========================================
+ページリンク
+----------------------------------------- */
+@mixin page-link {
+    width: 22rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: rgba($pure-white, 0.5);
+    z-index: 2;
+    border: 1px solid $main-black;
+    @include flex-center;
+    font-size: inherit;
+    span {
+        position: relative;
+        @include helvetica-neue;
+        font-size: fz(16);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            translate: -50%;
+            top: calc(100% + 0.8em);
+            width: 2.4rem;
+            @include svg-link-arrow("191E1E");
+        }
     }
 }

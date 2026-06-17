@@ -1,0 +1,131 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ TOP Serviceセクション スタイル
+ * URL: /src/components/top/TopService.module.scss
+ * Referenced in: /src/components/top/TopService.tsx
+ * Created: 2026-06-17
+ * Last updated: 2026-06-17
+ * ======================================= */
+
+.containerTopService {
+    @include section-base-layout;
+    padding-top: 126px;
+    padding-bottom: 140px;
+    article {
+        gap: 53px 0;
+        .boxTitle {
+            color: $main-black;
+        }
+        nav {
+            width: 100%;
+            display: grid;
+            font-size: inherit;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 1.6em;
+            a {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 23rem;
+                border: 1px solid $main-black;
+                font-size: inherit;
+                gap: 1em 0;
+                padding-left: 3.3em;
+                .itemButton {
+                    @include page-link;
+                    position: absolute;
+                    top: 50%;
+                    translate: 0 -50%;
+                    right: 4px;
+                    border-color: $pure-white;
+                    color: $pure-white;
+                    transition: 0.3s ease-out;
+                    opacity: 0;
+                    scale: 0;
+                    span {
+                        &::after {
+                            @include svg-link-arrow("fff");
+                        }
+                    }
+                }
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    z-index: -1;
+                }
+                &::after {
+                    background-image: linear-gradient(
+                        to bottom,
+                        rgba($pure-black, 0.6),
+                        rgba($pure-black, 0)
+                    );
+                    mix-blend-mode: multiply;
+                    clip-path: inset(0 0 100% 0);
+                    transition: 0.3s ease-out;
+                }
+                &::before {
+                    clip-path: inset(0 50% 0 50%);
+                    transition: 0.3s ease-out;
+                }
+                h3 {
+                    position: relative;
+                    line-height: 1em;
+                    font-size: fz(40);
+                    @include helvetica-neue;
+                    font-weight: 700;
+                    letter-spacing: 0.2em;
+                    transition: 0.3s ease-out;
+                    &::before {
+                        content: "[";
+                    }
+                    &::after {
+                        content: "]";
+                    }
+                    &::before,
+                    &::after {
+                        display: inline-block;
+                        translate: 0 -0.07em;
+                    }
+                }
+                p {
+                    position: relative;
+                    font-size: fz(16);
+                    line-height: 1.8em;
+                    letter-spacing: 0.1em;
+                    transition: 0.3s ease-out;
+                }
+                &.linkBasic {
+                    &::before {
+                        background: url(/images/top/service-01.webp) no-repeat
+                            center center/cover;
+                    }
+                }
+                &.linkConsulting {
+                    &::before {
+                        background: url(/images/top/service-02.webp) no-repeat
+                            center center/cover;
+                    }
+                }
+                @include hover {
+                    h3,
+                    p {
+                        color: $pure-white;
+                    }
+                    &::before {
+                        clip-path: inset(0);
+                    }
+                    &::after {
+                        clip-path: inset(0);
+                    }
+                    .itemButton {
+                        opacity: 1;
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
+}

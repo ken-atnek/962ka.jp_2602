@@ -1,0 +1,58 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ 共通フローティングオーブ スタイル
+ * URL: /src/components/common/FloatingOrbs.module.scss
+ * Referenced in: /src/components/common/FloatingOrbs.tsx
+ * Created: 2026-06-17
+ * Last updated: 2026-06-17
+ * ======================================= */
+
+.floatingOrbs {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    filter: blur(0.4px);
+    animation: orb-float 7.8s ease-in-out infinite;
+    aspect-ratio: 1;
+}
+
+.green {
+    background-color: $vivid-green;
+    box-shadow: 0 0 1.6rem rgba($vivid-green, 0.28);
+}
+
+.black {
+    background-color: $main-black;
+}
+
+@keyframes orb-float {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 1rem, 0) scale(0.82);
+    }
+
+    18% {
+        opacity: 0.9;
+    }
+
+    52% {
+        opacity: 0.42;
+        transform: translate3d(0.8rem, -0.6rem, 0) scale(1.04);
+    }
+
+    78% {
+        opacity: 0.78;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(-0.5rem, -1.6rem, 0) scale(0.9);
+    }
+}

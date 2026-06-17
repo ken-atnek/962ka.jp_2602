@@ -1,13 +1,14 @@
 /* =======================================
  * クロジカ Layout
- * URL:src/app/layout.tsx
+ * URL: /src/app/layout.tsx
+ * Referenced in: /src/app/layout.tsx
  * Created: 2026-02-03
- * Last updated: 2026-04-23
+ * Last updated: 2026-06-17
  * ======================================= */
 
 import type { Metadata } from 'next';
 import '@/styles/globals.scss';
-import { Noto_Sans_JP, Google_Sans_Flex } from 'next/font/google';
+import { Noto_Sans_JP } from 'next/font/google';
 import SvgDefs from '@/components/SvgDefs';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
@@ -17,12 +18,7 @@ const notoSans = Noto_Sans_JP({
   subsets: ['latin'],
   weight: ['100', '300', '400', '500', '700', '900'],
   display: 'swap',
-});
-
-const googleSansFlex = Google_Sans_Flex({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-google-sans-flex',
+  variable: '--font-noto-sans-jp',
 });
 
 // 本番のみ metadataBase を設定
@@ -71,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={`${notoSans.className} ${googleSansFlex.variable}`}>
+    <html className={notoSans.variable}>
       <head>
         <meta
           name="format-detection"
