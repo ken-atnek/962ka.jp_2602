@@ -7,7 +7,7 @@
 @use "./foundation/svg" as *;
 @use "./foundation/ui" as *;
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 body {
     @include noto-sans-jp;

@@ -1,0 +1,128 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ Serviceページ BASIC & CONSULTING
+ * URL: /src/components/service/ServicePageSection.module.scss
+ * Referenced in: /src/components/service/ServicePageSection.tsx
+ * Created: 2026-06-18
+ * Last updated: 2026-06-18
+ * ======================================= */
+
+/* =================================
+ * BASIC & CONSULTING
+ * ------------------------------ */
+.blockServiceList {
+    display: flex;
+    flex-direction: column;
+    .headTitle {
+        position: relative;
+        font-size: inherit;
+        height: 20rem;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .sectionHeading {
+            color: $main-white;
+            padding-left: 4.7rem;
+            font-size: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4em 0;
+            h2 {
+                @include helvetica-neue;
+                font-size: fz(40);
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                line-height: 1;
+                &::before {
+                    content: "[";
+                }
+                &::after {
+                    content: "]";
+                }
+                &::before,
+                &::after {
+                    display: inline-block;
+                    translate: 0 -0.07em;
+                }
+            }
+
+            p {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4em 0;
+                font-size: fz(16);
+                line-height: 1.8;
+                letter-spacing: 0.1em;
+            }
+        }
+    }
+    .detailList {
+        border-top: 1px solid $main-black;
+        .listItem {
+            border-bottom: 1px solid $main-black;
+            .serviceSummary {
+                list-style: none;
+                display: grid;
+                grid-template-columns: 10rem 1fr 4rem;
+                gap: 0 2rem;
+                align-items: center;
+                padding: 2rem 0;
+                cursor: pointer;
+                &::-webkit-details-marker {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.itemId {
+    @include helvetica-neue;
+    font-size: fz(14);
+    letter-spacing: 0.1em;
+}
+
+.itemTitle {
+    font-size: fz(20);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.itemIcon {
+    justify-self: end;
+    @include helvetica-neue;
+    font-size: fz(20);
+    line-height: 1;
+    transition: transform 0.3s ease-out;
+}
+
+.serviceItem[open] {
+    .itemIcon {
+        transform: rotate(180deg);
+    }
+}
+
+.itemDescription {
+    padding: 0 4rem 2.8rem 12rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+
+    p {
+        position: relative;
+        padding-left: 1.2em;
+        font-size: fz(15);
+        line-height: 1.9;
+        letter-spacing: 0.08em;
+
+        &::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+}

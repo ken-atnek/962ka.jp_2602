@@ -3,11 +3,11 @@
  * URL: /src/components/common/FloatingOrbs.tsx
  * Referenced in: /src/app/page.tsx
  * Created: 2026-06-17
- * Last updated: 2026-06-17
+ * Last updated: 2026-06-18
  * ======================================= */
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './FloatingOrbs.module.scss';
 
 type OrbItem = {
@@ -31,10 +31,8 @@ const orbSlots = [
 ];
 
 const FloatingOrbs = () => {
-  const [orbItems, setOrbItems] = useState<OrbItem[]>([]);
-
-  useEffect(() => {
-    const nextOrbItems = Array.from({ length: orbCount }, (_, index) => {
+  const [orbItems] = useState<OrbItem[]>(() =>
+    Array.from({ length: orbCount }, (_, index) => {
       const isGreen = index % 2 === 0;
       const slot = orbSlots[index % orbSlots.length];
 
@@ -45,10 +43,8 @@ const FloatingOrbs = () => {
         size: 0.9 + Math.random() * 1.2,
         top: slot.topMin + Math.random() * (slot.topMax - slot.topMin),
       };
-    });
-
-    setOrbItems(nextOrbItems);
-  }, []);
+    })
+  );
 
   return (
     <div className={styles.floatingOrbs} aria-hidden="true">

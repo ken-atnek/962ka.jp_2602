@@ -3,10 +3,11 @@
  * URL: /src/components/common/Header.tsx
  * Referenced in: /src/app/layout.tsx
  * Created: 2026-04-23
- * Last updated: 2026-06-17
+ * Last updated: 2026-06-18
  * ======================================= */
 'use client';
 import { useEffect, useState, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { navMenu } from '@/data/navMenuData';
 import styles from './Header.module.scss';
 import clsx from 'clsx';
@@ -16,6 +17,8 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const isTopPage = pathname === '/';
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
@@ -37,8 +40,17 @@ const Header = () => {
       document.removeEventListener('click', handleOutsideClick, true);
   }, [isOpen]);
 
+  const logo = (
+    <svg>
+      <title id="logoTitle">税理士法人クロジカ</title>
+      <use href="#svgLogoMarkText" />
+    </svg>
+  );
+
   return (
-    <header className={styles.containerHeader}>
+    <header
+      className={clsx(styles.containerHeader, !isTopPage && styles.isSubpage)}
+    >
       <article
         className={clsx(
           styles.blockMenu,
@@ -47,12 +59,15 @@ const Header = () => {
         )}
         ref={navRef}
       >
-        <h1 aria-labelledby="logoTitle">
-          <svg>
-            <title id="logoTitle">税理士法人クロジカ</title>
-            <use href="#svgLogoMarkText" />
-          </svg>
-        </h1>
+        {isTopPage ? (
+          <h1 className={styles.itemLogo} aria-labelledby="logoTitle">
+            {logo}
+          </h1>
+        ) : (
+          <div className={styles.itemLogo} aria-hidden="true">
+            {logo}
+          </div>
+        )}
         <nav>
           {navMenu.map((item) => (
             <ScrollLink

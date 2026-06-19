@@ -13,7 +13,8 @@
 9. `docs/rules/nextjs-export.md`
 10. `docs/rules/fetch-pattern.md`
 11. `docs/rules/ui-interactions.md`
-12. `docs/rules/checklist.md`
+12. `docs/rules/webgl-distortion.md`（`DistortionImage` コンポーネント編集時）
+13. `docs/rules/checklist.md`
 13. `docs/seo/SEO_SETUP.md`
 14. `docs/seo/SEO_AUDIT_REQUEST_TEMPLATE.md`
 15. `docs/seo/SEO_FIX_TRACKER_TEMPLATE.md`

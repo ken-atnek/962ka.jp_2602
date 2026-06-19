@@ -1,0 +1,239 @@
+@use "../styles/foundation/" as *;
+
+/* =======================================
+ * クロジカ Greetingsページ スタイル
+ * URL: /src/styles/PageGreetings.module.scss
+ * Referenced in: /src/app/greetings/page.tsx
+ * Created: 2026-06-18
+ * Last updated: 2026-06-19 (プロフィール・挨拶スクロールアニメーション追加)
+ * ======================================= */
+
+.containerHero {
+    aspect-ratio: 1980/2773;
+    display: flex;
+    flex-direction: column;
+    background: url("/images/greeting/hero-bg.jpg") no-repeat center
+        center/cover;
+    perspective: 1200px;
+    h1 {
+        color: $main-white;
+        font-weight: 700;
+        @include helvetica-neue;
+        font-size: fz(128);
+        line-height: 0.6em;
+        align-self: center;
+        height: 20rem;
+        display: flex;
+        align-items: flex-end;
+    }
+    .itemName {
+        position: absolute;
+        left: 50%;
+        translate: -50%;
+        top: 50vw;
+        @include helvetica-neue;
+        color: $vivid-green;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        font-size: 5.8vw;
+        z-index: 1;
+        span {
+            display: inline-block;
+            opacity: 0;
+            transform: translate3d(var(--tx, 0), var(--ty, 0), 0)
+                scale(var(--scale, 5)) rotateX(var(--rx, 0deg))
+                rotateZ(var(--rz, 0deg));
+            transition:
+                transform 4s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s),
+                opacity 0.4s ease var(--delay, 0s);
+        }
+        &.isVisible span {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1) rotateX(0deg) rotateZ(0deg);
+        }
+    }
+    .imagePerson {
+        position: absolute;
+        width: 20vw;
+        top: 58.4vw;
+        left: 38.9vw;
+        opacity: 1;
+
+        // display: none;
+        z-index: 2;
+    }
+    .boxProfile,
+    .boxGreeting {
+        position: absolute;
+        font-size: inherit;
+        color: $pure-white;
+        padding: 2.3vw 3.3vw;
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgb(25 30 30 / 30%);
+        }
+    }
+    .boxProfile {
+        right: 11vw;
+        top: 70vw;
+        width: 33.7vw;
+        h2 {
+            position: relative;
+            font-size: 2vw;
+            z-index: 3;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            display: flex;
+            gap: 0 0.3em;
+            opacity: 0;
+            transform: translateX(-12px);
+            transition:
+                opacity 0.5s ease 0.4s,
+                transform 0.5s ease 0.4s;
+        }
+        dl {
+            position: relative;
+            z-index: 3;
+            font-size: max(1.2rem, 1vw);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.4em 0;
+            margin-top: 3vw;
+            div {
+                grid-column: span 2;
+                display: grid;
+                grid-template-columns: subgrid;
+                font-size: inherit;
+                gap: 0 2em;
+                opacity: 0;
+                transform: translateY(6px);
+                &:nth-child(1) {
+                    transition:
+                        opacity 0.5s ease 0.6s,
+                        transform 0.5s ease 0.6s;
+                }
+                &:nth-child(2) {
+                    transition:
+                        opacity 0.5s ease 0.8s,
+                        transform 0.5s ease 0.8s;
+                }
+                &:nth-child(3) {
+                    transition:
+                        opacity 0.5s ease 1s,
+                        transform 0.5s ease 1s;
+                }
+                &:nth-child(4) {
+                    transition:
+                        opacity 0.5s ease 1.2s,
+                        transform 0.5s ease 1.2s;
+                }
+                dt {
+                    font-size: inherit;
+                    letter-spacing: 0.05em;
+                    line-height: 1.8em;
+                }
+                dd {
+                    font-size: inherit;
+                    display: flex;
+                    flex-direction: column;
+                    line-height: 1.8em;
+                    max-width: 19em;
+                    span {
+                        line-height: 1.8em;
+                    }
+                }
+            }
+        }
+        &.isVisible {
+            h2 {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            dl div {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+    .boxGreeting {
+        left: 7.3vw;
+        top: 76vw;
+        width: 44vw;
+        & > * {
+            position: relative;
+            z-index: 3;
+            font-size: max(1.2rem, 1.17vw);
+            letter-spacing: 0.05em;
+        }
+        h3 {
+            opacity: 0;
+            transition: opacity 0.5s ease 0.1s;
+        }
+        p {
+            line-height: 2.2em;
+            margin-top: 3vw;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.8s;
+        }
+        &.isVisible {
+            h3 {
+                opacity: 1;
+            }
+            p {
+                opacity: 1;
+            }
+        }
+    }
+}
+/* =================================
+ * 画像ギャラリー
+ * ------------------------------ */
+.containerGallery {
+    display: flex;
+    flex-direction: column;
+    gap: 5.2vw 0;
+    translate: 0 -7vw;
+    .itemImage01 {
+        position: relative;
+        margin-left: 7.3vw;
+        width: 53vw;
+        aspect-ratio: 728 / 485;
+    }
+    .galleryGrid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8vw 4.5vw;
+        .itemImage02 {
+            position: relative;
+            grid-row: span 2;
+            width: 28.5vw;
+            aspect-ratio: 390 / 586;
+        }
+        .itemImage03 {
+            aspect-ratio: 915 / 610;
+        }
+        .textEn {
+            justify-self: end;
+            font-size: 1.46vw;
+            @include helvetica-neue;
+            font-weight: 500;
+            line-height: 1.8em;
+        }
+    }
+    .textJp {
+        font-size: max(1.6rem, 1.17vw);
+        align-self: center;
+        line-height: 2.3em;
+        font-weight: 500;
+    }
+    .itemImage04 {
+        width: 80vw;
+        align-self: center;
+        aspect-ratio: 1086 / 724;
+    }
+}

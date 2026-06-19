@@ -44,8 +44,8 @@ const TopGreetings = () => {
         </div>
         <div className={styles.itemPerson}></div>
         <div className={styles.wrapLogoRight}>
-          <ScrollLink href="#" className={styles.pageLink}>
-            <span>credo</span>
+          <ScrollLink href="/greetings/" className={styles.pageLink}>
+            <span>greetings</span>
           </ScrollLink>
           <svg>
             <use href="#svgLogoMarkRight" />
