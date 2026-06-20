@@ -9,8 +9,8 @@
 import type { Metadata } from 'next';
 import ContactBlock from '@/components/common/ContactBlock';
 import FloatingOrbs from '@/components/common/FloatingOrbs';
+import ServiceMovie from '@/components/service/ServiceMovie';
 import ServicePageSection from '@/components/service/ServicePageSection';
-import TopCredo from '@/components/top/TopCredo';
 import { isRealProduction } from '@/lib/env';
 import { serviceSections } from './serviceData';
 import styles from '@/styles/PageService.module.scss';
@@ -80,8 +80,7 @@ export default function ServicePage() {
           ))}
         </div>
       </section>
-
-      <TopCredo />
+      <ServiceMovie />
       <ContactBlock />
     </>
   );

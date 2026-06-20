@@ -14,7 +14,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background: url(/images/service/basic.webp) no-repeat center center / cover;
+    background: url(/images/service/title.webp) no-repeat center center / cover;
     height: 30rem;
     h1 {
         color: $main-white;
@@ -56,8 +56,6 @@
 
 /* =================================
  * BASIC & CONSULTING
-
- src/components/service/ServicePageSection.module.scss
  * ------------------------------ */
 .containerServiceBlocks {
     display: flex;
@@ -72,5 +70,161 @@
         max-width: $article-middle-width;
         width: 100%;
         font-size: inherit;
+        .blockServiceList {
+            display: flex;
+            flex-direction: column;
+            gap: 7rem 0;
+            .headTitle {
+                font-size: inherit;
+                position: relative;
+                height: 20rem;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                color: $pure-white;
+                padding: 3.3rem 5rem;
+                h2 {
+                    position: relative;
+                    line-height: 1em;
+                    font-size: fz(40);
+                    @include helvetica-neue;
+                    font-weight: 700;
+                    letter-spacing: 0.2em;
+                    transition: 0.3s ease-out;
+                    &::before {
+                        content: "[";
+                    }
+                    &::after {
+                        content: "]";
+                    }
+                    &::before,
+                    &::after {
+                        display: inline-block;
+                        translate: 0 -0.07em;
+                    }
+                }
+                p {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: inherit;
+                    margin-top: 2rem;
+                    span {
+                        font-size: fz(16);
+                        line-height: 1.875;
+                        letter-spacing: 0.1em;
+                    }
+                }
+            }
+        }
+        .detailList {
+            border-top: 1px solid $main-black;
+            font-size: inherit;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            .listItem {
+                border-bottom: 1px solid $main-black;
+                grid-column: span 3;
+                display: grid;
+                grid-template-columns: subgrid;
+                font-size: inherit;
+                &.isOpen {
+                    .itemIcon {
+                        scale: 1 -1;
+                    }
+                }
+                .itemSummary {
+                    font-size: inherit;
+                    grid-column: span 3;
+                    display: grid;
+                    grid-template-columns: subgrid;
+                    align-items: center;
+                    width: 100%;
+                    padding: 2.5rem 0;
+                    background: transparent;
+                    border: 0;
+                    text-align: left;
+                    cursor: pointer;
+                    .itemId {
+                        @include helvetica-neue;
+                        font-size: fz(12);
+                        font-weight: 500;
+                        line-height: 1;
+                        letter-spacing: 0.08em;
+                        margin-right: 104px;
+                    }
+                    .itemTitle {
+                        font-size: fz(16);
+                        font-weight: 500;
+                        letter-spacing: 0.1em;
+                    }
+                    .itemIcon {
+                        justify-self: end;
+                        display: flex;
+                        align-items: center;
+                        transition: 0.3s ease-out;
+                        padding-right: 2rem;
+                        svg {
+                            width: 8px;
+                            aspect-ratio: 8/18;
+                            fill: $main-black;
+                        }
+                    }
+                }
+                .itemDescriptionWrap {
+                    grid-column: 2 / 4;
+                    display: grid;
+                    grid-template-rows: 0fr;
+                    opacity: 0;
+                    font-size: inherit;
+                    padding-bottom: 0;
+                    transition:
+                        grid-template-rows 0.42s ease,
+                        opacity 0.28s ease,
+                        padding-bottom 0.42s ease;
+                    &.isOpen {
+                        grid-template-rows: 1fr;
+                        opacity: 1;
+                        padding-bottom: 3rem;
+                    }
+                    .itemDescription {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        min-height: 0;
+                        overflow: hidden;
+                        font-size: inherit;
+                        gap: 0.5em 0;
+                        p {
+                            position: relative;
+                            font-size: fz(14);
+                            font-weight: 300;
+                            line-height: 2;
+                            letter-spacing: 0.08em;
+                            &::before {
+                                content: "—";
+                                margin-right: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* =================================
+ * 動画
+ * ------------------------------ */
+.containerMovie {
+    padding-bottom: 10rem;
+    .boxMedia {
+        width: 100%;
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     }
 }

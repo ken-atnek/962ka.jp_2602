@@ -3,15 +3,18 @@
  * URL: /src/components/service/ServicePageSection.tsx
  * Referenced in: /src/app/service/page.tsx
  * Created: 2026-06-18
- * Last updated: 2026-06-18
+ * Last updated: 2026-06-20
  * ======================================= */
 
-import styles from './ServicePageSection.module.scss';
+'use client';
+
+import { useState } from 'react';
+import styles from '@/styles/PageService.module.scss';
 
 type ServicePageSectionItem = {
   id: string;
   title: string;
-  description?: readonly string[];
+  description: readonly string[];
   defaultOpen?: boolean;
 };
 
@@ -32,6 +35,9 @@ const ServicePageSection = ({
   imageAlt,
   items,
 }: ServicePageSectionProps) => {
+  const initialOpenId = items.find((item) => item.defaultOpen)?.id ?? null;
+  const [openItemId, setOpenItemId] = useState<string | null>(initialOpenId);
+
   return (
     <article className={styles.blockServiceList} aria-label={title}>
       <div
@@ -40,42 +46,57 @@ const ServicePageSection = ({
         aria-label={imageAlt}
         style={{ backgroundImage: `url(${imageSrc})` }}
       >
-        <div className={styles.sectionHeading}>
-          <h2>
-            {sectionNumber}_{title}
-          </h2>
-          <p>
-            {lead.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </p>
-        </div>
+        <h2>
+          {sectionNumber}_{title}
+        </h2>
+        <p>
+          {lead.map((line) => (
+            <span key={line}>{line}</span>
+          ))}
+        </p>
       </div>
 
       <div className={styles.detailList}>
-        {items.map((item) => (
-          <details
-            key={item.id}
-            className={styles.listItem}
-            open={item.defaultOpen}
-          >
-            <summary className={styles.serviceSummary}>
-              <span className={styles.itemId}>{item.id}</span>
-              <span className={styles.itemTitle}>{item.title}</span>
-              <span className={styles.itemIcon} aria-hidden="true">
-                ↓
-              </span>
-            </summary>
+        {items.map((item) => {
+          const isOpen = openItemId === item.id;
 
-            {item.description && item.description.length > 0 ? (
-              <div className={styles.itemDescription}>
-                {item.description.map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
+          return (
+            <div
+              key={item.id}
+              className={`${styles.listItem} ${isOpen ? styles.isOpen : ''}`.trim()}
+            >
+              <button
+                type="button"
+                className={styles.itemSummary}
+                aria-expanded={isOpen}
+                aria-controls={`${title}-${item.id}-panel`}
+                onClick={() =>
+                  setOpenItemId((currentId) => (currentId === item.id ? null : item.id))
+                }
+              >
+                <span className={styles.itemId}>{item.id}</span>
+                <span className={styles.itemTitle}>{item.title}</span>
+                <span className={styles.itemIcon} aria-hidden="true">
+                  <svg>
+                    <use href="#svgServiceAccordionArrow" />
+                  </svg>
+                </span>
+              </button>
+
+              <div
+                id={`${title}-${item.id}-panel`}
+                className={`${styles.itemDescriptionWrap} ${isOpen ? styles.isOpen : ''}`.trim()}
+                aria-hidden={!isOpen}
+              >
+                <div className={styles.itemDescription}>
+                  {item.description.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
               </div>
-            ) : null}
-          </details>
-        ))}
+            </div>
+          );
+        })}
       </div>
     </article>
   );
