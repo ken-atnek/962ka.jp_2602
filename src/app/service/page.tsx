@@ -9,6 +9,7 @@
 import type { Metadata } from 'next';
 import ContactBlock from '@/components/common/ContactBlock';
 import FloatingOrbs from '@/components/common/FloatingOrbs';
+import ServiceCredo from '@/components/service/ServiceCredo';
 import ServiceMovie from '@/components/service/ServiceMovie';
 import ServicePageSection from '@/components/service/ServicePageSection';
 import { isRealProduction } from '@/lib/env';
@@ -80,6 +81,7 @@ export default function ServicePage() {
           ))}
         </div>
       </section>
+      <ServiceCredo />
       <ServiceMovie />
       <ContactBlock />
     </>

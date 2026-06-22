@@ -215,6 +215,252 @@
     }
 }
 /* =================================
+ * CREDO他
+ * ------------------------------ */
+.containerServiceCredo {
+    display: flex;
+    justify-content: center;
+    background-color: $main-black;
+    color: $main-white;
+    padding: 11rem 2vw 27rem;
+
+    article {
+        width: 100%;
+        max-width: $article-max-width;
+        display: flex;
+        flex-direction: column;
+        gap: 12rem 0;
+
+        .introBlock {
+            display: flex;
+            flex-direction: column;
+            gap: 5.6rem 0;
+            .boxTitle {
+                @include box-title;
+            }
+            .introItem {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem 0;
+                font-size: inherit;
+                width: 100%;
+                max-width: $article-middle-width;
+                align-self: center;
+                h3 {
+                    @include helvetica-neue;
+                    font-size: fz(40);
+                    font-weight: 700;
+                }
+                p {
+                    font-weight: 500;
+                    font-size: fz(20);
+                    letter-spacing: 0.1em;
+                }
+            }
+        }
+        .coreValueSection {
+            display: flex;
+            flex-direction: column;
+            gap: 4.8rem 0;
+            .boxTitle {
+                display: flex;
+                justify-content: space-between;
+                font-size: inherit;
+                @include animated-title;
+                align-items: center;
+                gap: 0 3rem;
+                h2 {
+                    @include item-h2;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    gap: 0 3rem;
+                    &::after {
+                        content: "";
+                        height: 1px;
+                        flex: 1;
+                        background-color: #d9d9d9;
+                    }
+                }
+                p {
+                    color: $pure-white;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: inherit;
+                    span {
+                        line-height: 2.14em;
+                        font-size: fz(14);
+                        font-weight: 300;
+                        letter-spacing: 0.1em;
+                    }
+                }
+            }
+            .valueCard {
+                gap: 1.4rem 0;
+            }
+        }
+        .commitmentSection {
+            display: flex;
+            flex-direction: column;
+            gap: 5.1rem 0;
+            .boxTitle {
+                display: flex;
+                justify-content: space-between;
+                font-size: inherit;
+                @include animated-title;
+                align-items: center;
+                gap: 0 3rem;
+                h2 {
+                    @include item-h2;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    gap: 0 3rem;
+                    &::after {
+                        content: "";
+                        height: 1px;
+                        flex: 1;
+                        background-color: #d9d9d9;
+                    }
+                }
+                p {
+                    color: $pure-white;
+                    font-size: fz(24);
+                    font-weight: 700;
+                    letter-spacing: 0.1em;
+                }
+            }
+            .catch {
+                font-size: inherit;
+                display: flex;
+                flex-direction: column;
+                span {
+                    font-size: fz(22);
+                    font-weight: 500;
+                    line-height: 1.8em;
+                    letter-spacing: 0.1em;
+                }
+            }
+            .cardGrid {
+                margin-top: 2rem;
+                .valueCard {
+                    gap: 1.4rem 0;
+                }
+            }
+        }
+        .valueSection {
+            display: flex;
+            flex-direction: column;
+            gap: 12rem 0;
+            .boxTitle {
+                display: flex;
+                justify-content: space-between;
+                font-size: inherit;
+                @include animated-title;
+                align-items: center;
+                gap: 0 3rem;
+                h2 {
+                    @include item-h2;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    gap: 0 3rem;
+                    &::after {
+                        content: "";
+                        height: 1px;
+                        flex: 1;
+                        background-color: #d9d9d9;
+                    }
+                }
+                p {
+                    color: $pure-white;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: inherit;
+                    span {
+                        line-height: 2.14em;
+                        font-size: fz(14);
+                        font-weight: 300;
+                        letter-spacing: 0.1em;
+                    }
+                }
+            }
+            .groupList {
+                font-size: inherit;
+                display: flex;
+                flex-direction: column;
+                gap: 12rem 0;
+                max-width: $article-middle-width;
+                align-self: center;
+                width: 100%;
+                .listDetails {
+                    font-size: inherit;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4.5rem 0;
+                    h4 {
+                        font-size: fz(24);
+                        font-weight: 500;
+                        letter-spacing: 0.05em;
+                    }
+                    ul {
+                        display: grid;
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                        gap: 3.4em;
+                        font-size: inherit;
+                        li {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1.4rem 0;
+                            font-size: inherit;
+                            h5 {
+                                font-size: fz(20);
+                                font-weight: 500;
+                                letter-spacing: 0.1em;
+                            }
+                            p {
+                                font-size: fz(15);
+                                font-weight: 300;
+                                line-height: 2.26;
+                                letter-spacing: 0.05em;
+                                text-align: justify;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3.4em;
+    font-size: inherit;
+    width: 100%;
+    max-width: $article-middle-width;
+    align-self: center;
+    li {
+        display: flex;
+        flex-direction: column;
+        font-size: inherit;
+        h3 {
+            font-size: fz(20);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+        p {
+            font-size: fz(15);
+            font-weight: 300;
+            line-height: 2.26;
+            letter-spacing: 0.05em;
+            text-align: justify;
+        }
+    }
+}
+
+/* =================================
  * 動画
  * ------------------------------ */
 .containerMovie {

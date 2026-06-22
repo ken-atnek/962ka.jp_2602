@@ -3,6 +3,7 @@
 @use "./breakpoints" as *;
 @use "./typography" as *;
 @use "./settings" as *;
+@use "./interaction" as *;
 
 /* =========================================
 ドロップシャドウ
@@ -59,6 +60,11 @@
         }
     }
 }
+@mixin item-h2 {
+    @include helvetica-neue;
+    font-size: fz(100);
+    font-weight: 700;
+}
 @mixin box-title {
     position: relative;
     font-size: inherit;
@@ -66,9 +72,7 @@
     align-items: center;
     gap: 0 7rem;
     h2 {
-        @include helvetica-neue;
-        font-size: fz(100);
-        font-weight: 700;
+        @include item-h2;
     }
     p {
         color: $main-black;
@@ -84,14 +88,31 @@
 ページリンク
 ----------------------------------------- */
 @mixin page-link {
+    orientation: landscape;
     width: 22rem;
     aspect-ratio: 1;
-    border-radius: 50%;
-    background-color: rgba($pure-white, 0.5);
     z-index: 2;
     border: 1px solid $main-black;
     @include flex-center;
     font-size: inherit;
+    border-radius: 50%;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        transition: 0.4s ease-out;
+        inset: 0;
+        border-radius: 50%;
+        z-index: -1;
+    }
+    &::before {
+        background-color: rgba($pure-white, 0.5);
+    }
+    &::after {
+        background-color: rgba($pure-black, 0.5);
+        scale: 0;
+    }
     span {
         position: relative;
         @include helvetica-neue;
@@ -99,6 +120,8 @@
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.1em;
+        transition: 0.3s ease-out;
+        &::before,
         &::after {
             content: "";
             position: absolute;
@@ -106,7 +129,34 @@
             translate: -50%;
             top: calc(100% + 0.8em);
             width: 2.4rem;
+            transition: 0.3s ease-out;
+        }
+        &::before {
+            opacity: 0;
+            translate: -500%;
+            @include svg-link-arrow("fff");
+            transition: 0.3s ease-out 0.2s;
+        }
+        &::after {
             @include svg-link-arrow("191E1E");
+            opacity: 1;
+            transition: 0.3s ease-out;
+        }
+    }
+    @include hover {
+        &::after {
+            scale: 1;
+        }
+        span {
+            color: $main-white;
+            &::after {
+                opacity: 0;
+                translate: 500%;
+            }
+            &::before {
+                opacity: 1;
+                translate: -50%;
+            }
         }
     }
 }
