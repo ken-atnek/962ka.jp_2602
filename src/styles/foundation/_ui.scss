@@ -96,7 +96,7 @@
     @include flex-center;
     font-size: inherit;
     border-radius: 50%;
-
+    position: relative;
     &::before,
     &::after {
         content: "";
