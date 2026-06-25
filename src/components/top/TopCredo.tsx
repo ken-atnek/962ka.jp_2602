@@ -3,17 +3,22 @@
  * URL: /src/components/top/TopCredo.tsx
  * Referenced in: /src/app/page.tsx
  * Created: 2026-06-17
- * Last updated: 2026-06-17
+ * Last updated: 2026-06-23
  * ======================================= */
 'use client';
 
+import clsx from 'clsx';
 import { useRef } from 'react';
 import AnimatedTitle from '@/components/common/AnimatedTitle';
 import ScrollLink from '@/components/common/ScrollLink';
+import useInView from '@/hooks/useInView';
 import styles from './TopCredo.module.scss';
 
 const TopCredo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { ref: sectionRef, isInView } = useInView<HTMLElement>({
+    threshold: 0.3,
+  });
 
   const handleEnded = () => {
     if (!videoRef.current) return;
@@ -23,7 +28,12 @@ const TopCredo = () => {
   };
 
   return (
-    <section className={styles.containerTopCredo} id="credo" aria-label="credo">
+    <section
+      ref={sectionRef}
+      className={clsx(styles.containerTopCredo, isInView && 'is-active')}
+      id="credo"
+      aria-label="credo"
+    >
       <article>
         <div className={styles.boxTitle}>
           <AnimatedTitle

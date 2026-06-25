@@ -13,6 +13,7 @@ import AboutOrganizations from '@/components/about/AboutOrganizations';
 import AboutStatement from '@/components/about/AboutStatement';
 import ContactBlock from '@/components/common/ContactBlock';
 import FloatingOrbs from '@/components/common/FloatingOrbs';
+import ScrambleText from '@/components/common/ScrambleText';
 import { isRealProduction } from '@/lib/env';
 import styles from '@/styles/PageAbout.module.scss';
 
@@ -35,7 +36,7 @@ export default function AboutPage() {
     <>
       <FloatingOrbs />
       <section className={styles.containerPageTitle}>
-        <h1>About</h1>
+        <ScrambleText text="About" tag="h1" />
       </section>
       <AboutOrganizations />
       <AboutStatement />

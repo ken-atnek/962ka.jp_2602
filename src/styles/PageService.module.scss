@@ -22,6 +22,9 @@
         @include helvetica-neue;
         font-size: fz(128);
         line-height: 0.6em;
+        span {
+            line-height: 0.6em;
+        }
     }
 }
 /* =================================

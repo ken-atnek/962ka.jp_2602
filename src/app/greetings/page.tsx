@@ -15,6 +15,7 @@ import GreetingGalleryBlock from '@/components/greetings/GreetingGalleryBlock';
 import ProfileBlock from '@/components/greetings/ProfileBlock';
 import ScatterName from '@/components/greetings/ScatterName';
 import { isRealProduction } from '@/lib/env';
+import ScrambleText from '@/components/common/ScrambleText';
 import styles from '@/styles/PageGreetings.module.scss';
 
 export const generateMetadata = (): Metadata => {
@@ -36,7 +37,7 @@ export default function GreetingsPage() {
     <>
       <FloatingOrbs />
       <section className={styles.containerHero}>
-        <h1>Greetings</h1>
+        <ScrambleText text="Greetings" tag="h1" />
         <ScatterName />
         <ProfileBlock />
         <GreetingBlock />

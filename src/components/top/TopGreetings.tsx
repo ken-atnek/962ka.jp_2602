@@ -42,7 +42,10 @@ const TopGreetings = () => {
             <use href="#svgLogoMarkLeft" />
           </svg>
         </div>
-        <div className={styles.itemPerson}></div>
+        <div className={styles.itemPerson}>
+          <span className={styles.itemPersonMono}></span>
+          <span className={styles.itemPersonColor}></span>
+        </div>
         <div className={styles.wrapLogoRight}>
           <ScrollLink href="/greetings/" className={styles.pageLink}>
             <span>greetings</span>

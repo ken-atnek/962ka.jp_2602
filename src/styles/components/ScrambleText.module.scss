@@ -1,0 +1,18 @@
+@use "../foundation/" as *;
+
+/* =======================================
+ * ScrambleText — 文字スクランブルアニメーション
+ * URL: /src/styles/components/ScrambleText.module.scss
+ * Referenced in: /src/components/common/ScrambleText.tsx
+ * Created: 2026-06-23
+ * Last updated: 2026-06-23
+ * ======================================= */
+
+.char {
+    display: inline-block;
+    opacity: 0.2;
+    transition: opacity 1s ease-out;
+    &.locked {
+        opacity: 1;
+    }
+}

@@ -11,12 +11,28 @@
     @include section-base-layout;
     padding-top: 245px;
     padding-bottom: 273px;
-    background-color: $main-black;
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+    &::before {
+        background-color: $main-black;
+        opacity: 1;
+    }
+    &::after {
+        background-color: $main-white;
+        clip-path: inset(100% 0 0 0);
+        transition: 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
     article {
         gap: 14rem 0;
         .boxTitle {
             color: $main-white;
+            transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1) 1.4s;
             p {
+                transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1) 1.4s;
                 color: $main-white;
             }
         }
@@ -50,6 +66,23 @@
                 width: 100%;
                 height: 100%;
                 pointer-events: none;
+            }
+        }
+    }
+    &:global(.is-active) {
+        &::after {
+            clip-path: inset(0);
+        }
+        &::before {
+            transition: 0.1s ease 1.6s;
+            opacity: 0;
+        }
+        article {
+            .boxTitle {
+                color: $main-black;
+                p {
+                    color: $main-black;
+                }
             }
         }
     }

@@ -12,7 +12,7 @@
     aspect-ratio: 1980/2773;
     display: flex;
     flex-direction: column;
-    background: url("/images/greeting/hero-bg.jpg") no-repeat center
+    background: url("/images/greeting/hero-bg.webp") no-repeat center
         center/cover;
     perspective: 1200px;
     h1 {
@@ -25,6 +25,9 @@
         height: 20rem;
         display: flex;
         align-items: flex-end;
+        span {
+            line-height: 0.6em;
+        }
     }
     .itemName {
         position: absolute;
@@ -161,8 +164,8 @@
         }
     }
     .boxGreeting {
-        left: 7.3vw;
-        top: 76vw;
+        left: 6vw;
+        top: 84vw;
         width: 44vw;
         & > * {
             position: relative;

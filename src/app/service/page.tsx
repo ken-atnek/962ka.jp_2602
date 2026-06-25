@@ -14,6 +14,7 @@ import ServiceMovie from '@/components/service/ServiceMovie';
 import ServicePageSection from '@/components/service/ServicePageSection';
 import { isRealProduction } from '@/lib/env';
 import { serviceSections } from './serviceData';
+import ScrambleText from '@/components/common/ScrambleText';
 import styles from '@/styles/PageService.module.scss';
 
 export const generateMetadata = (): Metadata => {
@@ -35,7 +36,7 @@ export default function ServicePage() {
     <>
       <FloatingOrbs />
       <section className={styles.containerPageTitle}>
-        <h1>Service</h1>
+        <ScrambleText text="Service" tag="h1" />
       </section>
       <section
         aria-label="service introduction"
