@@ -165,21 +165,19 @@
     }
     .boxGreeting {
         left: 6vw;
-        top: 84vw;
+        top: 80vw;
         width: 44vw;
+        padding-inline: 2vw;
         & > * {
             position: relative;
             z-index: 3;
-            font-size: max(1.2rem, 1.17vw);
+            font-size: max(1.2rem, 1.05vw);
             letter-spacing: 0.05em;
+            font-weight: 300;
         }
-        h3 {
-            opacity: 0;
-            transition: opacity 0.5s ease 0.1s;
-        }
+
         p {
             line-height: 2.2em;
-            margin-top: 3vw;
             opacity: 0;
             transition: opacity 0.5s ease 0.8s;
         }
@@ -224,7 +222,7 @@
             justify-self: end;
             font-size: 1.46vw;
             @include helvetica-neue;
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1.8em;
         }
     }
@@ -232,11 +230,20 @@
         font-size: max(1.6rem, 1.17vw);
         align-self: center;
         line-height: 2.3em;
-        font-weight: 500;
+        font-weight: 400;
     }
     .itemImage04 {
+        width: 47vw;
+        aspect-ratio: 685 / 336;
+        position: absolute;
+        right: 0;
+        bottom: 40vw;
+        z-index: 1;
+    }
+    .itemImage05 {
         width: 80vw;
         align-self: center;
         aspect-ratio: 1086 / 724;
+        margin-top: 8vw;
     }
 }

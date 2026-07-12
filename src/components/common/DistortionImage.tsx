@@ -68,35 +68,25 @@ export default function DistortionImage({
     const el = containerRef.current;
     if (!el) return;
 
-    const rect = el.getBoundingClientRect();
-    const stageWidth = rect.width * 1.1;
-    const stageHeight = rect.height * 1.1;
-
-    const fovRad = (45 * Math.PI) / 180;
-    const exactFitZ = stageHeight / (2 * Math.tan(fovRad / 2));
-    const farZ = exactFitZ * cameraFar;
-    const nearZ = exactFitZ * cameraNear;
+    let stageWidth = 0;
+    let stageHeight = 0;
+    let farZ = 0;
+    let nearZ = 0;
+    let hasIntersected = false;
+    let resizeRafId: number | null = null;
 
     // renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setClearColor(0xffffff, 0);
-    renderer.setSize(stageWidth, stageHeight);
     el.appendChild(renderer.domElement);
 
     // camera
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      stageWidth / stageHeight,
-      0.1,
-      farZ
-    );
-    camera.position.set(0, 0, farZ);
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1);
 
     // scene
     const scene = new THREE.Scene();
 
     // mesh with custom shader
-    const geometry = new THREE.PlaneGeometry(stageWidth, stageHeight, 25, 25);
     const material = new THREE.RawShaderMaterial({
       vertexShader: VERTEX_SHADER,
       fragmentShader: FRAGMENT_SHADER,
@@ -109,9 +99,51 @@ export default function DistortionImage({
         masterOpacity: { value: 1 },
       },
     });
+    let geometry = new THREE.PlaneGeometry(1, 1, 25, 25);
     const mesh = new THREE.Mesh(geometry, material);
     mesh.rotation.set(0.8 * Math.PI, 0.3 * Math.PI, 0);
     scene.add(mesh);
+
+    const updateStage = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+
+      const nextStageWidth = rect.width * 1.1;
+      const nextStageHeight = rect.height * 1.1;
+
+      if (
+        Math.abs(nextStageWidth - stageWidth) < 0.5 &&
+        Math.abs(nextStageHeight - stageHeight) < 0.5
+      ) {
+        return;
+      }
+
+      stageWidth = nextStageWidth;
+      stageHeight = nextStageHeight;
+
+      const fovRad = (camera.fov * Math.PI) / 180;
+      const exactFitZ = stageHeight / (2 * Math.tan(fovRad / 2));
+      farZ = exactFitZ * cameraFar;
+      nearZ = exactFitZ * cameraNear;
+
+      renderer.setSize(stageWidth, stageHeight, false);
+      camera.aspect = stageWidth / stageHeight;
+      camera.far = farZ;
+      camera.position.z = hasIntersected ? nearZ : farZ;
+      camera.updateProjectionMatrix();
+
+      const nextGeometry = new THREE.PlaneGeometry(
+        stageWidth,
+        stageHeight,
+        25,
+        25
+      );
+      mesh.geometry.dispose();
+      mesh.geometry = nextGeometry;
+      geometry = nextGeometry;
+    };
+
+    updateStage();
 
     // RAF loop
     let rafId: number;
@@ -135,6 +167,7 @@ export default function DistortionImage({
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          hasIntersected = true;
           frameCountRatio = 2;
           setTimeout(() => {
             gsap.to(material.uniforms.distortionLevel, {
@@ -163,6 +196,7 @@ export default function DistortionImage({
             oneShot = true;
           }
         } else {
+          hasIntersected = false;
           frameCountRatio = 10;
           gsap.to(material.uniforms.distortionLevel, {
             duration: 1.2,
@@ -185,6 +219,15 @@ export default function DistortionImage({
     });
     observer.observe(el);
 
+    const resizeObserver = new ResizeObserver(() => {
+      if (resizeRafId !== null) return;
+      resizeRafId = requestAnimationFrame(() => {
+        resizeRafId = null;
+        updateStage();
+      });
+    });
+    resizeObserver.observe(el);
+
     // hover
     const onEnter = () => {
       gsap.to(material.uniforms.distortionLevel, {
@@ -205,9 +248,15 @@ export default function DistortionImage({
 
     return () => {
       cancelAnimationFrame(rafId);
+      if (resizeRafId !== null) {
+        cancelAnimationFrame(resizeRafId);
+      }
       observer.disconnect();
+      resizeObserver.disconnect();
       el.removeEventListener('mouseenter', onEnter);
       el.removeEventListener('mouseleave', onLeave);
+      geometry.dispose();
+      material.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode === el) {
         el.removeChild(renderer.domElement);

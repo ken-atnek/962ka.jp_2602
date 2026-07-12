@@ -30,7 +30,7 @@ const TopService = () => {
           </p>
         </div>
         <nav>
-          <ScrollLink href="#" className={styles.linkBasic}>
+          <ScrollLink href="/service/#basic" className={styles.linkBasic}>
             <h3>01_BASIC</h3>
             <p>
               ビジョンの実現のために
@@ -41,7 +41,10 @@ const TopService = () => {
               <span>service</span>
             </div>
           </ScrollLink>
-          <ScrollLink href="#" className={styles.linkConsulting}>
+          <ScrollLink
+            href="/service/#consulting"
+            className={styles.linkConsulting}
+          >
             <h3>02_CONSULTING</h3>
             <p>
               通常業務の他に高付加価値な

@@ -40,8 +40,8 @@ export default function AboutPage() {
       </section>
       <AboutOrganizations />
       <AboutStatement />
-      <AboutCompanyOverview />
       <AboutHistory />
+      <AboutCompanyOverview />
 
       <ContactBlock />
     </>

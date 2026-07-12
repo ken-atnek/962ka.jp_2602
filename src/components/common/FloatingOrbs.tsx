@@ -7,7 +7,7 @@
  * ======================================= */
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './FloatingOrbs.module.scss';
 
 type OrbItem = {
@@ -30,25 +30,22 @@ const orbSlots = [
   { leftMin: 62, leftMax: 84, topMin: 72, topMax: 90 },
 ];
 
+const createOrbItems = () =>
+  Array.from({ length: orbCount }, (_, index) => {
+    const isGreen = index % 2 === 0;
+    const slot = orbSlots[index % orbSlots.length];
+
+    return {
+      colorClassName: isGreen ? styles.green : styles.black,
+      duration: 6.4 + Math.random() * 4.2,
+      left: slot.leftMin + Math.random() * (slot.leftMax - slot.leftMin),
+      size: 0.9 + Math.random() * 1.2,
+      top: slot.topMin + Math.random() * (slot.topMax - slot.topMin),
+    };
+  });
+
 const FloatingOrbs = () => {
-  const [orbItems, setOrbItems] = useState<OrbItem[]>([]);
-
-  useEffect(() => {
-    const nextOrbItems = Array.from({ length: orbCount }, (_, index) => {
-      const isGreen = index % 2 === 0;
-      const slot = orbSlots[index % orbSlots.length];
-
-      return {
-        colorClassName: isGreen ? styles.green : styles.black,
-        duration: 6.4 + Math.random() * 4.2,
-        left: slot.leftMin + Math.random() * (slot.leftMax - slot.leftMin),
-        size: 0.9 + Math.random() * 1.2,
-        top: slot.topMin + Math.random() * (slot.topMax - slot.topMin),
-      };
-    });
-
-    setOrbItems(nextOrbItems);
-  }, []);
+  const [orbItems] = useState<OrbItem[]>(createOrbItems);
 
   return (
     <div className={styles.floatingOrbs} aria-hidden="true">

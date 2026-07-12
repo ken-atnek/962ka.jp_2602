@@ -21,7 +21,47 @@
             font-size: inherit;
             grid-template-columns: repeat(2, 1fr);
             gap: 0 1.6em;
-            a {
+            .wrapTel {
+                position: relative;
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+                font-size: inherit;
+                a {
+                    background-color: $main-black;
+                    color: $main-white;
+                    font-size: inherit;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-inline: 3em;
+                    transition: 0.3s ease-out;
+                    .title {
+                        position: relative;
+                        text-align: center;
+                        line-height: 1em;
+                        font-size: fz(40);
+                        @include helvetica-neue;
+                        padding-top: 0.2em;
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        .number {
+                            font-weight: 500;
+                            transition: 0.3s ease-out;
+                            line-height: 1em;
+                        }
+                    }
+                    .name {
+                        font-size: fz(24);
+                        letter-spacing: 0.1em;
+                    }
+                    &:hover {
+                        background-color: $vivid-green;
+                        color: $main-black;
+                    }
+                }
+            }
+            .linkForm {
                 @include flex-center;
                 height: 23rem;
                 background-color: $main-black;
@@ -35,18 +75,14 @@
                     font-size: fz(48);
                     @include helvetica-neue;
                     font-weight: 700;
-                }
-                &.linkForm {
-                    span {
-                        &::after {
-                            content: "";
-                            position: absolute;
-                            top: 50%;
-                            translate: 0 -50%;
-                            right: 8%;
-                            width: 16%;
-                            @include svg-form-arrow("fff");
-                        }
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        translate: 0 -50%;
+                        right: 8%;
+                        width: 16%;
+                        @include svg-form-arrow("fff");
                     }
                 }
             }

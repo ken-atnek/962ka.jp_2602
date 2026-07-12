@@ -27,10 +27,21 @@ const ContactBlock = () => {
           </p>
         </div>
         <nav>
-          <ExternalLink href="tel:0964261515">
-            <span>Tel</span>
-          </ExternalLink>
-          <ScrollLink href="#" className={styles.linkForm}>
+          <div className={styles.wrapTel}>
+            <ExternalLink href="tel:0964261515">
+              <span className={styles.title}>
+                <i className={styles.number}>0964.26.1515</i>
+              </span>
+              <span className={styles.name}>宇土オフィス</span>
+            </ExternalLink>
+            <ExternalLink href="tel:0963634520">
+              <span className={styles.title}>
+                <i className={styles.number}>096.363.4520</i>
+              </span>
+              <span className={styles.name}>熊本オフィス</span>
+            </ExternalLink>
+          </div>
+          <ScrollLink href="/contact/" className={styles.linkForm}>
             <span>Mail Form</span>
           </ScrollLink>
         </nav>

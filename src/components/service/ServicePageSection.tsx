@@ -19,6 +19,7 @@ type ServicePageSectionItem = {
 };
 
 type ServicePageSectionProps = {
+  anchorId: string;
   sectionNumber: string;
   title: string;
   lead: readonly string[];
@@ -28,6 +29,7 @@ type ServicePageSectionProps = {
 };
 
 const ServicePageSection = ({
+  anchorId,
   sectionNumber,
   title,
   lead,
@@ -39,7 +41,11 @@ const ServicePageSection = ({
   const [openItemId, setOpenItemId] = useState<string | null>(initialOpenId);
 
   return (
-    <article className={styles.blockServiceList} aria-label={title}>
+    <article
+      id={anchorId}
+      className={styles.blockServiceList}
+      aria-label={title}
+    >
       <div
         className={styles.headTitle}
         role="img"

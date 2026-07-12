@@ -9,6 +9,7 @@
 
 .containerTopCredo {
     @include section-base-layout;
+    --credo-grid-color: #{$main-black};
     padding-top: 245px;
     padding-bottom: 273px;
     &::before,
@@ -53,7 +54,6 @@
                 width: 100%;
                 aspect-ratio: 870 / 489;
                 overflow: hidden;
-                background-color: $main-black;
                 video {
                     width: 100%;
                     height: 100%;
@@ -66,10 +66,13 @@
                 width: 100%;
                 height: 100%;
                 pointer-events: none;
+                color: var(--credo-grid-color);
+                transition: color 1.6s cubic-bezier(0.25, 1, 0.5, 1);
             }
         }
     }
     &:global(.is-active) {
+        --credo-grid-color: #{$main-white};
         &::after {
             clip-path: inset(0);
         }

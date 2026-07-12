@@ -48,20 +48,22 @@ const TopCredo = () => {
           </p>
         </div>
         <div className={styles.boxImage}>
-          <ScrollLink href="#" className={styles.pageLink}>
+          <ScrollLink href="/credo/" className={styles.pageLink}>
             <span>credo</span>
           </ScrollLink>
           <div className={styles.boxMedia}>
             <video
               ref={videoRef}
-              src="/movie/top-sample.mp4"
               autoPlay
               muted
               loop
               playsInline
               preload="auto"
               onEnded={handleEnded}
-            />
+            >
+              <source src="/movie/credo.webm" type="video/webm" />
+              <source src="/movie/credo.mp4" type="video/mp4" />
+            </video>
             <svg
               className={styles.mask}
               viewBox="0 0 870 489"
@@ -172,7 +174,7 @@ const TopCredo = () => {
               <rect
                 width="870"
                 height="489"
-                fill="#171c1b"
+                fill="currentColor"
                 mask="url(#top-credo-grid-mask)"
               />
             </svg>

@@ -1,0 +1,283 @@
+@use "../styles/foundation/" as *;
+/* stylelint-disable no-descending-specificity */
+
+/* =======================================
+ * クロジカ Credoページ スタイル
+ * URL: /src/styles/PageCredo.module.scss
+ * Referenced in: /src/app/credo/page.tsx
+ * Created: 2026-07-11
+ * Last updated: 2026-07-11
+ * ======================================= */
+
+/* =================================
+ * ページタイトル
+ * ------------------------------ */
+.containerPageTitle {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: url(/images/credo/title.webp) no-repeat center center / cover;
+    height: 30rem;
+    z-index: 2;
+    h1 {
+        color: $main-white;
+        font-weight: 700;
+        @include helvetica-neue;
+        font-size: fz(128);
+        line-height: 0.6em;
+        span {
+            line-height: 0.6em;
+        }
+    }
+}
+
+/* =================================
+ * CREDO
+ * ------------------------------ */
+.containerServiceCredo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: $main-black;
+    color: $main-white;
+    padding: 30rem 2vw 27rem;
+    .boxHeadTitle {
+        font-size: 32vw;
+        @include helvetica-neue;
+        font-weight: 700;
+        position: fixed;
+        left: 50%;
+        translate: -50%;
+        top: 40rem;
+        opacity: 0.1;
+    }
+    article {
+        width: 100%;
+        max-width: $article-max-width;
+        display: flex;
+        flex-direction: column;
+        gap: 12rem 0;
+        z-index: 1;
+        .introBlock {
+            display: flex;
+            flex-direction: column;
+            gap: 7rem 0;
+            .boxTitle {
+                @include box-title;
+                align-self: flex-start;
+            }
+            .introItem {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem 0;
+                font-size: inherit;
+                width: 100%;
+                align-self: center;
+                p {
+                    max-width: $article-middle-width;
+                    font-weight: 500;
+                    font-size: fz(20);
+                    letter-spacing: 0.1em;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    span {
+                        line-height: 2em;
+                        min-height: 1lh;
+                        display: inline-block;
+                        &.head {
+                            font-size: 1.2em;
+                            font-weight: 700;
+                            margin-bottom: 1.4em;
+                        }
+                    }
+                    em {
+                        font-size: 1.4em;
+                    }
+                }
+            }
+        }
+
+        .commitmentSection {
+            display: flex;
+            flex-direction: column;
+            gap: 5.1rem 0;
+            .boxTitle {
+                display: flex;
+                justify-content: space-between;
+                font-size: inherit;
+                @include animated-title;
+                align-items: center;
+                gap: 0 3rem;
+                h2 {
+                    @include item-h2;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    gap: 0 3rem;
+                    &::after {
+                        content: "";
+                        height: 1px;
+                        flex: 1;
+                        background-color: #d9d9d9;
+                    }
+                }
+                p {
+                    color: $pure-white;
+                    font-size: fz(24);
+                    font-weight: 700;
+                    letter-spacing: 0.1em;
+                }
+            }
+            .cardGrid {
+                margin-top: 2rem;
+                .valueCard {
+                    gap: 1.4rem 0;
+                }
+            }
+        }
+        .valueSection {
+            display: flex;
+            flex-direction: column;
+            gap: 12rem 0;
+            .boxTitle {
+                display: flex;
+                justify-content: space-between;
+                font-size: inherit;
+                @include animated-title;
+                align-items: center;
+                gap: 0 3rem;
+                h2 {
+                    @include item-h2;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    gap: 0 3rem;
+                    &::after {
+                        content: "";
+                        height: 1px;
+                        flex: 1;
+                        background-color: #d9d9d9;
+                    }
+                }
+                & > p {
+                    color: $pure-white;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: inherit;
+                    span {
+                        line-height: 2.14em;
+                        font-size: fz(14);
+                        font-weight: 300;
+                        letter-spacing: 0.1em;
+                    }
+                }
+            }
+            .groupList {
+                font-size: inherit;
+                display: flex;
+                flex-direction: column;
+                gap: 12rem 0;
+                max-width: $article-middle-width;
+                align-self: center;
+                width: 100%;
+                counter-reset: number 0;
+                .listDetails {
+                    font-size: inherit;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4.5rem 0;
+                    h4 {
+                        font-size: fz(24);
+                        font-weight: 500;
+                        letter-spacing: 0.05em;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1em 0;
+                    }
+                    .groupLead {
+                        font-size: fz(18);
+                        font-weight: 400;
+                        line-height: 2;
+                        letter-spacing: 0.04em;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    ul {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 3.4em;
+                        font-size: inherit;
+                        li {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1.4rem 0;
+                            font-size: inherit;
+                            h5 {
+                                font-size: fz(20);
+                                font-weight: 500;
+                                letter-spacing: 0.1em;
+                                &::before {
+                                    content: counter(number) ".";
+                                    counter-increment: number 1;
+                                }
+                            }
+                            p {
+                                font-size: fz(15);
+                                font-weight: 300;
+                                line-height: 2.26;
+                                letter-spacing: 0.05em;
+                                text-align: justify;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cardGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 3.4em;
+    font-size: inherit;
+    width: 100%;
+    max-width: $article-middle-width;
+    align-self: center;
+
+    li {
+        display: flex;
+        flex-direction: column;
+        font-size: inherit;
+        h3 {
+            font-size: fz(20);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+        p {
+            font-size: fz(15);
+            font-weight: 300;
+            line-height: 2.26;
+            letter-spacing: 0.05em;
+            text-align: justify;
+        }
+    }
+}
+
+/* =================================
+ * 動画
+ * ------------------------------ */
+.containerMovie {
+    padding-bottom: 10rem;
+    .boxMedia {
+        width: 100%;
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}

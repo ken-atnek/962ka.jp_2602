@@ -12,6 +12,8 @@ import { navMenu } from '@/data/navMenuData';
 import styles from './Header.module.scss';
 import clsx from 'clsx';
 import ScrollLink from '@/components/common/ScrollLink';
+import ExternalLink from '@/components/common/ExternalLink';
+import Image from 'next/image';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,10 +43,12 @@ const Header = () => {
   }, [isOpen]);
 
   const logo = (
-    <svg>
-      <title id="logoTitle">税理士法人クロジカ</title>
-      <use href="#svgLogoMarkText" />
-    </svg>
+    <Image
+      src="/images/logo.svg"
+      alt="税理士法人クロジカ"
+      width={256}
+      height={38}
+    />
   );
 
   return (
@@ -53,7 +57,7 @@ const Header = () => {
     >
       <article
         className={clsx(
-          styles.blockMenu,
+          styles.topHeader,
           isOpen && styles.isOpen,
           !isOpen && styles.closing
         )}
@@ -79,6 +83,53 @@ const Header = () => {
             </ScrollLink>
           ))}
         </nav>
+      </article>
+      <article
+        className={clsx(
+          styles.blockMenu,
+          isOpen && styles.isOpen,
+          !isOpen && styles.closing
+        )}
+        ref={navRef}
+      >
+        <div className={styles.blockInner}>
+          <div className={styles.itemLogo}>
+            <svg>
+              <title id="logoTitle">税理士法人クロジカ</title>
+              <use href="#svgLogoMarkText" />
+            </svg>
+          </div>
+          <div className={styles.boxNav}>
+            <nav>
+              {navMenu.map((item) => (
+                <ScrollLink
+                  href={item.href}
+                  onClick={closeMenu}
+                  key={`${item.href}-${item.label}`}
+                >
+                  {item.label}
+                </ScrollLink>
+              ))}
+            </nav>
+          </div>
+          <div className={styles.wrapTel}>
+            <ExternalLink href="tel:0964261515">
+              <span className={styles.title}>
+                <i className={styles.number}>0964.26.1515</i>
+              </span>
+              <span className={styles.name}>宇土オフィス</span>
+            </ExternalLink>
+            <ExternalLink href="tel:0963634520">
+              <span className={styles.title}>
+                <i className={styles.number}>096.363.4520</i>
+              </span>
+              <span className={styles.name}>熊本オフィス</span>
+            </ExternalLink>
+          </div>
+          <ScrollLink href="/contact/" className={styles.linkForm}>
+            <span>Mail Form</span>
+          </ScrollLink>
+        </div>
       </article>
       <button
         type="button"

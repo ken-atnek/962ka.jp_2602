@@ -4,7 +4,7 @@
  * URL: /src/components/top/TopAbout.module.scss
  * Referenced in: /src/components/top/TopAbout.tsx
  * Created: 2026-06-17
- * Last updated: 2026-06-17
+ * Last updated: 2026-06-27
  * ======================================= */
 
 .containerTopAbout {
@@ -38,16 +38,35 @@
         display: flex;
         flex-direction: column;
         z-index: 3;
-        .enHead {
+        .wrapHead {
             @include helvetica-neue;
             font-size: fz(128);
             font-weight: 700;
             display: flex;
             gap: 0 0.3em;
+            .textAll {
+                opacity: 0;
+                display: inline-block;
+            }
             em {
                 color: $vivid-green;
-                letter-spacing: -0.53em;
-                margin-right: 0.5em;
+                letter-spacing: -0.15em;
+                margin-right: 0.1em;
+
+                .textFirstW {
+                    opacity: 0;
+                    display: inline-block;
+                }
+                .textSecondW {
+                    opacity: 0;
+                    display: inline-block;
+                }
+            }
+            .textIn {
+                opacity: 0;
+            }
+            .textThe {
+                opacity: 0;
             }
         }
         .wrapBottom {
@@ -59,22 +78,386 @@
                 font-weight: 500;
                 letter-spacing: 0.1em;
                 padding-top: 0.4em;
+                margin-right: 1em;
             }
-            span {
+            .textBlack {
                 @include helvetica-neue;
                 font-weight: 700;
                 font-size: fz(180);
+                opacity: 0;
+            }
+        }
+        .wrapComment {
+            position: absolute;
+            font-size: inherit;
+            left: 44%;
+            top: 38em;
+            .title {
+                font-size: inherit;
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                right: calc(100% + 10em);
+                width: max-content;
+                .en {
+                    @include helvetica-neue;
+                    font-size: fz(36);
+                    font-weight: 700;
+                    letter-spacing: 0.05em;
+                }
+                .jp {
+                    font-size: fz(36);
+                    font-weight: 700;
+                    letter-spacing: 0.05em;
+                    margin-top: 0.3em;
+                    margin-bottom: 1.2em;
+                }
+            }
+            p {
+                line-height: 2em;
+                font-size: fz(20);
+                font-weight: 700;
+                letter-spacing: 0.12em;
+            }
+            .text01 {
+                opacity: 0;
+            }
+            .text02 {
+                opacity: 0;
+            }
+            .text03 {
+                opacity: 0;
+            }
+            .text04 {
+                opacity: 0;
+            }
+        }
+        &:global(.is-active) {
+            .wrapHead {
+                .textAll {
+                    animation: textAll 10s ease forwards;
+                }
+                .textThe {
+                    animation: textThe 10s ease forwards;
+                }
+                .textIn {
+                    animation: textIn 10s ease forwards;
+                }
+                .textFirstW {
+                    animation: textFirstW 10s ease forwards;
+                }
+                .textSecondW {
+                    animation: textSecondW 10s ease forwards;
+                }
+            }
+            .wrapBottom {
+                .textBlack {
+                    animation: textThe 10s ease forwards;
+                }
+            }
+            .text01 {
+                animation: text01 10s ease forwards;
+            }
+            .text02 {
+                animation: text02 10s ease forwards;
+            }
+            .text03 {
+                animation: text03 10s ease forwards;
+            }
+            .text04 {
+                animation: text04 10s ease forwards;
+            }
+        }
+
+        @keyframes textAll {
+            0% {
+                opacity: 0;
+                transform: translateX(1em);
+            }
+            35% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 1;
+            }
+            55% {
+                opacity: 1;
+                transform: translateX(1em);
+            }
+            60% {
+                transform: translateX(2em);
+            }
+            70% {
+                transform: translateX(2em);
+                opacity: 1;
+            }
+            72% {
+                opacity: 0;
+            }
+            80% {
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes textThe {
+            0% {
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            15% {
+                opacity: 1;
+            }
+            20% {
+                opacity: 0;
+            }
+            75% {
+                opacity: 0;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes textIn {
+            0% {
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            15% {
+                opacity: 1;
+            }
+            20% {
+                opacity: 0;
+            }
+            35% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 1;
+            }
+            55% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes textFirstW {
+            0% {
+                opacity: 0;
+            }
+            15% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            35% {
+                opacity: 1;
+            }
+            40% {
+                opacity: 0;
+            }
+            75% {
+                opacity: 0;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes textSecondW {
+            0% {
+                opacity: 0;
+            }
+            15% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            35% {
+                transform: translateX(0);
+                color: $vivid-green;
+            }
+            40% {
+                transform: translateX(0.2em);
+                color: $main-black;
+            }
+            55% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 0;
+                transform: translateX(0.2em);
+                color: $main-black;
+            }
+            75% {
+                opacity: 0;
+                transform: translateX(0);
+                color: $vivid-green;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes text01 {
+            0% {
+                opacity: 0;
+                translate: 0 1em;
+            }
+            5% {
+                opacity: 1;
+                translate: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            20% {
+                opacity: 0;
+            }
+            75% {
+                opacity: 0;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes text02 {
+            0% {
+                opacity: 0;
+                translate: 0;
+            }
+            15% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                translate: 0 -7em;
+            }
+            35% {
+                opacity: 1;
+            }
+            40% {
+                opacity: 0;
+                translate: 0 -7em;
+            }
+            75% {
+                opacity: 0;
+                translate: 0;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes text03 {
+            0% {
+                opacity: 0;
+                translate: 0;
+            }
+            20% {
+                opacity: 0;
+            }
+            35% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 1;
+                translate: 0 -11em;
+            }
+            55% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 0;
+                translate: 0 -11em;
+            }
+            75% {
+                opacity: 0;
+                translate: 0;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes text04 {
+            0% {
+                opacity: 0;
+                translate: 0;
+            }
+            20% {
+                opacity: 0;
+            }
+            35% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 0;
+            }
+            55% {
+                opacity: 0;
+            }
+            60% {
+                opacity: 1;
+                translate: 0 -13em;
+            }
+            70% {
+                opacity: 1;
+            }
+            75% {
+                opacity: 0;
+                translate: 0 -13em;
+            }
+            76% {
+                translate: 0;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
             }
         }
     }
+
     article {
         display: flex;
         justify-content: space-between;
         max-width: $article-max-width;
-        gap: 0 11rem;
-        padding-bottom: 8rem;
+        padding-bottom: 2rem;
+        padding-top: 20em;
         .boxImage {
-            flex: 1;
             @include flex-center;
             align-self: flex-start;
             aspect-ratio: 1;
@@ -84,57 +467,97 @@
             overflow: hidden;
             translate: 0 -3em;
             font-size: inherit;
-            &::before {
-                content: "";
+            width: min(68rem, 47vw);
+            .outerSlides {
                 position: absolute;
                 inset: 0;
-                border-radius: 50%;
-                background: url(/images/top/about-person.webp) no-repeat center
-                    center / cover;
-                filter: blur(30px);
-                transform: scale(1.04);
-                z-index: 0;
+
+                .slideImage {
+                    animation-name: aboutSlideFadeOuter;
+                }
             }
 
-            img {
-                position: relative;
+            .slideImage {
+                position: absolute;
+                inset: 0;
+                opacity: 0;
+                transition: opacity 1.2s ease-in-out;
+            }
+
+            .isActive {
+                opacity: 1;
+            }
+
+            .outerSlides .slideImage img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: blur(15px);
+                transform: scale(1.04);
+            }
+
+            .innerImage {
+                position: absolute;
                 width: 60%;
                 aspect-ratio: 1;
-                object-fit: cover;
                 border-radius: 50%;
-                z-index: 1;
+                overflow: hidden;
+                .slideImage img {
+                    width: 100%;
+                    height: 100%;
+                    aspect-ratio: 1;
+                    object-fit: cover;
+                }
             }
         }
-        .boxText {
-            font-size: inherit;
-            display: flex;
-            flex-direction: column;
-            padding-top: 32%;
-            span {
-                @include helvetica-neue;
-                font-size: fz(36);
-                font-weight: 700;
-                letter-spacing: 0.05em;
-            }
-            h2 {
-                font-size: fz(36);
-                font-weight: 700;
-                letter-spacing: 0.05em;
-                margin-top: 0.3em;
-                margin-bottom: 1.2em;
-            }
-            p {
-                letter-spacing: 0.05em;
-                font-size: fz(16);
-                line-height: 2.2em;
-            }
-        }
+
         .pageLink {
             @include page-link;
             position: absolute;
-            left: 50%;
+            left: 55%;
             translate: -50%;
-            bottom: 0;
+            bottom: 6vw;
         }
+    }
+}
+
+.ripplesLayer {
+    position: absolute;
+    inset: -6rem;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.rippleRing {
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    margin-top: -6px;
+    border-radius: 50%;
+    border: 1px solid #bbdb19;
+    animation: rippleExpand var(--ripple-duration, 3s) ease-out both;
+    pointer-events: none;
+    will-change: width, height, margin, opacity;
+}
+
+@keyframes rippleExpand {
+    0% {
+        opacity: 0;
+        border-width: 1px;
+    }
+    8% {
+        opacity: 0.14;
+    }
+    100% {
+        width: var(--ripple-size, 520px);
+        height: var(--ripple-size, 520px);
+        margin-left: calc(var(--ripple-size, 520px) / -2);
+        margin-top: calc(var(--ripple-size, 520px) / -2);
+        opacity: 0;
+        border-width: 60px;
     }
 }

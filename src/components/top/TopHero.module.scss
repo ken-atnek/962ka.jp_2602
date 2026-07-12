@@ -4,7 +4,7 @@
  * URL: /src/components/top/TopHero.module.scss
  * Referenced in: /src/components/top/TopHero.tsx
  * Created: 2026-06-17
- * Last updated: 2026-06-17
+ * Last updated: 2026-07-08
  * ======================================= */
 
 .containerTopHero {
@@ -13,6 +13,7 @@
     flex-direction: column;
     align-items: center;
     padding-inline: 2vw;
+    z-index: 2;
     article {
         max-width: 1075px;
         display: flex;
@@ -21,11 +22,82 @@
             @include box-title;
         }
         .boxMedia {
+            position: relative;
             width: 100%;
+            overflow: hidden;
             video {
                 width: 100%;
                 height: auto;
                 display: block;
+            }
+            .playButton {
+                position: absolute;
+                top: 2em;
+                right: 2rem;
+                width: min(8rem, 28vw);
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-color: rgba(#1aff00, 1);
+                backdrop-filter: blur(10px);
+                color: $main-white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.2rem;
+                transition:
+                    background-color 0.3s ease,
+                    transform 0.3s ease;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    margin: auto;
+                    width: 30%;
+                    @include svg-icon-mic("000");
+                }
+                &:hover {
+                    background-color: rgba(#1aff00, 0.6);
+                    transform: scale(1.04);
+                }
+            }
+        }
+    }
+    .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        .modalBackdrop {
+            position: absolute;
+            inset: 0;
+            background-color: rgba($main-black, 0.82);
+        }
+        .modalInner {
+            position: relative;
+            z-index: 1;
+            width: min(96rem, 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            .modalClose {
+                align-self: flex-end;
+                padding: 0.8rem 1.2rem;
+                border: 1px solid rgba($main-white, 0.72);
+                background-color: rgba($main-black, 0.36);
+                color: $main-white;
+                font-size: fz(14);
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+            .modalVideo {
+                width: 100%;
+                display: block;
+                border-radius: 1.6rem;
+                background-color: $main-black;
             }
         }
     }

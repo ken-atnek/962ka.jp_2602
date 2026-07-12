@@ -21,17 +21,17 @@
     @include sp {
         padding: 6vw 0 0 4vw;
     }
-    article {
+    .topHeader {
         display: flex;
         flex-direction: column;
         max-width: $article-max-width;
         .itemLogo {
             position: fixed;
-            svg {
-                width: 53px;
-                aspect-ratio: 53/50;
-                fill: $pure-black;
-            }
+            // svg {
+            //     width: 53px;
+            //     aspect-ratio: 53/50;
+            //     fill: $pure-black;
+            // }
         }
         nav {
             position: relative;
@@ -48,9 +48,129 @@
             }
         }
     }
+    .blockMenu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba($pure-white, 0.9);
+        display: flex;
+        justify-content: center;
+        padding: 10rem 3.7rem 4.6rem;
+        opacity: 0;
+        translate: 0 -100vh;
+        transition: 0.5s ease-out;
+        &.isOpen {
+            transition: 0.4s ease-out;
+            opacity: 1;
+            translate: 0;
+        }
+        .blockInner {
+            width: 100%;
+            max-width: 1226px;
+            font-size: inherit;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 11rem 2.6rem;
+            .itemLogo {
+                @include flex-center;
+                svg {
+                    width: 40%;
+                    max-width: 282px;
+                    aspect-ratio: 53/50;
+                    fill: $pure-black;
+                }
+            }
+            .boxNav {
+                font-size: inherit;
+                nav {
+                    font-size: inherit;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 1.4em 0;
+                    a {
+                        font-size: min(4vw, 4.8rem);
+                        @include helvetica-neue;
+                        font-weight: 700;
+
+                        &:last-of-type {
+                            grid-column: span 2;
+                        }
+                    }
+                }
+            }
+            .wrapTel {
+                position: relative;
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+                font-size: inherit;
+                a {
+                    background-color: $main-black;
+                    color: $main-white;
+                    font-size: inherit;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-inline: min(3.6rem, 2vw);
+                    transition: 0.3s ease-out;
+                    .title {
+                        position: relative;
+                        text-align: center;
+                        line-height: 1em;
+                        // font-size: fz(40);
+                        font-size: min(3.8vw, 4rem);
+                        @include helvetica-neue;
+                        padding-top: 0.2em;
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        .number {
+                            font-weight: 500;
+                            transition: 0.3s ease-out;
+                            line-height: 1em;
+                        }
+                    }
+                    .name {
+                        // font-size: fz(24);
+                        letter-spacing: 0.1em;
+                        font-size: min(2.2vw, 2.4rem);
+                    }
+                    &:hover {
+                        background-color: $vivid-green;
+                        color: $main-black;
+                    }
+                }
+            }
+            .linkForm {
+                @include flex-center;
+                height: 23rem;
+                background-color: $main-black;
+                color: $main-white;
+                font-size: inherit;
+                span {
+                    position: relative;
+                    width: 100%;
+                    text-align: center;
+                    line-height: 1em;
+                    font-size: min(4vw, 4.8rem);
+                    @include helvetica-neue;
+                    font-weight: 700;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        translate: 0 -50%;
+                        right: 8%;
+                        width: 16%;
+                        @include svg-form-arrow("fff");
+                    }
+                }
+            }
+        }
+    }
     &.isSubpage {
         position: fixed;
-        article {
+        .topHeader {
             nav {
                 display: none;
             }
@@ -71,9 +191,12 @@
     justify-content: space-between;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    z-index: 3;
+    translate: 0;
     & > div {
         position: relative;
         width: 3.6rem;
+        aspect-ratio: 1;
         span {
             position: absolute;
             top: 50%;
@@ -104,31 +227,40 @@
         @include helvetica-neue;
         font-size: fz(14);
         text-transform: uppercase;
+        transition: 0.3s ease-out;
     }
     &.is-open {
+        transition: 0.3s ease-out;
+
         & > div {
+            width: 6rem;
             span {
                 transition: 0.3s ease-out;
                 &:nth-of-type(1) {
-                    translate: -50% -50%;
+                    translate: 50% -50%;
                     rotate: 45deg;
                     clip-path: inset(0);
-                    width: 55%;
+                    width: 100%;
                 }
                 &:nth-of-type(2) {
                     translate: 150% -50%;
                     opacity: 0;
                 }
                 &:nth-of-type(3) {
-                    translate: -50% -50%;
+                    translate: 50% -50%;
                     rotate: -45deg;
-                    width: 55%;
+                    width: 100%;
                 }
                 &:nth-of-type(4) {
                     translate: 150% -50%;
                     opacity: 0;
                 }
             }
+        }
+        p {
+            // opacity: 0;
+            translate: -75vw;
+            transition: 0.3s ease-out;
         }
     }
 }

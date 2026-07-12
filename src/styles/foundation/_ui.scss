@@ -62,8 +62,8 @@
 }
 @mixin item-h2 {
     @include helvetica-neue;
-    font-size: fz(100);
     font-weight: 700;
+    font-size: fz(100);
 }
 @mixin box-title {
     position: relative;
@@ -71,7 +71,8 @@
     display: flex;
     align-items: center;
     gap: 0 7rem;
-    h2 {
+    h2,
+    h3 {
         @include item-h2;
     }
     p {

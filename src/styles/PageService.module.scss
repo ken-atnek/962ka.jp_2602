@@ -36,7 +36,7 @@
     align-items: center;
     padding-inline: 2vw;
     padding-top: 10rem;
-    padding-bottom: 16rem;
+    padding-bottom: 10rem;
     article {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -52,6 +52,10 @@
                 grid-column: span 2;
                 text-align: center;
                 font-weight: 500;
+                span {
+                    margin-inline: 0.5em;
+                    letter-spacing: -0.15em;
+                }
             }
         }
     }
@@ -69,7 +73,7 @@
     .serviceBlocksInner {
         display: flex;
         flex-direction: column;
-        gap: 27rem 0;
+        gap: 20rem 0;
         max-width: $article-middle-width;
         width: 100%;
         font-size: inherit;
@@ -78,6 +82,7 @@
             flex-direction: column;
             gap: 7rem 0;
             .headTitle {
+                margin-top: 5rem;
                 font-size: inherit;
                 position: relative;
                 height: 20rem;
@@ -223,85 +228,61 @@
 .containerServiceCredo {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: $main-black;
     color: $main-white;
-    padding: 11rem 2vw 27rem;
-
+    padding: 0 2vw 27rem;
+    .boxHeadTitle {
+        @include box-title;
+        h2 {
+            font-size: min(32vw, 45rem);
+        }
+    }
     article {
         width: 100%;
         max-width: $article-max-width;
         display: flex;
         flex-direction: column;
         gap: 12rem 0;
-
         .introBlock {
             display: flex;
             flex-direction: column;
-            gap: 5.6rem 0;
+            gap: 7rem 0;
             .boxTitle {
                 @include box-title;
+                align-self: flex-start;
             }
             .introItem {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 gap: 2rem 0;
                 font-size: inherit;
                 width: 100%;
-                max-width: $article-middle-width;
                 align-self: center;
-                h3 {
-                    @include helvetica-neue;
-                    font-size: fz(40);
-                    font-weight: 700;
-                }
                 p {
+                    max-width: $article-middle-width;
                     font-weight: 500;
                     font-size: fz(20);
                     letter-spacing: 0.1em;
-                }
-            }
-        }
-        .coreValueSection {
-            display: flex;
-            flex-direction: column;
-            gap: 4.8rem 0;
-            .boxTitle {
-                display: flex;
-                justify-content: space-between;
-                font-size: inherit;
-                @include animated-title;
-                align-items: center;
-                gap: 0 3rem;
-                h2 {
-                    @include item-h2;
-                    flex: 1;
-                    display: flex;
-                    align-items: center;
-                    gap: 0 3rem;
-                    &::after {
-                        content: "";
-                        height: 1px;
-                        flex: 1;
-                        background-color: #d9d9d9;
-                    }
-                }
-                p {
-                    color: $pure-white;
                     display: flex;
                     flex-direction: column;
-                    font-size: inherit;
+                    width: 100%;
                     span {
-                        line-height: 2.14em;
-                        font-size: fz(14);
-                        font-weight: 300;
-                        letter-spacing: 0.1em;
+                        line-height: 2em;
+                        min-height: 1lh;
+                        display: inline-block;
+                        &.head {
+                            font-size: 1.2em;
+                            font-weight: 700;
+                            margin-bottom: 1.4em;
+                        }
                     }
                 }
             }
-            .valueCard {
-                gap: 1.4rem 0;
-            }
         }
+
         .commitmentSection {
             display: flex;
             flex-direction: column;
@@ -375,7 +356,7 @@
                         background-color: #d9d9d9;
                     }
                 }
-                p {
+                & > p {
                     color: $pure-white;
                     display: flex;
                     flex-direction: column;
@@ -405,6 +386,16 @@
                         font-size: fz(24);
                         font-weight: 500;
                         letter-spacing: 0.05em;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .groupLead {
+                        font-size: fz(18);
+                        font-weight: 400;
+                        line-height: 2;
+                        letter-spacing: 0.04em;
+                        display: flex;
+                        flex-direction: column;
                     }
                     ul {
                         display: grid;

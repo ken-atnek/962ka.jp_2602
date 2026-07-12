@@ -9,7 +9,6 @@
 import type { Metadata } from 'next';
 import ContactBlock from '@/components/common/ContactBlock';
 import FloatingOrbs from '@/components/common/FloatingOrbs';
-import ServiceCredo from '@/components/service/ServiceCredo';
 import ServiceMovie from '@/components/service/ServiceMovie';
 import ServicePageSection from '@/components/service/ServicePageSection';
 import { isRealProduction } from '@/lib/env';
@@ -46,7 +45,12 @@ export default function ServicePage() {
           <p className={styles.head}>
             明日に怯えることなく 笑顔で納税する企業を増やし続けたい
             <br />
-            関わるお客様99％の『健全な黒字化』と『信頼性の高い税務申告』を実現します。
+            「All
+            <span>
+              <i>W</i>
+              <i>W</i>
+            </span>
+            in the BLACK　〜豊かな輪の輪を皆さまと共に〜」
           </p>
           <p>
             このビジョン実現に向けて私たちチームクロジカは事務所経営を行っています。経営者の皆様は実現したいビジョンがあり、その為に事業をされているはずです。
@@ -67,7 +71,7 @@ export default function ServicePage() {
             <br />
             結果的に地域社会から応援されます。
             <br />
-            チームクロジカは、夢を持つ経営者が安心して本業に専念できるように、お客様の黒字決算割合と税務調査省略・申告是認割合を高めつづけ、お客様・私たち・地域社会の三方良しを目指します。
+            チームクロジカは、夢を持つ経営者が安心して本業に専念できるように、お客様の黒字決算割合と税務調査省略・申告是認割合を高めつづけ、お客様・私たち・地域社会の全方良しを目指します。
           </p>
         </article>
       </section>
@@ -82,7 +86,6 @@ export default function ServicePage() {
           ))}
         </div>
       </section>
-      <ServiceCredo />
       <ServiceMovie />
       <ContactBlock />
     </>

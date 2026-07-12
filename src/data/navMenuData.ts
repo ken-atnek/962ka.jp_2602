@@ -16,7 +16,7 @@ export const navMenu: NavMenuItem[] = [
   { href: '/about/', label: 'ABOUT' },
   { href: '/service/', label: 'SERVICE' },
   { href: '/greetings/', label: 'GREETINGS' },
-  { href: '/', label: 'CREDO' },
+  { href: '/credo/', label: 'CREDO' },
   { href: '/contact/', label: 'CONTACT' },
   { href: '/', label: 'JOB Openings' },
 ];

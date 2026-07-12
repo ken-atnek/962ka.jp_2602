@@ -51,13 +51,22 @@ export default function GreetingGalleryBlock() {
       <p className={styles.textJp}>
         地元・宇土への愛を礎に、お客様とともに歩み、ともに成長し、
         <br />
-        一つのチームとして強くなっていく
+        一つのチームとして強くなっていく。
         <br />
         それが私たち、チーム『クロジカ』です。
       </p>
       <div className={styles.itemImage04}>
         <DistortionImage
           src="/images/greeting/image-04.webp"
+          alt="握手の写真"
+          cameraFar={2}
+          cameraNear={0.98}
+          firstDistortion={200}
+        />
+      </div>
+      <div className={styles.itemImage05}>
+        <DistortionImage
+          src="/images/greeting/image-05.webp"
           alt="熊本城を望む風景"
           cameraFar={2}
           cameraNear={0.94}

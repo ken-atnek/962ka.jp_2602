@@ -15,7 +15,8 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background: url("/images/about/title.webp") no-repeat center center / cover;
+    background: url("/images/about/title02.webp") no-repeat center center /
+        cover;
     height: 30rem;
     h1 {
         color: $main-white;
@@ -86,6 +87,16 @@
                 inset: 0;
                 border-radius: 50%;
                 z-index: -1;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                translate: -50%;
+                width: 1px;
+                background-color: #000;
+                top: 80%;
+                height: 50%;
             }
         }
         .boxLeft {
@@ -207,12 +218,35 @@
                 display: flex;
                 flex-direction: column;
                 z-index: 1;
-                i {
+                > span {
                     font-size: fz(280);
                     font-weight: 700;
                     @include helvetica-neue;
                     line-height: 0.75em;
-                    span {
+                    display: inline-flex;
+                    align-items: baseline;
+                    gap: 0.08em;
+                    opacity: 0;
+                    transform: translate3d(0, 0.55em, 0) rotate(4deg);
+                    clip-path: inset(0 0 100% 0);
+                    transition: 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+                    letter-spacing: -0.1em;
+                    &:nth-child(2) {
+                        transition-delay: 0.12s;
+                    }
+                    &:nth-child(3) {
+                        transition-delay: 0.24s;
+                    }
+                    &:nth-child(4) {
+                        transition-delay: 0.36s;
+                    }
+                    > span,
+                    em {
+                        display: inline-flex;
+                        font-style: normal;
+                    }
+                    > span,
+                    em span {
                         line-height: 0.75em;
                         display: inline-block;
                         opacity: 0;
@@ -220,8 +254,19 @@
                         clip-path: inset(0 0 100% 0);
                         transition: 1s cubic-bezier(0.34, 1.56, 0.64, 1);
                     }
+                    em {
+                        font-style: normal;
+                        letter-spacing: -0.15em;
+                        color: $vivid-green;
+                    }
                 }
-                &.isVisible i span {
+                &.isVisible > span {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0) rotate(0deg);
+                    clip-path: inset(-3rem);
+                }
+                &.isVisible > span > span,
+                &.isVisible > span em span {
                     opacity: 1;
                     transform: translate3d(0, 0, 0) rotate(0deg);
                     clip-path: inset(-3rem);
@@ -271,17 +316,75 @@
 }
 
 /* =================================
- * 会社概要ブロック
+ * Historyブロック
  * ------------------------------ */
-.containerCompanyOverview {
+.containerAboutHistory {
     background-color: $main-black;
     color: $main-white;
-    padding: 32rem 2vw 41rem;
+    padding: 32rem 2vw 36vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     translate: 0 -15rem;
     margin-bottom: -15rem;
+    article {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: $article-max-width;
+        .boxTitle {
+            @include box-title;
+        }
+        .historyBody {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            font-size: inherit;
+            width: 100%;
+            // max-width: $article-middle-width;
+            align-self: center;
+            margin-top: 9rem;
+            gap: 2em 0;
+            .historyText {
+                font-size: inherit;
+                display: flex;
+                gap: 0 3em;
+                width: 100%;
+                .historyGroup {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: inherit;
+                    gap: 0.8em 0;
+                    width: 100%;
+                    h3 {
+                        font-size: fz(20);
+                        font-weight: 700;
+                        letter-spacing: 0.05em;
+                        margin-bottom: 1em;
+                    }
+                    p {
+                        font-size: fz(14);
+                        letter-spacing: 0.05em;
+                        line-height: 2;
+                        font-weight: 300;
+                    }
+                }
+            }
+            .bottomText {
+                font-size: fz(20);
+            }
+        }
+    }
+}
+
+/* =================================
+ * 会社概要ブロック
+ * ------------------------------ */
+.containerCompanyOverview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 13rem 2vw 0;
     article {
         display: flex;
         flex-direction: column;
@@ -300,15 +403,16 @@
         .overviewColumns {
             margin-top: 11.7rem;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             width: 100%;
+            gap: 5em 0;
             max-width: $article-middle-width;
             font-size: inherit;
             align-self: center;
             .companyCard {
                 display: flex;
                 flex-direction: column;
-                width: fit-content;
+                width: max-content;
                 h3 {
                     font-size: fz(20);
                     font-weight: 700;
@@ -357,84 +461,30 @@
             }
         }
     }
-}
-
-/* =================================
- * Historyブロック
- * ------------------------------ */
-.containerAboutHistory {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 13rem 2vw 30rem;
-    article {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: $article-max-width;
-        .boxTitle {
-            @include box-title;
-        }
-        .historyBody {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            font-size: inherit;
-            width: 100%;
-            max-width: $article-middle-width;
-            align-self: center;
-            margin-top: 9rem;
-            .historyText {
-                font-size: inherit;
-                display: flex;
-                flex-direction: column;
-                gap: 8rem 0;
-                width: 100%;
-                .historyGroup {
-                    display: flex;
-                    flex-direction: column;
-                    font-size: inherit;
-                    &:first-of-type {
-                        position: relative;
-                        &::after {
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            top: calc(100% + 4rem);
-                            width: 50vw;
-                            height: 1px;
-                            background-color: #afafaf;
-                        }
-                    }
-                    p {
-                        font-size: fz(14);
-                        line-height: 2.1;
-                        letter-spacing: 0.05em;
-                        line-height: 3;
-                        font-weight: 300;
-                    }
-                }
-            }
-        }
-    }
-
-    .historyImages {
+    .overviewImages {
         position: absolute;
         right: 0;
         top: 153px;
         z-index: 1;
-        .historyImageWide {
+        .overviewImageWide {
             position: absolute;
-            right: 9.6vw;
+            right: 5vw;
             bottom: 90%;
-            width: 48vw;
-            max-width: 90rem;
-            aspect-ratio: 656 / 438;
+            width: 40vw;
+            // max-width: 90rem;
+            aspect-ratio: 657 / 642;
+            z-index: 1;
         }
-        .historyImageTall {
+        .overviewImageTall {
             width: 39vw;
             max-width: 60rem;
             aspect-ratio: 536 / 803;
         }
+    }
+    .overviewImageBottom {
+        margin-top: 10rem;
+        width: 83vw;
+        // max-width: 90rem;
+        aspect-ratio: 1137 / 758;
     }
 }
