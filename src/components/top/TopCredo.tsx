@@ -17,7 +17,7 @@ import styles from './TopCredo.module.scss';
 const TopCredo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { ref: sectionRef, isInView } = useInView<HTMLElement>({
-    threshold: 0.3,
+    threshold: 0.5,
   });
 
   const handleEnded = () => {

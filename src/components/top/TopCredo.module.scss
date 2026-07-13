@@ -12,29 +12,32 @@
     --credo-grid-color: #{$main-black};
     padding-top: 245px;
     padding-bottom: 273px;
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-    }
-    &::before {
-        background-color: $main-black;
-        opacity: 1;
-    }
-    &::after {
-        background-color: $main-white;
-        clip-path: inset(100% 0 0 0);
-        transition: 1.6s cubic-bezier(0.25, 1, 0.5, 1);
-    }
+
     article {
         gap: 14rem 0;
+        position: static;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        &::before {
+            background-color: $main-black;
+            opacity: 1;
+        }
+        &::after {
+            background-color: $main-white;
+            clip-path: inset(100% 0 0 0);
+            transition: 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
         .boxTitle {
-            color: $main-white;
-            transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1) 1.4s;
+            mix-blend-mode: difference;
+            color: $pure-white;
+            z-index: 1;
             p {
-                transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1) 1.4s;
-                color: $main-white;
+                color: inherit;
             }
         }
         .boxImage {
@@ -43,6 +46,7 @@
             max-width: 87rem;
             position: relative;
             font-size: inherit;
+            z-index: 1;
             .pageLink {
                 @include page-link;
                 position: absolute;
@@ -73,19 +77,13 @@
     }
     &:global(.is-active) {
         --credo-grid-color: #{$main-white};
-        &::after {
-            clip-path: inset(0);
-        }
-        &::before {
-            transition: 0.1s ease 1.6s;
-            opacity: 0;
-        }
         article {
-            .boxTitle {
-                color: $main-black;
-                p {
-                    color: $main-black;
-                }
+            &::after {
+                clip-path: inset(0);
+            }
+            &::before {
+                transition: 0.1s ease 1.6s;
+                opacity: 0;
             }
         }
     }
