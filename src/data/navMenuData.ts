@@ -9,6 +9,7 @@
 export type NavMenuItem = {
   href: string;
   label: string;
+  isExternal?: boolean;
 };
 
 export const navMenu: NavMenuItem[] = [
@@ -18,5 +19,5 @@ export const navMenu: NavMenuItem[] = [
   { href: '/greetings/', label: 'GREETINGS' },
   { href: '/credo/', label: 'CREDO' },
   { href: '/contact/', label: 'CONTACT' },
-  { href: '/', label: 'JOB Openings' },
+  { href: 'https://team.962ka.jp/', label: 'JOB Openings', isExternal: true },
 ];

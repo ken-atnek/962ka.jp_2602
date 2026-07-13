@@ -1,8 +1,9 @@
 /* =======================================
  * クロジカ FOOTER
- * URL: src/components/common/Footer.tsx
+ * URL: /src/components/common/Footer.tsx
+ * Referenced in: /src/app/layout.tsx
  * Created: 2026-02-03
- * Last updated: 2026-06-17
+ * Last updated: 2026-07-13
  * ======================================= */
 'use client';
 import styles from './Footer.module.scss';
@@ -21,14 +22,17 @@ const Footer = () => {
       </div>
       <div className={styles.copyright}>©2026 KUROJIKA CO., LTD.</div>
       <nav>
-        {navMenu.map((item) => (
-          <ScrollLink
-            href={item.href}
-            key={`${item.href}-${item.label}`}
-          >
-            {item.label}
-          </ScrollLink>
-        ))}
+        {navMenu.map((item) =>
+          item.isExternal ? (
+            <ExternalLink href={item.href} key={`${item.href}-${item.label}`}>
+              {item.label}
+            </ExternalLink>
+          ) : (
+            <ScrollLink href={item.href} key={`${item.href}-${item.label}`}>
+              {item.label}
+            </ScrollLink>
+          )
+        )}
       </nav>
       <div className={styles.boxLink}>
         <span>follow</span>

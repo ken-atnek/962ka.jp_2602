@@ -73,15 +73,25 @@ const Header = () => {
           </div>
         )}
         <nav>
-          {navMenu.map((item) => (
-            <ScrollLink
-              href={item.href}
-              onClick={closeMenu}
-              key={`${item.href}-${item.label}`}
-            >
-              {item.label}
-            </ScrollLink>
-          ))}
+          {navMenu.map((item) =>
+            item.isExternal ? (
+              <ExternalLink
+                href={item.href}
+                onClick={closeMenu}
+                key={`${item.href}-${item.label}`}
+              >
+                {item.label}
+              </ExternalLink>
+            ) : (
+              <ScrollLink
+                href={item.href}
+                onClick={closeMenu}
+                key={`${item.href}-${item.label}`}
+              >
+                {item.label}
+              </ScrollLink>
+            )
+          )}
         </nav>
       </article>
       <article
@@ -101,15 +111,25 @@ const Header = () => {
           </div>
           <div className={styles.boxNav}>
             <nav>
-              {navMenu.map((item) => (
-                <ScrollLink
-                  href={item.href}
-                  onClick={closeMenu}
-                  key={`${item.href}-${item.label}`}
-                >
-                  {item.label}
-                </ScrollLink>
-              ))}
+              {navMenu.map((item) =>
+                item.isExternal ? (
+                  <ExternalLink
+                    href={item.href}
+                    onClick={closeMenu}
+                    key={`${item.href}-${item.label}`}
+                  >
+                    {item.label}
+                  </ExternalLink>
+                ) : (
+                  <ScrollLink
+                    href={item.href}
+                    onClick={closeMenu}
+                    key={`${item.href}-${item.label}`}
+                  >
+                    {item.label}
+                  </ScrollLink>
+                )
+              )}
             </nav>
           </div>
           <div className={styles.wrapTel}>

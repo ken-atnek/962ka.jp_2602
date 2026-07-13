@@ -27,6 +27,9 @@
         max-width: $article-max-width;
         .itemLogo {
             position: fixed;
+            img {
+                filter: brightness(100) invert(100);
+            }
             // svg {
             //     width: 53px;
             //     aspect-ratio: 53/50;
@@ -170,10 +173,15 @@
     }
     &.isSubpage {
         position: fixed;
+
         .topHeader {
             nav {
                 display: none;
             }
+        }
+        .itemLogo {
+            top: 2rem;
+            left: 4vw;
         }
     }
 }
