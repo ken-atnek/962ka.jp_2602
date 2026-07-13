@@ -9,7 +9,7 @@
 export const serviceCredoData = {
   mission: '明日に怯えることなく、笑顔で納税する企業を増やし続けたい',
   vision: {
-    heading: 'All in All in the BLACK　〜豊かな和の輪を皆さまと共に〜',
+    heading: 'All in the BLACK　〜豊かな和の輪を皆さまと共に〜',
     subHeading: [
       'in the BLACK 黒字であれ。私たちクロジカは、',
       'お客様の経営が常に黒字であるよう、⽀え続けます。',
