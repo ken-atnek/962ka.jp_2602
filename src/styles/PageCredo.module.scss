@@ -86,11 +86,16 @@
                     span {
                         line-height: 2em;
                         min-height: 1lh;
+
                         display: inline-block;
                         &.head {
                             font-size: 1.2em;
                             font-weight: 700;
                             margin-bottom: 1.4em;
+                            i {
+                                letter-spacing: -0.15em;
+                                margin-right: 0.1em;
+                            }
                         }
                     }
                     em {
