@@ -5,9 +5,10 @@
  * Created: 2026-06-20
  * Last updated: 2026-06-20
  * ======================================= */
-
+'use client';
 import Image from 'next/image';
 import styles from '@/styles/PageAbout.module.scss';
+import useAddClassOnInView from '@/hooks/useAddClassOnInView';
 
 const companyCards = [
   {
@@ -35,6 +36,9 @@ const companyCards = [
 ] as const;
 
 export default function AboutOrganizations() {
+  const ref = useAddClassOnInView<HTMLDivElement>(styles.isVisible, {
+    threshold: 0.6,
+  });
   return (
     <>
       <section className={styles.containerLead} aria-label="about lead">
@@ -44,7 +48,7 @@ export default function AboutOrganizations() {
             <use href="#svgLogoMarkText" />
           </svg>
         </div>
-        <article className={styles.blockTop}>
+        <article className={styles.blockTop} ref={ref}>
           <div className={styles.boxLeft}>
             <Image
               src="/images/about/item-box-left.svg"

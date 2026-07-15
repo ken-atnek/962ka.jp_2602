@@ -3,13 +3,13 @@
  * URL: /src/components/about/CatchCopy.tsx
  * Referenced in: /src/components/about/AboutStatement.tsx
  * Created: 2026-06-20
- * Last updated: 2026-07-11
+ * Last updated: 2026-07-15
  * ======================================= */
 
 'use client';
 
-import { useEffect, useRef } from 'react';
 import styles from '@/styles/PageAbout.module.scss';
+import useAddClassOnInView from '@/hooks/useAddClassOnInView';
 
 const renderChars = (text: string, startDelay: number) =>
   text.split('').map((char, index) => (
@@ -22,23 +22,9 @@ const renderChars = (text: string, startDelay: number) =>
   ));
 
 export default function CatchCopy() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(() => el.classList.add(styles.isVisible));
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const ref = useAddClassOnInView<HTMLDivElement>(styles.isVisible, {
+    threshold: 0.1,
+  });
 
   return (
     <div ref={ref} className={styles.itemCatch}>

@@ -3,19 +3,23 @@
  * URL: /src/components/greetings/ScatterName.tsx
  * Referenced in: /src/app/greetings/page.tsx
  * Created: 2026-06-18
- * Last updated: 2026-06-18
+ * Last updated: 2026-07-15
  * ======================================= */
 
 'use client';
 
 import { useEffect, useRef } from 'react';
 import styles from '@/styles/PageGreetings.module.scss';
+import useAddClassOnInView from '@/hooks/useAddClassOnInView';
 
 export default function ScatterName() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const localRef = useRef<HTMLDivElement | null>(null);
+  const visibleRef = useAddClassOnInView<HTMLDivElement>(styles.isVisible, {
+    threshold: 0.4,
+  });
 
   useEffect(() => {
-    const el = wrapperRef.current;
+    const el = localRef.current;
     if (!el) return;
 
     el.querySelectorAll('span').forEach((span) => {
@@ -42,26 +46,19 @@ export default function ScatterName() {
       );
       span.style.setProperty('--delay', `${(Math.random() * 0.5).toFixed(2)}s`);
     });
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(() => el.classList.add(styles.isVisible));
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
   }, []);
 
   const renderChars = (text: string) =>
     text.split('').map((char, i) => <span key={i}>{char}</span>);
 
   return (
-    <div ref={wrapperRef} className={styles.itemName}>
+    <div
+      ref={(el) => {
+        localRef.current = el;
+        visibleRef(el);
+      }}
+      className={styles.itemName}
+    >
       <i>{renderChars('SHINTAROU')}</i>
       <i>{renderChars('YAMAGUCHI')}</i>
     </div>

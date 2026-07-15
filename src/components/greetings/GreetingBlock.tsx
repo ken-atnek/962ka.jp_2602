@@ -3,34 +3,18 @@
  * URL: /src/components/greetings/GreetingBlock.tsx
  * Referenced in: /src/app/greetings/page.tsx
  * Created: 2026-06-19
- * Last updated: 2026-06-19
+ * Last updated: 2026-07-15
  * ======================================= */
 
 'use client';
 
-import { useEffect, useRef } from 'react';
 import styles from '@/styles/PageGreetings.module.scss';
+import useAddClassOnInView from '@/hooks/useAddClassOnInView';
 
 export default function GreetingBlock() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(() => el.classList.add(styles.isVisible));
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const ref = useAddClassOnInView<HTMLDivElement>(styles.isVisible, {
+    threshold: 0.3,
+  });
 
   return (
     <div ref={ref} className={styles.boxGreeting}>

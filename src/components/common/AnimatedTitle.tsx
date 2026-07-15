@@ -3,11 +3,11 @@
  * URL: /src/components/common/AnimatedTitle.tsx
  * Referenced in: /src/components/top/TopService.tsx
  * Created: 2026-06-17
- * Last updated: 2026-06-20
+ * Last updated: 2026-07-15
  * ======================================= */
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import useInView from '@/hooks/useInView';
 
 type AnimatedTitleProps = {
   className?: string;
@@ -22,34 +22,15 @@ const AnimatedTitle = ({
   text,
   threshold = 0.45,
 }: AnimatedTitleProps) => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const { ref: titleRef, isInView } = useInView<HTMLHeadingElement>({
+    threshold,
+  });
   const lines = text.split('\n');
-
-  useEffect(() => {
-    if (!titleRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        setIsVisible(true);
-        observer.disconnect();
-      },
-      {
-        threshold,
-      }
-    );
-
-    observer.observe(titleRef.current);
-
-    return () => observer.disconnect();
-  }, [threshold]);
 
   return (
     <h2
       ref={titleRef}
-      className={`${className} ${isVisible ? visibleClassName : ''}`.trim()}
+      className={`${className} ${isInView ? visibleClassName : ''}`.trim()}
     >
       {lines.map((line, lineIndex) => {
         const delayOffset = lines
