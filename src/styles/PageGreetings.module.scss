@@ -15,6 +15,11 @@
     background: url("/images/greeting/hero-bg.webp") no-repeat center
         center/cover;
     perspective: 1200px;
+    @include sp {
+        background-size: 100%;
+        background-position: center top;
+        aspect-ratio: unset;
+    }
     h1 {
         color: $main-white;
         font-weight: 700;
@@ -25,6 +30,10 @@
         height: 20rem;
         display: flex;
         align-items: flex-end;
+        @include sp {
+            font-size: 20vw;
+            height: 36vw;
+        }
         span {
             line-height: 0.6em;
         }
@@ -43,6 +52,7 @@
         letter-spacing: 0.1em;
         font-size: 5.8vw;
         z-index: 1;
+
         span {
             display: inline-block;
             opacity: 0;
@@ -64,7 +74,6 @@
         top: 58.4vw;
         left: 38.9vw;
         opacity: 1;
-
         // display: none;
         z-index: 2;
     }
@@ -74,17 +83,31 @@
         font-size: inherit;
         color: $pure-white;
         padding: 2.3vw 3.3vw;
+        @include sp {
+            color: $main-black;
+            padding: 4vw;
+        }
         &::after {
             content: "";
             position: absolute;
             inset: 0;
             background: rgb(25 30 30 / 30%);
+            @include sp {
+                display: none;
+            }
         }
     }
     .boxProfile {
         right: 11vw;
         top: 70vw;
         width: 33.7vw;
+        @include sp {
+            position: relative;
+            right: unset;
+            top: 0;
+            width: 100%;
+            order: 1;
+        }
         h2 {
             position: relative;
             font-size: 2vw;
@@ -98,6 +121,9 @@
             transition:
                 opacity 0.5s ease 0.4s,
                 transform 0.5s ease 0.4s;
+            @include sp {
+                font-size: fz(20);
+            }
         }
         dl {
             position: relative;
@@ -107,6 +133,9 @@
             grid-template-columns: auto 1fr;
             gap: 1.4em 0;
             margin-top: 3vw;
+            @include sp {
+                font-size: fz(14);
+            }
             div {
                 grid-column: span 2;
                 display: grid;
@@ -168,6 +197,14 @@
         top: 80vw;
         width: 44vw;
         padding-inline: 2vw;
+        @include sp {
+            position: relative;
+            left: unset;
+            top: 0;
+            width: 100%;
+            margin-top: 103vw;
+            padding-inline: 4vw;
+        }
         & > * {
             position: relative;
             z-index: 3;
@@ -180,6 +217,10 @@
             line-height: 2.2em;
             opacity: 0;
             transition: opacity 0.5s ease 0.8s;
+            @include sp {
+                font-size: fz(14);
+                text-align: justify;
+            }
         }
         &.isVisible {
             h3 {
@@ -199,11 +240,20 @@
     flex-direction: column;
     gap: 5.2vw 0;
     translate: 0 -7vw;
+    @include sp {
+        translate: unset;
+        gap: 4vw 0;
+        margin-bottom: 8vw;
+    }
     .itemImage01 {
         position: relative;
         margin-left: 7.3vw;
         width: 53vw;
         aspect-ratio: 728 / 485;
+        @include sp {
+            margin-left: unset;
+            width: 60vw;
+        }
     }
     .galleryGrid {
         display: grid;
@@ -224,6 +274,9 @@
             @include helvetica-neue;
             font-weight: 400;
             line-height: 1.8em;
+            @include sp {
+                font-size: 2.6vw;
+            }
         }
     }
     .textJp {
@@ -231,6 +284,9 @@
         align-self: center;
         line-height: 2.3em;
         font-weight: 400;
+        @include sp {
+            font-size: fz(14);
+        }
     }
     .itemImage04 {
         width: 47vw;
@@ -239,11 +295,17 @@
         right: 0;
         bottom: 40vw;
         z-index: 1;
+        @include sp {
+            bottom: 50vw;
+        }
     }
     .itemImage05 {
         width: 80vw;
         align-self: center;
         aspect-ratio: 1086 / 724;
         margin-top: 8vw;
+        @include sp {
+            width: 92vw;
+        }
     }
 }

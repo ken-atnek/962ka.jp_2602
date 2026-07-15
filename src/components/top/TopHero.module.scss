@@ -14,6 +14,10 @@
     align-items: center;
     padding-inline: 2vw;
     z-index: 2;
+    @include sp {
+        padding-inline: 4vw;
+        padding-top: 25vw;
+    }
     article {
         max-width: 1075px;
         display: flex;
@@ -24,7 +28,7 @@
         .boxMedia {
             position: relative;
             width: 100%;
-            overflow: hidden;
+
             video {
                 width: 100%;
                 height: auto;
@@ -44,10 +48,15 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 1.2rem;
                 transition:
                     background-color 0.3s ease,
                     transform 0.3s ease;
+                @include sp {
+                    right: 0;
+                    top: unset;
+                    bottom: calc(100% + 2vw);
+                    width: 12vw;
+                }
                 &::after {
                     content: "";
                     position: absolute;

@@ -18,12 +18,18 @@
         align-items: flex-end;
         font-size: inherit;
         height: 30rem;
+        @include sp {
+            height: 36vw;
+        }
         h1 {
             font-weight: 700;
             @include helvetica-neue;
             font-size: fz(128);
             line-height: 0.82;
             text-align: center;
+            @include sp {
+                font-size: 20vw;
+            }
         }
     }
 }
@@ -36,16 +42,24 @@
     width: 100%;
     max-width: 87rem;
     padding-top: 18rem;
+    @include sp {
+        max-width: unset;
+        padding: 14vw 4vw 0;
+    }
 }
 .blockDone {
     width: 100%;
     max-width: 58rem;
     padding-top: 14rem;
     text-align: center;
+    @include sp {
+        max-width: unset;
+        padding-top: 14vw;
+    }
     p {
         font-size: fz(16);
-        line-height: 2.3;
-        letter-spacing: 0.1em;
+        line-height: 1.8;
+        letter-spacing: 0.04em;
     }
 }
 .blockForm {
@@ -115,6 +129,11 @@
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 6.5rem 4.6rem;
             font-size: inherit;
+            @include sp {
+                display: flex;
+                flex-direction: column;
+                gap: 4vw 0;
+            }
             .field {
                 display: flex;
                 flex-direction: row;
@@ -123,6 +142,10 @@
                 position: relative;
                 border-bottom: 1px solid $main-black;
                 gap: 0 2em;
+                @include sp {
+                    flex-direction: column;
+                    gap: 2vw 0;
+                }
                 .required {
                     position: absolute;
                     right: 0;
@@ -149,6 +172,11 @@
                     letter-spacing: 0.1em;
                     padding-block: 0.3em;
                     width: max-content;
+                    @include sp {
+                        padding-inline: 4vw;
+                        width: 100%;
+                        padding-block: 0.5em;
+                    }
                 }
             }
             .itemMail {
@@ -159,6 +187,9 @@
                 flex-direction: column;
                 grid-column: 1 / -1;
                 padding: 1.4rem;
+                @include sp {
+                    margin-top: 6vw;
+                }
             }
         }
     }
@@ -167,6 +198,9 @@
         font-size: inherit;
         display: flex;
         justify-content: flex-end;
+        @include sp {
+            margin-top: 6vw;
+        }
         .buttonCheck {
             @include page-link;
         }
@@ -193,6 +227,11 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 4.6rem 4.6rem;
         font-size: inherit;
+        @include sp {
+            gap: 4vw 0;
+            margin-top: 14vw;
+            grid-template-columns: auto 1fr;
+        }
         div {
             font-size: inherit;
             display: flex;
@@ -200,17 +239,29 @@
             border-bottom: 1px solid $main-black;
             padding-block: 0.8em;
             gap: 0 2em;
+            @include sp {
+                grid-column: span 2;
+                display: grid;
+                grid-template-columns: subgrid;
+                gap: 0 4w;
+            }
             dt {
                 color: #afafaf;
                 font-size: fz(16);
                 font-weight: 500;
                 letter-spacing: 0.08em;
+                @include sp {
+                    font-size: fz(14);
+                }
             }
             dd {
                 flex: 1;
                 display: flex;
                 align-items: center;
                 font-size: fz(20);
+                @include sp {
+                    font-size: fz(18);
+                }
             }
         }
         .itemMail {

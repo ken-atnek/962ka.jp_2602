@@ -13,22 +13,8 @@
  * ページタイトル
  * ------------------------------ */
 .containerPageTitle {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    @include container-page-title;
     background: url(/images/credo/title.webp) no-repeat center center / cover;
-    height: 30rem;
-    z-index: 2;
-    h1 {
-        color: $main-white;
-        font-weight: 700;
-        @include helvetica-neue;
-        font-size: fz(128);
-        line-height: 0.6em;
-        span {
-            line-height: 0.6em;
-        }
-    }
 }
 
 /* =================================
@@ -42,6 +28,9 @@
     background-color: $main-black;
     color: $main-white;
     padding: 30rem 2vw 27rem;
+    @include sp {
+        padding: 14vw 4vw 8vw;
+    }
     .boxHeadTitle {
         font-size: 32vw;
         @include helvetica-neue;
@@ -51,6 +40,10 @@
         translate: -50%;
         top: 40rem;
         opacity: 0.1;
+        @include sp {
+            top: 36vw;
+            font-size: 36vw;
+        }
     }
     article {
         width: 100%;
@@ -75,6 +68,9 @@
                 font-size: inherit;
                 width: 100%;
                 align-self: center;
+                @include sp {
+                    gap: 2vw 0;
+                }
                 p {
                     max-width: $article-middle-width;
                     font-weight: 500;
@@ -83,6 +79,9 @@
                     display: flex;
                     flex-direction: column;
                     width: 100%;
+                    @include sp {
+                        font-size: fz(14);
+                    }
                     span {
                         line-height: 2em;
                         min-height: 1lh;
@@ -109,6 +108,9 @@
             display: flex;
             flex-direction: column;
             gap: 5.1rem 0;
+            @include sp {
+                gap: 6vw 0;
+            }
             .boxTitle {
                 display: flex;
                 justify-content: space-between;
@@ -116,6 +118,10 @@
                 @include animated-title;
                 align-items: center;
                 gap: 0 3rem;
+                @include sp {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
                 h2 {
                     @include item-h2;
                     flex: 1;
@@ -138,8 +144,14 @@
             }
             .cardGrid {
                 margin-top: 2rem;
+                @include sp {
+                    gap: 8vw 0;
+                }
                 .valueCard {
                     gap: 1.4rem 0;
+                    @include sp {
+                        gap: 2vw 0;
+                    }
                 }
             }
         }
@@ -147,6 +159,9 @@
             display: flex;
             flex-direction: column;
             gap: 12rem 0;
+            @include sp {
+                gap: 10vw 0;
+            }
             .boxTitle {
                 display: flex;
                 justify-content: space-between;
@@ -154,6 +169,10 @@
                 @include animated-title;
                 align-items: center;
                 gap: 0 3rem;
+                @include sp {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
                 h2 {
                     @include item-h2;
                     flex: 1;
@@ -189,11 +208,17 @@
                 align-self: center;
                 width: 100%;
                 counter-reset: number 0;
+                @include sp {
+                    gap: 10vw 0;
+                }
                 .listDetails {
                     font-size: inherit;
                     display: flex;
                     flex-direction: column;
                     gap: 4.5rem 0;
+                    @include sp {
+                        gap: 6vw 0;
+                    }
                     h4 {
                         font-size: fz(24);
                         font-weight: 500;
@@ -215,11 +240,18 @@
                         flex-direction: column;
                         gap: 3.4em;
                         font-size: inherit;
+                        @include sp {
+                            margin-top: 6vw;
+                            gap: 8vw 0;
+                        }
                         li {
                             display: flex;
                             flex-direction: column;
                             gap: 1.4rem 0;
                             font-size: inherit;
+                            @include sp {
+                                gap: 2vw 0;
+                            }
                             h5 {
                                 font-size: fz(20);
                                 font-weight: 500;
@@ -252,11 +284,14 @@
     width: 100%;
     max-width: $article-middle-width;
     align-self: center;
-
+    @include sp {
+        gap: 0;
+    }
     li {
         display: flex;
         flex-direction: column;
         font-size: inherit;
+
         h3 {
             font-size: fz(20);
             font-weight: 500;
@@ -277,6 +312,9 @@
  * ------------------------------ */
 .containerMovie {
     padding-bottom: 10rem;
+    @include sp {
+        padding-bottom: 0;
+    }
     .boxMedia {
         width: 100%;
         video {

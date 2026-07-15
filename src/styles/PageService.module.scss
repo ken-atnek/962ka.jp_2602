@@ -11,21 +11,8 @@
  * ページタイトル
  * ------------------------------ */
 .containerPageTitle {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    @include container-page-title;
     background: url(/images/service/title.webp) no-repeat center center / cover;
-    height: 30rem;
-    h1 {
-        color: $main-white;
-        font-weight: 700;
-        @include helvetica-neue;
-        font-size: fz(128);
-        line-height: 0.6em;
-        span {
-            line-height: 0.6em;
-        }
-    }
 }
 /* =================================
  * キャッチコピー
@@ -37,11 +24,19 @@
     padding-inline: 2vw;
     padding-top: 10rem;
     padding-bottom: 10rem;
+    @include sp {
+        padding: 4vw 4vw 6vw;
+    }
     article {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         max-width: $article-middle-width;
         gap: 54px 105px;
+        @include sp {
+            display: flex;
+            flex-direction: column;
+            gap: 6vw 0;
+        }
         p {
             font-size: fz(14);
             font-weight: 300;
@@ -70,6 +65,9 @@
     align-items: center;
     padding-inline: 2vw;
     padding-bottom: 27rem;
+    @include sp {
+        padding: 6vw 4vw;
+    }
     .serviceBlocksInner {
         display: flex;
         flex-direction: column;
@@ -77,10 +75,16 @@
         max-width: $article-middle-width;
         width: 100%;
         font-size: inherit;
+        @include sp {
+            gap: 6vw 0;
+        }
         .blockServiceList {
             display: flex;
             flex-direction: column;
             gap: 7rem 0;
+            @include sp {
+                gap: 6vw 0;
+            }
             .headTitle {
                 margin-top: 5rem;
                 font-size: inherit;
@@ -94,6 +98,11 @@
                 justify-content: flex-end;
                 color: $pure-white;
                 padding: 3.3rem 5rem;
+                @include sp {
+                    height: 36vw;
+                    padding-left: 4vw;
+                    justify-content: center;
+                }
                 h2 {
                     position: relative;
                     line-height: 1em;
@@ -102,6 +111,9 @@
                     font-weight: 700;
                     letter-spacing: 0.2em;
                     transition: 0.3s ease-out;
+                    @include sp {
+                        font-size: 6vw;
+                    }
                     &::before {
                         content: "[";
                     }
@@ -119,10 +131,16 @@
                     flex-direction: column;
                     font-size: inherit;
                     margin-top: 2rem;
+                    @include sp {
+                        margin-top: 2vw;
+                    }
                     span {
                         font-size: fz(16);
                         line-height: 1.875;
                         letter-spacing: 0.1em;
+                        @include sp {
+                            font-size: fz(14);
+                        }
                     }
                 }
             }
@@ -162,6 +180,9 @@
                         line-height: 1;
                         letter-spacing: 0.08em;
                         margin-right: 104px;
+                        @include sp {
+                            margin-right: 6vw;
+                        }
                     }
                     .itemTitle {
                         font-size: fz(16);
@@ -174,6 +195,9 @@
                         align-items: center;
                         transition: 0.3s ease-out;
                         padding-right: 2rem;
+                        @include sp {
+                            padding-right: 2vw;
+                        }
                         svg {
                             width: 8px;
                             aspect-ratio: 8/18;
@@ -192,6 +216,9 @@
                         grid-template-rows 0.42s ease,
                         opacity 0.28s ease,
                         padding-bottom 0.42s ease;
+                    @include sp {
+                        grid-column: 1 / 4;
+                    }
                     &.isOpen {
                         grid-template-rows: 1fr;
                         opacity: 1;
@@ -219,252 +246,6 @@
                     }
                 }
             }
-        }
-    }
-}
-/* =================================
- * CREDO他
- * ------------------------------ */
-.containerServiceCredo {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: $main-black;
-    color: $main-white;
-    padding: 0 2vw 27rem;
-    .boxHeadTitle {
-        @include box-title;
-        h2 {
-            font-size: min(32vw, 45rem);
-        }
-    }
-    article {
-        width: 100%;
-        max-width: $article-max-width;
-        display: flex;
-        flex-direction: column;
-        gap: 12rem 0;
-        .introBlock {
-            display: flex;
-            flex-direction: column;
-            gap: 7rem 0;
-            .boxTitle {
-                @include box-title;
-                align-self: flex-start;
-            }
-            .introItem {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem 0;
-                font-size: inherit;
-                width: 100%;
-                align-self: center;
-                p {
-                    max-width: $article-middle-width;
-                    font-weight: 500;
-                    font-size: fz(20);
-                    letter-spacing: 0.1em;
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    span {
-                        line-height: 2em;
-                        min-height: 1lh;
-                        display: inline-block;
-                        &.head {
-                            font-size: 1.2em;
-                            font-weight: 700;
-                            margin-bottom: 1.4em;
-                        }
-                    }
-                }
-            }
-        }
-
-        .commitmentSection {
-            display: flex;
-            flex-direction: column;
-            gap: 5.1rem 0;
-            .boxTitle {
-                display: flex;
-                justify-content: space-between;
-                font-size: inherit;
-                @include animated-title;
-                align-items: center;
-                gap: 0 3rem;
-                h2 {
-                    @include item-h2;
-                    flex: 1;
-                    display: flex;
-                    align-items: center;
-                    gap: 0 3rem;
-                    &::after {
-                        content: "";
-                        height: 1px;
-                        flex: 1;
-                        background-color: #d9d9d9;
-                    }
-                }
-                p {
-                    color: $pure-white;
-                    font-size: fz(24);
-                    font-weight: 700;
-                    letter-spacing: 0.1em;
-                }
-            }
-            .catch {
-                font-size: inherit;
-                display: flex;
-                flex-direction: column;
-                span {
-                    font-size: fz(22);
-                    font-weight: 500;
-                    line-height: 1.8em;
-                    letter-spacing: 0.1em;
-                }
-            }
-            .cardGrid {
-                margin-top: 2rem;
-                .valueCard {
-                    gap: 1.4rem 0;
-                }
-            }
-        }
-        .valueSection {
-            display: flex;
-            flex-direction: column;
-            gap: 12rem 0;
-            .boxTitle {
-                display: flex;
-                justify-content: space-between;
-                font-size: inherit;
-                @include animated-title;
-                align-items: center;
-                gap: 0 3rem;
-                h2 {
-                    @include item-h2;
-                    flex: 1;
-                    display: flex;
-                    align-items: center;
-                    gap: 0 3rem;
-                    &::after {
-                        content: "";
-                        height: 1px;
-                        flex: 1;
-                        background-color: #d9d9d9;
-                    }
-                }
-                & > p {
-                    color: $pure-white;
-                    display: flex;
-                    flex-direction: column;
-                    font-size: inherit;
-                    span {
-                        line-height: 2.14em;
-                        font-size: fz(14);
-                        font-weight: 300;
-                        letter-spacing: 0.1em;
-                    }
-                }
-            }
-            .groupList {
-                font-size: inherit;
-                display: flex;
-                flex-direction: column;
-                gap: 12rem 0;
-                max-width: $article-middle-width;
-                align-self: center;
-                width: 100%;
-                .listDetails {
-                    font-size: inherit;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 4.5rem 0;
-                    h4 {
-                        font-size: fz(24);
-                        font-weight: 500;
-                        letter-spacing: 0.05em;
-                        display: flex;
-                        flex-direction: column;
-                    }
-                    .groupLead {
-                        font-size: fz(18);
-                        font-weight: 400;
-                        line-height: 2;
-                        letter-spacing: 0.04em;
-                        display: flex;
-                        flex-direction: column;
-                    }
-                    ul {
-                        display: grid;
-                        grid-template-columns: repeat(3, minmax(0, 1fr));
-                        gap: 3.4em;
-                        font-size: inherit;
-                        li {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 1.4rem 0;
-                            font-size: inherit;
-                            h5 {
-                                font-size: fz(20);
-                                font-weight: 500;
-                                letter-spacing: 0.1em;
-                            }
-                            p {
-                                font-size: fz(15);
-                                font-weight: 300;
-                                line-height: 2.26;
-                                letter-spacing: 0.05em;
-                                text-align: justify;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-.cardGrid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 3.4em;
-    font-size: inherit;
-    width: 100%;
-    max-width: $article-middle-width;
-    align-self: center;
-    li {
-        display: flex;
-        flex-direction: column;
-        font-size: inherit;
-        h3 {
-            font-size: fz(20);
-            font-weight: 500;
-            letter-spacing: 0.1em;
-        }
-        p {
-            font-size: fz(15);
-            font-weight: 300;
-            line-height: 2.26;
-            letter-spacing: 0.05em;
-            text-align: justify;
-        }
-    }
-}
-
-/* =================================
- * 動画
- * ------------------------------ */
-.containerMovie {
-    padding-bottom: 10rem;
-    .boxMedia {
-        width: 100%;
-        video {
-            width: 100%;
-            height: auto;
-            display: block;
         }
     }
 }

@@ -12,15 +12,26 @@
     --credo-grid-color: #{$main-black};
     padding-top: 245px;
     padding-bottom: 273px;
-
+    background-color: $main-black;
+    @include sp {
+        padding-top: 8vw;
+        padding-bottom: 8vw;
+        translate: 0 -1px;
+    }
     article {
         gap: 14rem 0;
         position: static;
+        @include sp {
+            gap: 12vw;
+        }
         &::before,
         &::after {
             content: "";
             position: absolute;
-            inset: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: calc(100% + 1px);
             z-index: 0;
         }
         &::before {

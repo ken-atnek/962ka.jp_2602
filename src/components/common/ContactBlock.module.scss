@@ -10,8 +10,15 @@
     @include section-base-layout;
     padding-top: 116px;
     padding-bottom: 8rem;
+    @include sp {
+        padding-top: 8vw;
+        padding-bottom: 8vw;
+    }
     article {
         gap: 7rem 0;
+        @include sp {
+            gap: 8vw 0;
+        }
         .boxTitle {
             color: $main-black;
         }
@@ -21,6 +28,11 @@
             font-size: inherit;
             grid-template-columns: repeat(2, 1fr);
             gap: 0 1.6em;
+            @include sp {
+                display: flex;
+                flex-direction: column;
+                gap: 1vw 0;
+            }
             .wrapTel {
                 position: relative;
                 display: grid;
@@ -35,6 +47,9 @@
                     align-items: center;
                     padding-inline: 3em;
                     transition: 0.3s ease-out;
+                    @include sp {
+                        padding: 6vw 6vw;
+                    }
                     .title {
                         position: relative;
                         text-align: center;
@@ -45,6 +60,9 @@
                         flex: 1;
                         display: flex;
                         align-items: center;
+                        @include sp {
+                            font-size: fz(24);
+                        }
                         .number {
                             font-weight: 500;
                             transition: 0.3s ease-out;
@@ -54,6 +72,9 @@
                     .name {
                         font-size: fz(24);
                         letter-spacing: 0.1em;
+                        @include sp {
+                            font-size: fz(14);
+                        }
                     }
                     &:hover {
                         background-color: $vivid-green;
@@ -67,6 +88,9 @@
                 background-color: $main-black;
                 color: $main-white;
                 font-size: inherit;
+                @include sp {
+                    height: 30vw;
+                }
                 span {
                     position: relative;
                     width: 100%;
@@ -75,6 +99,9 @@
                     font-size: fz(48);
                     @include helvetica-neue;
                     font-weight: 700;
+                    @include sp {
+                        font-size: fz(30);
+                    }
                     &::after {
                         content: "";
                         position: absolute;

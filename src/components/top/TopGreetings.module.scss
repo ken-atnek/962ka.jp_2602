@@ -13,17 +13,23 @@
     padding-top: 126px;
     padding-inline: 0;
     gap: 97px 0;
+    @include sp {
+        padding-top: 8vw;
+        gap: 16vw;
+    }
     .innerSection {
         padding-inline: 2vw;
         font-size: inherit;
         display: flex;
         justify-content: center;
+        @include sp {
+            padding-inline: 4vw;
+        }
         article {
-            gap: 14rem 0;
-            max-width: unset;
             display: flex;
             flex-direction: column;
             max-width: $article-max-width;
+
             .boxTitle {
                 @include box-title;
             }
@@ -35,17 +41,6 @@
         display: flex;
         justify-content: space-between;
         position: relative;
-        // &::before {
-        //     content: "";
-        //     position: absolute;
-        //     left: 50%;
-        //     translate: -50%;
-        //     bottom: 63px;
-        //     width: max(5rem, 60vw);
-        //     height: 120px;
-        //     background-color: $main-black;
-        //     z-index: 1;
-        // }
 
         .itemPerson {
             position: absolute;
@@ -56,7 +51,10 @@
             max-width: 362px;
             aspect-ratio: 640/1341;
             z-index: 2;
-
+            @include sp {
+                width: 50vw;
+                z-index: 1;
+            }
             .itemPersonMono,
             .itemPersonColor {
                 position: absolute;
@@ -84,9 +82,21 @@
             margin-bottom: 63px;
             z-index: 0;
             font-size: inherit;
+            @include sp {
+                display: contents;
+            }
             svg {
                 aspect-ratio: 683/598;
                 fill: $main-black;
+                @include sp {
+                    &.svgLeft {
+                        position: absolute;
+                        right: 50vw;
+                    }
+                    &.svgRight {
+                        translate: 50vw;
+                    }
+                }
             }
         }
         .wrapLogoLeft {
@@ -98,11 +108,20 @@
                 font-size: inherit;
                 display: flex;
                 flex-direction: column;
+                @include sp {
+                    right: unset;
+                    left: 4vw;
+                    z-index: 3;
+                    top: 50%;
+                }
                 span {
                     color: $vivid-green;
                     font-size: fz(32);
                     @include helvetica-neue;
                     letter-spacing: 0.1em;
+                    @include sp {
+                        font-size: 5vw;
+                    }
                 }
             }
         }
@@ -113,6 +132,11 @@
                 top: 50%;
                 translate: 0 -50%;
                 left: 40%;
+                @include sp {
+                    left: unset;
+                    top: 5 0%;
+                    right: 4vw;
+                }
             }
         }
     }

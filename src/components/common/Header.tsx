@@ -146,7 +146,11 @@ const Header = () => {
               <span className={styles.name}>熊本オフィス</span>
             </ExternalLink>
           </div>
-          <ScrollLink href="/contact/" className={styles.linkForm}>
+          <ScrollLink
+            href="/contact/"
+            className={styles.linkForm}
+            onClick={closeMenu}
+          >
             <span>Mail Form</span>
           </ScrollLink>
         </div>

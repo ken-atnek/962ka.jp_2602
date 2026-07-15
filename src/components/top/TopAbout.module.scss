@@ -14,7 +14,10 @@
     padding-inline: 2vw;
     padding-top: 278px;
     position: relative;
-
+    @include sp {
+        padding-top: 30vw;
+        padding-inline: 4vw;
+    }
     .itemCircle {
         position: absolute;
         top: 1rem;
@@ -25,6 +28,9 @@
         color: rgba(0, 0, 0, 0.58);
         pointer-events: none;
         z-index: 2;
+        @include sp {
+            width: 110vw;
+        }
         .circleSvg {
             width: 100%;
             height: 100%;
@@ -38,12 +44,19 @@
         display: flex;
         flex-direction: column;
         z-index: 3;
+        @include sp {
+            gap: 4vw 0;
+            align-self: flex-start;
+        }
         .wrapHead {
             @include helvetica-neue;
             font-size: fz(128);
             font-weight: 700;
             display: flex;
             gap: 0 0.3em;
+            @include sp {
+                font-size: 12.2vw;
+            }
             .textAll {
                 opacity: 0;
                 display: inline-block;
@@ -52,7 +65,6 @@
                 color: $vivid-green;
                 letter-spacing: -0.15em;
                 margin-right: 0.1em;
-
                 .textFirstW {
                     opacity: 0;
                     display: inline-block;
@@ -79,12 +91,19 @@
                 letter-spacing: 0.1em;
                 padding-top: 0.4em;
                 margin-right: 1em;
+                @include sp {
+                    font-size: 3.6vw;
+                    margin-right: 2vw;
+                }
             }
             .textBlack {
                 @include helvetica-neue;
                 font-weight: 700;
                 font-size: fz(180);
                 opacity: 0;
+                @include sp {
+                    font-size: 16vw;
+                }
             }
         }
         .wrapComment {
@@ -92,6 +111,10 @@
             font-size: inherit;
             left: 44%;
             top: 38em;
+            @include sp {
+                left: 6vw;
+                top: 70vw;
+            }
             .title {
                 font-size: inherit;
                 display: flex;
@@ -99,18 +122,28 @@
                 position: absolute;
                 right: calc(100% + 10em);
                 width: max-content;
+                @include sp {
+                    position: relative;
+                    right: unset;
+                    margin-bottom: 4vw;
+                }
                 .en {
                     @include helvetica-neue;
                     font-size: fz(36);
                     font-weight: 700;
                     letter-spacing: 0.05em;
+                    @include sp {
+                        font-size: 6vw;
+                    }
                 }
                 .jp {
                     font-size: fz(36);
                     font-weight: 700;
                     letter-spacing: 0.05em;
                     margin-top: 0.3em;
-                    margin-bottom: 1.2em;
+                    @include sp {
+                        font-size: 7vw;
+                    }
                 }
             }
             p {
@@ -118,18 +151,34 @@
                 font-size: fz(20);
                 font-weight: 700;
                 letter-spacing: 0.12em;
+                @include sp {
+                    font-size: 3.6vw;
+                    letter-spacing: 0.08em;
+                }
             }
             .text01 {
                 opacity: 0;
             }
             .text02 {
                 opacity: 0;
+                --about-text-shift-y: -7em;
+                @include sp {
+                    --about-text-shift-y: -4em;
+                }
             }
             .text03 {
                 opacity: 0;
+                --about-text-shift-y: -11em;
+                @include sp {
+                    --about-text-shift-y: -8em;
+                }
             }
             .text04 {
                 opacity: 0;
+                --about-text-shift-y: -13em;
+                @include sp {
+                    --about-text-shift-y: -10em;
+                }
             }
         }
         &:global(.is-active) {
@@ -168,7 +217,6 @@
                 animation: text04 10s ease forwards;
             }
         }
-
         @keyframes textAll {
             0% {
                 opacity: 0;
@@ -358,14 +406,14 @@
             }
             20% {
                 opacity: 1;
-                translate: 0 -7em;
+                translate: 0 var(--about-text-shift-y);
             }
             35% {
                 opacity: 1;
             }
             40% {
                 opacity: 0;
-                translate: 0 -7em;
+                translate: 0 var(--about-text-shift-y);
             }
             75% {
                 opacity: 0;
@@ -391,14 +439,14 @@
             }
             40% {
                 opacity: 1;
-                translate: 0 -11em;
+                translate: 0 var(--about-text-shift-y);
             }
             55% {
                 opacity: 1;
             }
             60% {
                 opacity: 0;
-                translate: 0 -11em;
+                translate: 0 var(--about-text-shift-y);
             }
             75% {
                 opacity: 0;
@@ -430,14 +478,14 @@
             }
             60% {
                 opacity: 1;
-                translate: 0 -13em;
+                translate: 0 var(--about-text-shift-y);
             }
             70% {
                 opacity: 1;
             }
             75% {
                 opacity: 0;
-                translate: 0 -13em;
+                translate: 0 var(--about-text-shift-y);
             }
             76% {
                 translate: 0;
@@ -457,6 +505,11 @@
         max-width: $article-max-width;
         padding-bottom: 2rem;
         padding-top: 20em;
+        @include sp {
+            flex-direction: column;
+            padding-bottom: 14vw;
+            padding-top: 80vw;
+        }
         .boxImage {
             @include flex-center;
             align-self: flex-start;
@@ -468,26 +521,27 @@
             translate: 0 -3em;
             font-size: inherit;
             width: min(68rem, 47vw);
+            @include sp {
+                align-self: center;
+                translate: 0;
+                width: 75vw;
+            }
             .outerSlides {
                 position: absolute;
                 inset: 0;
-
                 .slideImage {
                     animation-name: aboutSlideFadeOuter;
                 }
             }
-
             .slideImage {
                 position: absolute;
                 inset: 0;
                 opacity: 0;
                 transition: opacity 1.2s ease-in-out;
             }
-
             .isActive {
                 opacity: 1;
             }
-
             .outerSlides .slideImage img {
                 width: 100%;
                 height: 100%;
@@ -495,13 +549,15 @@
                 filter: blur(15px);
                 transform: scale(1.04);
             }
-
             .innerImage {
                 position: absolute;
                 width: 60%;
                 aspect-ratio: 1;
                 border-radius: 50%;
                 overflow: hidden;
+                @include sp {
+                    width: 65%;
+                }
                 .slideImage img {
                     width: 100%;
                     height: 100%;
@@ -510,13 +566,16 @@
                 }
             }
         }
-
         .pageLink {
             @include page-link;
             position: absolute;
             left: 55%;
             translate: -50%;
             bottom: 6vw;
+            bottom: 0;
+            left: unset;
+            right: 0;
+            translate: unset;
         }
     }
 }

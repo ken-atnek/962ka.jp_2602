@@ -219,7 +219,11 @@ const TopAbout = () => {
           <i className={styles.textThe}>the</i>
         </span>
         <div className={styles.wrapBottom}>
-          <p>豊かな和の輪を、皆さまと共に</p>
+          <p>
+            豊かな和の輪を、
+            <br className="sp" />
+            皆さまと共に
+          </p>
           <span className={styles.textBlack}>BLACK</span>
         </div>
         <div className={styles.wrapComment}>

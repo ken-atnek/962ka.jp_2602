@@ -11,8 +11,15 @@
     @include section-base-layout;
     padding-top: 126px;
     padding-bottom: 140px;
+    @include sp {
+        padding-top: 8vw;
+        padding-bottom: 8vw;
+    }
     article {
         gap: 53px 0;
+        @include sp {
+            gap: 6vw;
+        }
         .boxTitle {
             color: $main-black;
         }
@@ -22,6 +29,10 @@
             font-size: inherit;
             grid-template-columns: repeat(2, 1fr);
             gap: 0 1.6em;
+            @include sp {
+                grid-template-columns: unset;
+                gap: 6vw 0;
+            }
             a {
                 position: relative;
                 display: flex;
@@ -32,6 +43,10 @@
                 font-size: inherit;
                 gap: 1em 0;
                 padding-left: 3.3em;
+                @include sp {
+                    height: 36vw;
+                    padding-left: 4vw;
+                }
                 .itemButton {
                     @include page-link;
                     position: absolute;
@@ -78,6 +93,9 @@
                     font-weight: 700;
                     letter-spacing: 0.2em;
                     transition: 0.3s ease-out;
+                    @include sp {
+                        font-size: 6vw;
+                    }
                     &::before {
                         content: "[";
                     }
@@ -96,6 +114,9 @@
                     line-height: 1.8em;
                     letter-spacing: 0.1em;
                     transition: 0.3s ease-out;
+                    @include sp {
+                        font-size: fz(14);
+                    }
                 }
                 &.linkBasic {
                     &::before {

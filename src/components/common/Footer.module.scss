@@ -15,17 +15,34 @@
     gap: 0 6.5vw;
     padding-left: 4vw;
     padding-right: 3.3vw;
+    @include sp {
+        display: flex;
+        flex-direction: column;
+        padding-inline: 4vw;
+        padding-bottom: unset;
+        gap: 2vw 0;
+    }
     .itemLogo {
+        @include sp {
+            align-self: center;
+            margin-bottom: 6vw;
+        }
         svg {
             width: 128px;
             aspect-ratio: 53/50;
             fill: $pure-black;
+            @include sp {
+                width: 20vw;
+            }
         }
     }
     .copyright {
         font-size: fz(12);
         @include helvetica-neue;
         font-weight: 100;
+        @include sp {
+            order: 1;
+        }
     }
     nav {
         position: relative;
@@ -34,6 +51,9 @@
         flex-direction: column;
         margin-top: 3rem;
         margin-left: auto;
+        @include sp {
+            display: none;
+        }
         a {
             font-size: fz(16);
             @include helvetica-neue;

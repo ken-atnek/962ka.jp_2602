@@ -38,7 +38,7 @@ const TopGreetings = () => {
             <span>SHINTAROU</span>
             <span>YAMAGUCHI</span>
           </div>
-          <svg>
+          <svg className={styles.svgLeft}>
             <use href="#svgLogoMarkLeft" />
           </svg>
         </div>
@@ -50,7 +50,7 @@ const TopGreetings = () => {
           <ScrollLink href="/greetings/" className={styles.pageLink}>
             <span>greetings</span>
           </ScrollLink>
-          <svg>
+          <svg className={styles.svgRight}>
             <use href="#svgLogoMarkRight" />
           </svg>
         </div>
