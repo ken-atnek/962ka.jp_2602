@@ -49,7 +49,7 @@ export default function GreetingGalleryBlock() {
         </div>
       </div>
       <p className={styles.textJp}>
-        地元・宇土への愛を礎に、お客様とともに歩み、ともに成長し、
+        地元・熊本への愛を礎に、お客様とともに歩み、ともに成長し、
         <br />
         一つのチームとして強くなっていく。
         <br />

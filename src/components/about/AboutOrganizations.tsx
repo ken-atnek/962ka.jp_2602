@@ -42,13 +42,12 @@ export default function AboutOrganizations() {
           </div>
         </article>
         <article className={styles.blockBottom} aria-label="company overview">
-          <h2>Kurojikaは、2つの組織から出来ています。</h2>
           <div className={styles.overviewCard}>
-            <h3>
+            <h2>
               OUR STORY
               <br />
               Two Histories. One Future.
-            </h3>
+            </h2>
             <p>
               税理士法人クロジカの歩みは、一つの事務所の歴史ではありません。
               <br />

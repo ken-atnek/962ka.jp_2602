@@ -23,7 +23,7 @@ const officeOverviews: readonly OfficeOverview[] = [
   {
     title: '宇土オフィス',
     rows: [
-      { label: '会社名', value: '税理士法人クロジカ' },
+      { label: '会社名', value: '税理士法人クロジカ　宇土オフィス' },
       { label: '所在地', value: '熊本県宇土市北段原町16番地3' },
       { label: '電話番号', value: '0964-26-1515' },
       { label: 'FAX', value: '0964-26-1516' },
@@ -32,7 +32,7 @@ const officeOverviews: readonly OfficeOverview[] = [
   {
     title: '熊本オフィス',
     rows: [
-      { label: '会社名', value: '税理士法人クロジカ　絆会計事務所' },
+      { label: '会社名', value: '税理士法人クロジカ　熊本オフィス' },
       { label: '所在地', value: '熊本県熊本市中央区本荘町719' },
       { label: '電話番号', value: '096-363-4520' },
       { label: 'FAX', value: '096-362-1150' },

@@ -205,7 +205,7 @@
         display: flex;
         flex-direction: column;
         max-width: $article-middle-width;
-        margin-top: 7rem;
+        margin-top: 18rem;
         gap: 9rem 13rem;
         @include sp {
             display: flex;
@@ -214,19 +214,13 @@
             margin-top: 14vw;
             gap: 4vw 0;
         }
-        h2 {
-            grid-column: span 2;
-            text-align: center;
-            font-size: fz(18);
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
+
         .overviewCard {
             font-size: inherit;
             display: flex;
             flex-direction: column;
             gap: 2em 0;
-            h3 {
+            h2 {
                 font-size: fz(28);
                 font-weight: 700;
                 line-height: 1.6;
