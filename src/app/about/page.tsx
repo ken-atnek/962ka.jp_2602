@@ -7,8 +7,9 @@
  * ======================================= */
 
 import type { Metadata } from 'next';
-import AboutCompanyOverview from '@/components/about/AboutCompanyOverview';
 import AboutHistory from '@/components/about/AboutHistory';
+import AboutMessage from '@/components/about/AboutMessage';
+import AboutOfficeOverview from '@/components/about/AboutOfficeOverview';
 import AboutOrganizations from '@/components/about/AboutOrganizations';
 import AboutStatement from '@/components/about/AboutStatement';
 import ContactBlock from '@/components/common/ContactBlock';
@@ -41,8 +42,8 @@ export default function AboutPage() {
       <AboutOrganizations />
       <AboutStatement />
       <AboutHistory />
-      <AboutCompanyOverview />
-
+      <AboutMessage />
+      <AboutOfficeOverview />
       <ContactBlock />
     </>
   );

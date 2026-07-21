@@ -10,31 +10,6 @@ import Image from 'next/image';
 import styles from '@/styles/PageAbout.module.scss';
 import useAddClassOnInView from '@/hooks/useAddClassOnInView';
 
-const companyCards = [
-  {
-    number: '#01',
-    title: '税理士法人クロジカ',
-    description: [
-      '「租税正義の実現」を目指して、企業や店舗、病院などの税務顧問として従事するほか、新規開業も応援。',
-      '税務署や金融機関に信用される決算書・申告書の作成、経営判断に必要な会計数値の提供、節税対策のご提案などを行っています。',
-    ],
-    items: ['各種税務相談', '自計化支援', '事業承継／株式評価'],
-  },
-  {
-    number: '#02',
-    title: '税理士法人クロジカ 竹村会計事務所',
-    description: [
-      'コーチングを通して、お金の流れを「見える化」。適切な黒字化へ導く経営コンサルティングが主な業務。',
-      '加えて「企業防衛」を意図した各種生命保険の取り扱い、「資産防衛」としての不動産に関するご提案も行います。',
-    ],
-    items: [
-      '黒字化・資金繰改善支援',
-      '企業防衛(各種生保取り扱い)',
-      '資産防衛(各種住宅メーカー提携)',
-    ],
-  },
-] as const;
-
 export default function AboutOrganizations() {
   const ref = useAddClassOnInView<HTMLDivElement>(styles.isVisible, {
     threshold: 0.6,
@@ -68,22 +43,40 @@ export default function AboutOrganizations() {
         </article>
         <article className={styles.blockBottom} aria-label="company overview">
           <h2>Kurojikaは、2つの組織から出来ています。</h2>
-          {companyCards.map((card) => (
-            <div key={card.number} className={styles.overviewCard}>
-              <p className={styles.cardNumber}>{card.number}</p>
-              <h3>{card.title}</h3>
-              <div className={styles.cardDescription}>
-                {card.description.map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
-              </div>
-              <ul className={styles.cardList}>
-                {card.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className={styles.overviewCard}>
+            <h3>
+              OUR STORY
+              <br />
+              Two Histories. One Future.
+            </h3>
+            <p>
+              税理士法人クロジカの歩みは、一つの事務所の歴史ではありません。
+              <br />
+              1983年、熊本市で創業した隈部会計事務所（のちの税理士法人絆）。
+              <br />
+              1996年、宇土市で創業した山口税理士事務所（のちの税理士法人やまぐち）。
+              <br />
+              それぞれの事務所が地域に根ざし、お客様一人ひとりと真摯に向き合いながら、信頼を積み重ねてきました。
+              <br />
+              そして2020年8月。
+              <br />
+              二つの歩みは一つとなり、税理士法人クロジカが誕生しました。
+              <br />
+              私たちが受け継いだのは、事務所という「形」ではありません。
+              <br />
+              創業者たちが大切にしてきた、お客様への想い。
+              <br />
+              誠実に仕事と向き合う姿勢。 人を育て、地域とともに歩む文化。
+              <br />
+              そして、長い年月をかけて築き上げてきた信頼です。
+              <br />
+              歴史とは、過去を語るためにあるものではありませz。
+              <br />
+              未来へ想いをつないでいくためにあるもの。
+              <br />
+              税理士法人クロジカは、これからも熊本の企業とともに歩み、一社一社の未来に寄り添い続けます。
+            </p>
+          </div>
         </article>
       </section>
     </>

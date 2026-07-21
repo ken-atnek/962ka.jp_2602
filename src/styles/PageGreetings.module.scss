@@ -82,7 +82,7 @@
         position: absolute;
         font-size: inherit;
         color: $pure-white;
-        padding: 2.3vw 3.3vw;
+        padding: 2.3vw 3vw;
         @include sp {
             color: $main-black;
             padding: 4vw;
@@ -98,9 +98,9 @@
         }
     }
     .boxProfile {
-        right: 11vw;
+        right: 10vw;
         top: 70vw;
-        width: 33.7vw;
+        width: 34vw;
         @include sp {
             position: relative;
             right: unset;
@@ -128,11 +128,11 @@
         dl {
             position: relative;
             z-index: 3;
-            font-size: max(1.2rem, 1vw);
+            font-size: min(1.4rem, 1vw);
             display: grid;
             grid-template-columns: auto 1fr;
-            gap: 1.4em 0;
-            margin-top: 3vw;
+            gap: 1.2em 0;
+            margin-top: 2vw;
             @include sp {
                 font-size: fz(14);
             }
@@ -175,6 +175,10 @@
                     flex-direction: column;
                     line-height: 1.8em;
                     max-width: 19em;
+                    p {
+                        font-size: inherit;
+                        font-weight: 300;
+                    }
                     span {
                         line-height: 1.8em;
                     }
@@ -195,7 +199,7 @@
     .boxGreeting {
         left: 6vw;
         top: 80vw;
-        width: 44vw;
+        width: 46vw;
         padding-inline: 2vw;
         @include sp {
             position: relative;
@@ -208,13 +212,13 @@
         & > * {
             position: relative;
             z-index: 3;
-            font-size: max(1.2rem, 1.05vw);
-            letter-spacing: 0.05em;
+            font-size: min(1.6rem, 1.05vw);
+            letter-spacing: 0.04em;
             font-weight: 300;
         }
 
         p {
-            line-height: 2.2em;
+            line-height: 1.9em;
             opacity: 0;
             transition: opacity 0.5s ease 0.8s;
             @include sp {

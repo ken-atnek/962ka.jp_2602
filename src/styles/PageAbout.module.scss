@@ -202,8 +202,8 @@
         }
     }
     .blockBottom {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
         max-width: $article-middle-width;
         margin-top: 7rem;
         gap: 9rem 13rem;
@@ -225,53 +225,18 @@
             font-size: inherit;
             display: flex;
             flex-direction: column;
-            .cardNumber {
-                @include helvetica-neue;
-                font-size: fz(40);
-                font-weight: 700;
-                letter-spacing: 0.1em;
-            }
+            gap: 2em 0;
             h3 {
-                font-size: fz(20);
+                font-size: fz(28);
                 font-weight: 700;
-                line-height: 1.2;
-                letter-spacing: 0.03em;
+                line-height: 1.6;
+                letter-spacing: 0.04em;
                 margin-top: 1.8rem;
             }
-            .cardDescription {
-                display: flex;
-                flex-direction: column;
-                margin-top: 4rem;
-                font-size: inherit;
-                p {
-                    font-size: fz(14);
-                    line-height: 2.5;
-                    letter-spacing: 0.05em;
-                }
-            }
-            .cardList {
-                display: flex;
-                flex-direction: column;
-                margin-top: 4rem;
-                font-size: inherit;
-                li {
-                    position: relative;
-                    padding-left: 1.4em;
-                    font-size: fz(14);
-                    line-height: 2;
-                    letter-spacing: 0.05em;
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: 50%;
-                        translate: 0 -50%;
-                        left: 0;
-                        width: 1.2rem;
-                        background: url("/images/about/arrow.svg") no-repeat
-                            center center / contain;
-                        aspect-ratio: 1;
-                    }
-                }
+            p {
+                font-size: fz(16);
+                letter-spacing: 0.04em;
+                line-height: 2em;
             }
         }
     }
@@ -416,7 +381,6 @@
                     object-fit: cover;
                 }
             }
-
             p {
                 margin-left: 4em;
                 font-size: fz(16);
@@ -456,21 +420,26 @@
         flex-direction: column;
         width: 100%;
         max-width: $article-max-width;
+        @include sp {
+            max-width: unset;
+        }
         .boxTitle {
             @include box-title;
         }
         .historyBody {
             display: flex;
             flex-direction: column;
-            align-items: start;
             font-size: inherit;
             width: 100%;
+
             // max-width: $article-middle-width;
             align-self: center;
             margin-top: 9rem;
             gap: 2em 0;
+            padding-inline: 4vw;
             @include sp {
                 margin-top: 12vw;
+                padding-left: 8vw;
             }
             .historyText {
                 font-size: inherit;
@@ -503,15 +472,17 @@
             }
             .bottomText {
                 font-size: fz(20);
+                letter-spacing: 0.04em;
+                line-height: 1.6em;
             }
         }
     }
 }
 
 /* =================================
- * 会社概要ブロック
+ * メッセージ
  * ------------------------------ */
-.containerCompanyOverview {
+.containerMessage {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -539,64 +510,42 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            gap: 5em 0;
-            max-width: $article-middle-width;
+            gap: 8em 0;
+            padding-left: 4vw;
+            // max-width: $article-middle-width;
             font-size: inherit;
             align-self: center;
             @include sp {
                 gap: 8vw 0;
                 margin-top: 12vw;
+                padding-left: unset;
             }
-            .companyCard {
+            .overviewSection {
                 display: flex;
                 flex-direction: column;
-                width: max-content;
+                align-self: flex-start;
+                // max-width: 85rem;
+                width: 100%;
                 h3 {
-                    font-size: fz(20);
+                    @include helvetica-neue;
+                    font-size: fz(24);
                     font-weight: 700;
                     letter-spacing: 0.1em;
                 }
-                dl {
-                    display: grid;
-                    grid-template-columns: auto 1fr;
+                .overviewText {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 2rem;
+                    gap: 1.8rem 0;
                     font-size: inherit;
-                    width: fit-content;
-                    margin-top: 4rem;
                     @include sp {
                         margin-top: 4vw;
                     }
-                    div {
-                        font-size: inherit;
-                        grid-column: span 2;
-                        display: grid;
-                        grid-template-columns: subgrid;
-                        padding-block: 1em;
-                        gap: 0 2em;
-                        &:not(:last-of-type) {
-                            border-bottom: 1px solid #545454;
-                        }
-                        dt {
-                            font-size: fz(16);
-                            font-weight: 300;
-                            letter-spacing: 0.05em;
-                            line-height: 1.7;
-                        }
-                        dd {
-                            font-size: inherit;
-                            display: flex;
-                            flex-direction: column;
-                            & > * {
-                                font-size: fz(16);
-                                font-weight: 300;
-                                letter-spacing: 0.05em;
-                            }
-                            span {
-                                line-height: 1.7;
-                            }
-                            a {
-                                text-decoration: underline solid #fff 1px;
-                            }
-                        }
+                    p {
+                        font-size: fz(14);
+                        letter-spacing: 0.05em;
+                        line-height: 2.2;
+                        font-feature-settings: "palt";
                     }
                 }
             }
@@ -615,6 +564,7 @@
             right: 5vw;
             bottom: 90%;
             width: 40vw;
+
             // max-width: 90rem;
             aspect-ratio: 657 / 642;
             z-index: 1;
@@ -628,11 +578,115 @@
     .overviewImageBottom {
         margin-top: 10rem;
         width: 83vw;
+
         // max-width: 90rem;
         aspect-ratio: 1137 / 758;
         @include sp {
             width: 100%;
             margin-top: 4vw;
+        }
+    }
+}
+
+/* =================================
+ * 会社概要一覧ブロック
+ * ------------------------------ */
+.containerOfficeOverview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18rem 2vw 0;
+    @include sp {
+        padding: 14vw 4vw 10vw;
+    }
+    article {
+        display: flex;
+        flex-direction: column;
+        max-width: $article-max-width;
+        .boxTitle {
+            @include box-title;
+            @include animated-title;
+            h2 {
+                display: flex;
+                flex-direction: column;
+                span {
+                    line-height: 0.85em;
+                }
+            }
+        }
+        img {
+            width: 30vw;
+            margin-left: 3vw;
+            @include sp {
+                display: none;
+            }
+        }
+    }
+
+    .officeOverviewBody {
+        margin-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 7rem 0;
+        font-size: inherit;
+        @include sp {
+            margin-top: 10vw;
+            gap: 10vw 0;
+            padding-inline: 4vw;
+        }
+        .officeOverviewColumns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 8rem;
+            max-width: $article-middle-width;
+            width: 100%;
+            align-self: center;
+            font-size: inherit;
+            @include sp {
+                grid-template-columns: 1fr;
+                gap: 20vw 0;
+            }
+            .officeCard {
+                display: flex;
+                flex-direction: column;
+                font-size: inherit;
+                h3 {
+                    font-size: fz(20);
+                    font-weight: 700;
+                    letter-spacing: 0.08em;
+                }
+                dl {
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    width: 100%;
+                    margin-top: 3.4rem;
+                    gap: 0 2.4rem;
+                    font-size: inherit;
+                    @include sp {
+                        margin-top: 2vw;
+                    }
+                    div {
+                        grid-column: span 2;
+                        display: grid;
+                        grid-template-columns: subgrid;
+                        padding: 1.6rem 0;
+                        font-size: inherit;
+                        @include sp {
+                            padding: 4vw 0;
+                        }
+                        &:not(:last-of-type) {
+                            border-bottom: 1px solid #8f8f8f;
+                        }
+                        dt,
+                        dd {
+                            font-size: fz(16);
+                            font-weight: 300;
+                            letter-spacing: 0.04em;
+                            line-height: 1.7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
