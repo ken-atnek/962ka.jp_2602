@@ -4,7 +4,7 @@
  * URL: /src/components/common/Header.module.scss
  * Referenced in: /src/components/common/Header.tsx
  * Created: 2026-04-23
- * Last updated: 2026-06-17
+ * Last updated: 2026-07-27
  * ======================================= */
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable keyframes-name-pattern */
@@ -62,7 +62,7 @@
         justify-content: center;
         padding: 10rem 3.7rem 4.6rem;
         opacity: 0;
-        translate: 0 -100vh;
+        transform: translateY(-100vh);
         transition: 0.5s ease-out;
         @include sp {
             padding: 20vw 8vw 6vw;
@@ -70,7 +70,7 @@
         &.isOpen {
             transition: 0.4s ease-out;
             opacity: 1;
-            translate: 0;
+            transform: translateY(0);
         }
         .blockInner {
             width: 100%;
@@ -231,7 +231,6 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     z-index: 3;
-    translate: 0;
     @include sp {
         width: 32vw;
         top: 2vw;
@@ -276,7 +275,7 @@
             font-size: fz(12);
         }
     }
-    &.is-open {
+    &.isOpen {
         transition: 0.3s ease-out;
         & > div {
             width: 6rem;

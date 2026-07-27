@@ -5,7 +5,7 @@
  * URL: /src/styles/PageAbout.module.scss
  * Referenced in: /src/app/about/page.tsx
  * Created: 2026-06-20
- * Last updated: 2026-06-20
+ * Last updated: 2026-07-27
  * ======================================= */
 
 /* =================================
@@ -228,9 +228,13 @@
                 margin-top: 1.8rem;
             }
             p {
+                display: flex;
+                flex-direction: column;
                 font-size: fz(16);
-                letter-spacing: 0.04em;
-                line-height: 2em;
+                span {
+                    letter-spacing: 0.04em;
+                    line-height: 2em;
+                }
             }
         }
     }
@@ -376,13 +380,17 @@
                 }
             }
             p {
+                display: flex;
+                flex-direction: column;
                 margin-left: 3em;
                 font-size: fz(16);
                 margin-top: 14rem;
-                line-height: 2.3;
-                letter-spacing: 0.1em;
-                font-weight: 500;
-                font-feature-settings: "palt";
+                span {
+                    font-feature-settings: "palt";
+                    line-height: 2.3;
+                    letter-spacing: 0.1em;
+                    font-weight: 500;
+                }
                 @include sp {
                     margin-left: unset;
                     margin-top: 2vw;

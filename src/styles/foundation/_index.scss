@@ -1,3 +1,10 @@
+/* =======================================
+ * クロジカ foundation 一括読み込み
+ * URL: /src/styles/foundation/_index.scss
+ * Referenced in: 各 module.scss（@use "foundation/" 経由）
+ * Created: 2026-04-23
+ * Last updated: 2026-07-27
+ * ======================================= */
 @forward "settings";
 @forward "typography";
 @forward "colors";

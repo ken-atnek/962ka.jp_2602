@@ -1,3 +1,12 @@
+@use "../../styles/foundation/" as *;
+/* =======================================
+ * クロジカ DistortionImage スタイル
+ * URL: /src/components/common/DistortionImage.module.scss
+ * Referenced in: /src/components/common/DistortionImage.tsx
+ * Created: 2026-06-19
+ * Last updated: 2026-07-27
+ * ======================================= */
+
 .container {
     position: relative;
     width: 100%;

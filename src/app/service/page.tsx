@@ -3,7 +3,7 @@
  * URL: /src/app/service/page.tsx
  * Referenced in: /src/app/service/page.tsx
  * Created: 2026-06-18
- * Last updated: 2026-06-18
+ * Last updated: 2026-07-27
  * ======================================= */
 
 import type { Metadata } from 'next';
@@ -11,7 +11,7 @@ import ContactBlock from '@/components/common/ContactBlock';
 import FloatingOrbs from '@/components/common/FloatingOrbs';
 import ServiceMovie from '@/components/service/ServiceMovie';
 import ServicePageSection from '@/components/service/ServicePageSection';
-import { isRealProduction } from '@/lib/env';
+import { isRealProduction, ogpImage } from '@/lib/env';
 import { serviceSections } from './serviceData';
 import ScrambleText from '@/components/common/ScrambleText';
 import styles from '@/styles/PageService.module.scss';
@@ -25,6 +25,14 @@ export const generateMetadata = (): Metadata => {
     ...(isRealProduction && {
       alternates: {
         canonical: '/service/',
+      },
+      openGraph: {
+        title: 'Service | 税理士法人クロジカ',
+        description:
+          '税理士法人クロジカのサービス内容をご紹介します。日常業務の支援から経営判断に関わるコンサルティングまで、企業の黒字化を支える取り組みを掲載しています。',
+        url: '/service/',
+        type: 'website',
+        images: [ogpImage],
       },
     }),
   };

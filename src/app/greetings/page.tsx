@@ -3,7 +3,7 @@
  * URL: /src/app/greetings/page.tsx
  * Referenced in: /src/data/navMenuData.ts
  * Created: 2026-06-18
- * Last updated: 2026-06-19
+ * Last updated: 2026-07-27
  * ======================================= */
 
 import type { Metadata } from 'next';
@@ -14,7 +14,7 @@ import GreetingBlock from '@/components/greetings/GreetingBlock';
 import GreetingGalleryBlock from '@/components/greetings/GreetingGalleryBlock';
 import ProfileBlock from '@/components/greetings/ProfileBlock';
 import ScatterName from '@/components/greetings/ScatterName';
-import { isRealProduction } from '@/lib/env';
+import { isRealProduction, ogpImage } from '@/lib/env';
 import ScrambleText from '@/components/common/ScrambleText';
 import styles from '@/styles/PageGreetings.module.scss';
 
@@ -27,6 +27,14 @@ export const generateMetadata = (): Metadata => {
     ...(isRealProduction && {
       alternates: {
         canonical: '/greetings/',
+      },
+      openGraph: {
+        title: 'Greetings | 税理士法人クロジカ',
+        description:
+          '税理士法人クロジカ代表・山口真太郎からのご挨拶です。クロジカが大切にしている姿勢と、企業の黒字化に向けた想いをお伝えします。',
+        url: '/greetings/',
+        type: 'website',
+        images: [ogpImage],
       },
     }),
   };

@@ -1,3 +1,10 @@
+/* =======================================
+ * クロジカ SVG背景設定
+ * URL: /src/styles/foundation/_svg.scss
+ * Referenced in: /src/styles/globals.scss
+ * Created: 2026-04-23
+ * Last updated: 2026-07-27
+ * ======================================= */
 @mixin svg-bg-base($w, $h) {
     aspect-ratio: #{$w} / #{$h};
     background-repeat: no-repeat;

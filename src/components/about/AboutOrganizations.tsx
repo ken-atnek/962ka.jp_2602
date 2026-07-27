@@ -3,12 +3,28 @@
  * URL: /src/components/about/AboutOrganizations.tsx
  * Referenced in: /src/app/about/page.tsx
  * Created: 2026-06-20
- * Last updated: 2026-06-20
+ * Last updated: 2026-07-27
  * ======================================= */
 'use client';
 import Image from 'next/image';
 import styles from '@/styles/PageAbout.module.scss';
 import useAddClassOnInView from '@/hooks/useAddClassOnInView';
+
+const organizationStoryLines: readonly string[] = [
+  '税理士法人クロジカの歩みは、一つの事務所の歴史ではありません。',
+  '1983年、熊本市で創業した隈部会計事務所（のちの税理士法人絆）。',
+  '1996年、宇土市で創業した山口税理士事務所（のちの税理士法人やまぐち）。',
+  'それぞれの事務所が地域に根ざし、お客様一人ひとりと真摯に向き合いながら、信頼を積み重ねてきました。',
+  'そして2020年8月。',
+  '二つの歩みは一つとなり、税理士法人クロジカが誕生しました。',
+  '私たちが受け継いだのは、事務所という「形」ではありません。',
+  '創業者たちが大切にしてきた、お客様への想い。',
+  '誠実に仕事と向き合う姿勢。 人を育て、地域とともに歩む文化。',
+  'そして、長い年月をかけて築き上げてきた信頼です。',
+  '歴史とは、過去を語るためにあるものではありません。',
+  '未来へ想いをつないでいくためにあるもの。',
+  '税理士法人クロジカは、これからも熊本の企業とともに歩み、一社一社の未来に寄り添い続けます。',
+] as const;
 
 export default function AboutOrganizations() {
   const ref = useAddClassOnInView<HTMLDivElement>(styles.isVisible, {
@@ -49,31 +65,9 @@ export default function AboutOrganizations() {
               Two Histories. One Future.
             </h2>
             <p>
-              税理士法人クロジカの歩みは、一つの事務所の歴史ではありません。
-              <br />
-              1983年、熊本市で創業した隈部会計事務所（のちの税理士法人絆）。
-              <br />
-              1996年、宇土市で創業した山口税理士事務所（のちの税理士法人やまぐち）。
-              <br />
-              それぞれの事務所が地域に根ざし、お客様一人ひとりと真摯に向き合いながら、信頼を積み重ねてきました。
-              <br />
-              そして2020年8月。
-              <br />
-              二つの歩みは一つとなり、税理士法人クロジカが誕生しました。
-              <br />
-              私たちが受け継いだのは、事務所という「形」ではありません。
-              <br />
-              創業者たちが大切にしてきた、お客様への想い。
-              <br />
-              誠実に仕事と向き合う姿勢。 人を育て、地域とともに歩む文化。
-              <br />
-              そして、長い年月をかけて築き上げてきた信頼です。
-              <br />
-              歴史とは、過去を語るためにあるものではありません。
-              <br />
-              未来へ想いをつないでいくためにあるもの。
-              <br />
-              税理士法人クロジカは、これからも熊本の企業とともに歩み、一社一社の未来に寄り添い続けます。
+              {organizationStoryLines.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
             </p>
           </div>
         </article>

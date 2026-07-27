@@ -3,7 +3,7 @@
  * URL: /src/app/layout.tsx
  * Referenced in: /src/app/layout.tsx
  * Created: 2026-02-03
- * Last updated: 2026-06-17
+ * Last updated: 2026-07-27
  * ======================================= */
 
 import type { Metadata } from 'next';
@@ -12,7 +12,8 @@ import { Noto_Sans_JP } from 'next/font/google';
 import SvgDefs from '@/components/SvgDefs';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
-import { isRealProduction } from '@/lib/env';
+import StructuredData from '@/components/common/StructuredData';
+import { isRealProduction, ogpImage } from '@/lib/env';
 
 const notoSans = Noto_Sans_JP({
   subsets: ['latin'],
@@ -32,14 +33,7 @@ export const metadata: Metadata = {
     openGraph: {
       url: metadataBase?.toString(),
       type: 'website',
-      images: [
-        {
-          url: '/ogp.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'クロジカのOGP画像',
-        },
-      ],
+      images: [ogpImage],
     },
   }),
   robots: isRealProduction ? 'index, follow' : 'noindex, nofollow',
@@ -77,6 +71,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         />
+        {isRealProduction && <StructuredData />}
       </head>
       <body>
         <SvgDefs />

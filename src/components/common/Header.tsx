@@ -1,9 +1,9 @@
 /* =======================================
- *クロジカ HEADER
+ * クロジカ HEADER
  * URL: /src/components/common/Header.tsx
  * Referenced in: /src/app/layout.tsx
  * Created: 2026-04-23
- * Last updated: 2026-06-18
+ * Last updated: 2026-07-27
  * ======================================= */
 'use client';
 import { useEffect, useState, useRef } from 'react';
@@ -158,9 +158,7 @@ const Header = () => {
       <button
         type="button"
         ref={buttonRef}
-        className={`${styles.hamburgerButton} ${
-          isOpen ? styles['is-open'] : ''
-        }`}
+        className={clsx(styles.hamburgerButton, isOpen && styles.isOpen)}
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-label="メニューを開閉"

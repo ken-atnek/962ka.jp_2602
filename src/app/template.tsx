@@ -1,3 +1,10 @@
+/* =======================================
+ * クロジカ ページ遷移テンプレート（スクロール制御）
+ * URL: /src/app/template.tsx
+ * Referenced in: /src/app/layout.tsx
+ * Created: 2026-04-23
+ * Last updated: 2026-07-27
+ * ======================================= */
 'use client';
 
 import { useLayoutEffect } from 'react';

@@ -5,7 +5,7 @@
  * URL: /src/styles/PageGreetings.module.scss
  * Referenced in: /src/app/greetings/page.tsx
  * Created: 2026-06-18
- * Last updated: 2026-06-19 (プロフィール・挨拶スクロールアニメーション追加)
+ * Last updated: 2026-07-27
  * ======================================= */
 
 .containerHero {
@@ -218,12 +218,17 @@
         }
 
         p {
-            line-height: 1.9em;
+            display: flex;
+            flex-direction: column;
             opacity: 0;
             transition: opacity 0.5s ease 0.8s;
             @include sp {
                 font-size: fz(14);
                 text-align: justify;
+            }
+            span {
+                min-height: 1lh;
+                line-height: 1.9em;
             }
         }
         &.isVisible {

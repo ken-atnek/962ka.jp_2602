@@ -1,3 +1,10 @@
+/* =======================================
+ * クロジカ SVGシンボル読み込み
+ * URL: /src/components/SvgDefs.tsx
+ * Referenced in: /src/app/layout.tsx
+ * Created: 2026-02-03
+ * Last updated: 2026-07-27
+ * ======================================= */
 'use client';
 
 import { useEffect, useState } from 'react';

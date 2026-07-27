@@ -3,7 +3,7 @@
  * URL: /src/app/about/page.tsx
  * Referenced in: /src/app/about/page.tsx
  * Created: 2026-06-20
- * Last updated: 2026-06-20
+ * Last updated: 2026-07-27
  * ======================================= */
 
 import type { Metadata } from 'next';
@@ -15,7 +15,7 @@ import AboutStatement from '@/components/about/AboutStatement';
 import ContactBlock from '@/components/common/ContactBlock';
 import FloatingOrbs from '@/components/common/FloatingOrbs';
 import ScrambleText from '@/components/common/ScrambleText';
-import { isRealProduction } from '@/lib/env';
+import { isRealProduction, ogpImage } from '@/lib/env';
 import styles from '@/styles/PageAbout.module.scss';
 
 export const generateMetadata = (): Metadata => {
@@ -27,6 +27,14 @@ export const generateMetadata = (): Metadata => {
     ...(isRealProduction && {
       alternates: {
         canonical: '/about/',
+      },
+      openGraph: {
+        title: 'About | 税理士法人クロジカ',
+        description:
+          '税理士法人クロジカについてご紹介します。黒字化支援への考え方、法人概要、これまでの歩みを掲載しています。',
+        url: '/about/',
+        type: 'website',
+        images: [ogpImage],
       },
     }),
   };
