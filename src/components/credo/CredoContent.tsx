@@ -44,7 +44,9 @@ const CredoContent = () => {
               </div>
               <p>
                 <span className={styles.head}>
-                  All <i>WW</i> in the BLACK　〜豊かな和の輪を皆さまと共に〜
+                  All <i>WW</i> in the BLACK
+                  <br />
+                  〜豊かな和の輪を皆さまと共に〜
                 </span>
                 {serviceCredoData.vision.subHeading.map((line) => (
                   <span key={line}>{line}</span>

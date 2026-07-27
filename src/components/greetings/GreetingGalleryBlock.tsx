@@ -23,11 +23,11 @@ export default function GreetingGalleryBlock() {
       </div>
       <div className={styles.galleryGrid}>
         <p className={styles.textEn}>
-          Rooted in our love for Uto, we grow alongside our
+          Consistency Wins.
+          <br /> Do the ordinary extraordinarily well.
+          <br /> Steady efforts build trust
           <br />
-          customers and become stronger as one team.
-          <br />
-          That is who we are — Team Kurojika.
+          and become the foundation for our clients&apos; future.
         </p>
         <div className={styles.itemImage02}>
           <DistortionImage
@@ -49,11 +49,13 @@ export default function GreetingGalleryBlock() {
         </div>
       </div>
       <p className={styles.textJp}>
-        地元・熊本への愛を礎に、お客様とともに歩み、ともに成長し、
+        「コツコツが勝つコツ」
         <br />
-        一つのチームとして強くなっていく。
+        誰でもできることを、誰もできないくらい続ける。
         <br />
-        それが私たち、チーム『クロジカ』です。
+        その積み重ねが信頼となり、
+        <br />
+        お客様の未来を支える礎になると信じています。
       </p>
       <div className={styles.itemImage04}>
         <DistortionImage

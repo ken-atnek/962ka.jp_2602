@@ -59,7 +59,7 @@ export default function ScatterName() {
       }}
       className={styles.itemName}
     >
-      <i>{renderChars('SHINTAROU')}</i>
+      <i>{renderChars('SHINTARO')}</i>
       <i>{renderChars('YAMAGUCHI')}</i>
     </div>
   );

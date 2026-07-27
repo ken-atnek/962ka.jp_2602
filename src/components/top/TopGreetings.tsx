@@ -35,7 +35,7 @@ const TopGreetings = () => {
       <div className={styles.boxDetails}>
         <div className={styles.wrapLogoLeft}>
           <div className={styles.itemName}>
-            <span>SHINTAROU</span>
+            <span>SHINTARO</span>
             <span>YAMAGUCHI</span>
           </div>
           <svg className={styles.svgLeft}>
