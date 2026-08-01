@@ -19,5 +19,6 @@ export const navMenu: NavMenuItem[] = [
   { href: '/greetings/', label: 'GREETINGS' },
   { href: '/credo/', label: 'CREDO' },
   { href: '/contact/', label: 'CONTACT' },
-  { href: 'https://team.962ka.jp/', label: 'JOB Openings', isExternal: true },
+  { href: 'https://team.962ka.jp/', label: 'JOB openings', isExternal: true },
+  { href: '/tkc/', label: 'TKC info' },
 ];

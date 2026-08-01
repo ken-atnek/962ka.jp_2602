@@ -3,7 +3,7 @@
  * URL: /src/app/contact/EntryPageClient.tsx
  * Referenced in: /src/app/contact/page.tsx
  * Created: 2026-06-22
- * Last updated: 2026-06-22
+ * Last updated: 2026-07-31
  * ======================================= */
 
 'use client';
@@ -11,12 +11,16 @@
 import { useState } from 'react';
 import styles from '@/styles/PageContact.module.scss';
 
+const MIN_SUBMIT_SECONDS = 3;
+
 type FormState = {
   name: string;
   furigana: string;
   phone: string;
   email: string;
   message: string;
+  website: string;
+  formStartedAt: string;
 };
 
 type Step = 'input' | 'confirm' | 'done';
@@ -28,9 +32,11 @@ const initialForm: FormState = {
   phone: '',
   email: '',
   message: '',
+  website: '',
+  formStartedAt: '',
 };
 
-const CONTACT_URL = 'https://demo-962ka.tuna-pic.co.jp/backend/contact.php';
+const CONTACT_URL = 'https://962ka.jp/backend/contact.php';
 
 const labels: Record<keyof FormState, string> = {
   name: 'お名前',
@@ -38,6 +44,8 @@ const labels: Record<keyof FormState, string> = {
   phone: '電話番号',
   email: 'メールアドレス',
   message: '本文',
+  website: 'Webサイト',
+  formStartedAt: 'フォーム開始時刻',
 };
 
 const requiredFields: (keyof FormState)[] = [
@@ -48,7 +56,10 @@ const requiredFields: (keyof FormState)[] = [
 ];
 
 export default function EntryPageClient() {
-  const [form, setForm] = useState<FormState>(initialForm);
+  const [form, setForm] = useState<FormState>(() => ({
+    ...initialForm,
+    formStartedAt: String(Date.now()),
+  }));
   const [step, setStep] = useState<Step>('input');
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState('');
@@ -183,6 +194,7 @@ export default function EntryPageClient() {
         <div className={styles.blockLead}>
           <p>こちらの内容でよろしいですか？</p>
           <p>宜しければ送信を押してください。</p>
+          <p>送信は入力開始から{MIN_SUBMIT_SECONDS}秒後より可能です。</p>
         </div>
 
         <dl>
@@ -236,6 +248,36 @@ export default function EntryPageClient() {
     <article className={styles.blockForm} aria-label="contact form">
       <form onSubmit={handleConfirm} noValidate>
         <div className={styles.fieldGrid}>
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              width: '1px',
+              height: '1px',
+              overflow: 'hidden',
+              clip: 'rect(0 0 0 0)',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <label htmlFor="website">Webサイト</label>
+            <input
+              id="website"
+              type="text"
+              name="website"
+              value={form.website}
+              onChange={handleChange}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+            <input
+              id="formStartedAt"
+              type="hidden"
+              name="formStartedAt"
+              value={form.formStartedAt}
+              readOnly
+            />
+          </div>
+
           <div className={styles.field}>
             <span className={styles.required}>*</span>
             <label htmlFor="name" className={styles.label}>

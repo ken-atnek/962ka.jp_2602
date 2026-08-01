@@ -110,7 +110,7 @@
                         @include sp {
                             font-size: fz(24);
                         }
-                        &:last-of-type {
+                        &:nth-last-of-type(2) {
                             grid-column: span 2;
                         }
                     }

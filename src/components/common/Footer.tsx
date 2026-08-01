@@ -36,12 +36,18 @@ const Footer = () => {
       </nav>
       <div className={styles.boxLink}>
         <span>follow</span>
-        <ExternalLink href="#" className={styles.linkNote}>
+        <ExternalLink
+          href="https://note.com/962ka?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaATTzTBwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp7uCHVkBqFPaxG4zYIbslg83ZOXemrRzbl1aFJr5FP_TkAbwmcJVjTe3I93q_aem_Y6HEGf4URMbeaobLppZ79g"
+          className={styles.linkNote}
+        >
           <svg>
             <use href="#svgLogoNote" />
           </svg>
         </ExternalLink>
-        <ExternalLink href="#" className={styles.linkInsta}>
+        <ExternalLink
+          href="https://www.instagram.com/kurojika.962ka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          className={styles.linkInsta}
+        >
           <svg>
             <use href="#svgInsta" />
           </svg>

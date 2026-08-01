@@ -5,7 +5,7 @@ declare(strict_types=1);
 /* =======================================
  * クロジカ お問い合わせ送信API
  * URL: /backend/contact.php
- * Last updated: 2026-06-22
+ * Last updated: 2026-07-31
  * ======================================= */
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
@@ -124,6 +124,32 @@ $furigana = trim($_POST['furigana'] ?? '');
 $phone = trim($_POST['phone'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $message = trim($_POST['message'] ?? '');
+$website = trim($_POST['website'] ?? '');
+$form_started_at = trim($_POST['formStartedAt'] ?? '');
+$min_submit_seconds = 3;
+
+if ($website !== '') {
+  json_exit(400, [
+    'success' => false,
+    'error' => '無効な送信です。',
+  ]);
+}
+
+if ($form_started_at === '' || preg_match('/^\d+$/', $form_started_at) !== 1) {
+  json_exit(400, [
+    'success' => false,
+    'error' => '送信情報が不正です。',
+  ]);
+}
+
+$elapsed_seconds = (time() * 1000 - (int) $form_started_at) / 1000;
+
+if ($elapsed_seconds < $min_submit_seconds) {
+  json_exit(400, [
+    'success' => false,
+    'error' => '送信まで少し時間をおいてください。',
+  ]);
+}
 
 $validation_fields = [];
 
@@ -171,13 +197,11 @@ if ($validation_fields !== []) {
   ]);
 }
 
-$admin_to = 'ken.atnek@gmail.com';
-// TODO  ↑↑公開時に修正すること
+$admin_to = 'contact962ka@962ka.jp';
 $admin_cc_email = '';
 $admin_to_name = '税理士法人クロジカ';
 $from_name = '税理士法人クロジカ';
-$from_email = 'contact@demo-962ka.tuna-pic.co.jp';
-// TODO  ↑↑公開時に修正すること
+$from_email = 'contact962ka@962ka.jp';
 $user_subject = 'お問い合わせを受け付けました。';
 $admin_subject = '【税理士法人クロジカ】お問い合わせを受け付けました';
 $send_date = date('Y/n/j H:i');

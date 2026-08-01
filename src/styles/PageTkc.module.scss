@@ -1,0 +1,56 @@
+@use "../styles/foundation/" as *;
+
+/* =======================================
+ * クロジカ TKC infoページ スタイル
+ * URL: /src/styles/PageTkc.module.scss
+ * Referenced in: /src/app/tkc/page.tsx
+ * Created: 2026-08-01
+ * Last updated: 2026-08-01
+ * ======================================= */
+
+/* =================================
+ * ページタイトル
+ * ------------------------------ */
+.containerPageTitle {
+    @include container-page-title;
+    background: url("/images/tkc/title.webp") no-repeat center center / cover;
+}
+
+/* =================================
+ * リード
+ * ------------------------------ */
+.containerTkc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14rem 2vw 16rem;
+    @include sp {
+        padding: 12vw 4vw;
+    }
+    nav {
+        font-size: inherit;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 2em 1.6em;
+        @media (max-width: 1137px) {
+            grid-template-columns: repeat(2, auto);
+        }
+        @include sp {
+            grid-template-columns: unset;
+            grid-auto-flow: row;
+            gap: 4vw 0;
+        }
+        a {
+            border: 1px solid;
+            font-size: fz(16);
+            @include flex-center;
+            padding-block: 0.5em;
+            padding-inline: 0.8em;
+            transition: 0.3s ease-out;
+            @include hover {
+                color: $main-white;
+                background-color: $main-black;
+            }
+        }
+    }
+}
