@@ -39,6 +39,10 @@
         translate: -50%;
         top: 40rem;
         opacity: 0.1;
+        @include spw {
+            border: solid 1px #0000ff;
+            top: 20vw;
+        }
         @include sp {
             top: 36vw;
             font-size: 36vw;

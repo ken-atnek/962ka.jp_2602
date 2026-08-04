@@ -28,6 +28,9 @@
             font-size: inherit;
             grid-template-columns: repeat(2, 1fr);
             gap: 0 1.6em;
+            @include spw {
+                gap: 0 2vw;
+            }
             @include sp {
                 display: flex;
                 flex-direction: column;
@@ -60,6 +63,9 @@
                         flex: 1;
                         display: flex;
                         align-items: center;
+                        @include spw {
+                            font-size: 3vw;
+                        }
                         @include sp {
                             font-size: fz(24);
                         }
@@ -72,6 +78,9 @@
                     .name {
                         font-size: fz(24);
                         letter-spacing: 0.1em;
+                        @include spw {
+                            font-size: 2.4vw;
+                        }
                         @include sp {
                             font-size: fz(14);
                         }
@@ -99,6 +108,9 @@
                     font-size: fz(48);
                     @include helvetica-neue;
                     font-weight: 700;
+                    @include spw {
+                        font-size: 5vw;
+                    }
                     @include sp {
                         font-size: fz(30);
                     }

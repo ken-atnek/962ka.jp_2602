@@ -36,6 +36,9 @@
         grid-template-columns: repeat(2, 1fr);
         max-width: $article-middle-width;
         gap: 54px 105px;
+        @include spw {
+            gap: 2vw 4vw;
+        }
         @include sp {
             display: flex;
             flex-direction: column;
@@ -51,6 +54,9 @@
                 grid-column: span 2;
                 text-align: center;
                 font-weight: 500;
+                @include spw {
+                    font-size: 1.8vw;
+                }
                 span {
                     margin-inline: 0.5em;
                     letter-spacing: -0.15em;
@@ -184,6 +190,9 @@
                         line-height: 1;
                         letter-spacing: 0.08em;
                         margin-right: 104px;
+                        @include spw {
+                            font-size: 2.4vw;
+                        }
                         @include sp {
                             margin-right: 6vw;
                         }
@@ -192,6 +201,9 @@
                         font-size: fz(16);
                         font-weight: 500;
                         letter-spacing: 0.1em;
+                        @include spw {
+                            font-size: 1.4vw;
+                        }
                     }
                     .itemIcon {
                         justify-self: end;
@@ -242,6 +254,9 @@
                             font-weight: 300;
                             line-height: 2;
                             letter-spacing: 0.08em;
+                            @include spw {
+                                font-size: 1.3vw;
+                            }
                             &::before {
                                 content: "—";
                                 margin-right: 1em;

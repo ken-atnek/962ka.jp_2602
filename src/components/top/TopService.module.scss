@@ -29,6 +29,9 @@
             font-size: inherit;
             grid-template-columns: repeat(2, 1fr);
             gap: 0 1.6em;
+            @include spw {
+                gap: 0 2vw;
+            }
             @include sp {
                 grid-template-columns: unset;
                 gap: 6vw 0;
@@ -43,6 +46,10 @@
                 font-size: inherit;
                 gap: 1em 0;
                 padding-left: 3.3em;
+                @include spw {
+                    padding-left: 2vw;
+                    height: 24vw;
+                }
                 @include sp {
                     height: 36vw;
                     padding-left: 4vw;
@@ -93,6 +100,9 @@
                     font-weight: 700;
                     letter-spacing: 0.2em;
                     transition: 0.3s ease-out;
+                    @include spw {
+                        font-size: 3vw;
+                    }
                     @include sp {
                         font-size: 6vw;
                     }

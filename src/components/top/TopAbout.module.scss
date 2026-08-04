@@ -91,6 +91,9 @@
                 letter-spacing: 0.1em;
                 padding-top: 0.4em;
                 margin-right: 1em;
+                @include spw {
+                    font-size: 1.4vw;
+                }
                 @include sp {
                     font-size: 3.6vw;
                     margin-right: 2vw;
@@ -122,6 +125,9 @@
                 position: absolute;
                 right: calc(100% + 10em);
                 width: max-content;
+                @include spw {
+                    right: calc(100% + 10vw);
+                }
                 @include sp {
                     position: relative;
                     right: unset;
@@ -151,6 +157,9 @@
                 font-size: fz(20);
                 font-weight: 700;
                 letter-spacing: 0.12em;
+                @include spw {
+                    font-size: 1.8vw;
+                }
                 @include sp {
                     font-size: 3.6vw;
                     letter-spacing: 0.08em;
