@@ -96,10 +96,10 @@ const clearRipples = (container: HTMLDivElement) => {
 const getNextRippleDelay = () =>
   RIPPLE_SETTINGS.delayBase + Math.random() * RIPPLE_SETTINGS.delayRange;
 const ABOUT_SLIDES = [
+  '/images/top/about/slide04.webp',
   '/images/top/about/slide01.webp',
   '/images/top/about/slide02.webp',
   '/images/top/about/slide03.webp',
-  '/images/top/about/slide04.webp',
 ] as const;
 const SLIDE_INTERVAL_MS = 4000;
 const OUTER_LEAD_MS = 600;
