@@ -99,6 +99,7 @@ const ABOUT_SLIDES = [
   '/images/top/about/slide01.webp',
   '/images/top/about/slide02.webp',
   '/images/top/about/slide03.webp',
+  '/images/top/about/slide04.webp',
 ] as const;
 const SLIDE_INTERVAL_MS = 4000;
 const OUTER_LEAD_MS = 600;
@@ -243,7 +244,7 @@ const TopAbout = () => {
           </p>
           <p className={styles.text03}>そんな「全方良し」を目指して、</p>
           <p className={styles.text04}>
-            私たちクロジカは「ALL in」全力を尽くします。
+            私たちクロジカは「All in」全力を尽くします。
           </p>
         </div>
       </div>
